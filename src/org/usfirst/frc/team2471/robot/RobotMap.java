@@ -1,5 +1,9 @@
 package org.usfirst.frc.team2471.robot;
 
+import org.usfirst.frc.team2471.robot.subsystems.SwerveDrive;
+
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
@@ -33,7 +37,34 @@ public class RobotMap {
 	public static SpeedController bSucker1;
 	public static SpeedController bSucker2;
 	
+	//AHAM..... SWERVES
+	//LEFT
+	 public static SpeedController
+	 leftFrontTwist,
+	 leftRearTwist,
+	 rightRearTwist,
+	 rightFrontTwist;
+	 
+	 //RIGHT
+	 public static SpeedController
+	 leftFrontSpeed,
+	 leftRearSpeed,
+	 rightRearSpeed,
+	 rightFrontSpeed;
+	
+	 //MODULE STUFF
+
+	 public static MagnePot leftFrontTwistEnc, leftRearTwistEnc, rightRearTwistEnc, rightFrontTwistEnc;
+	 public static Encoder leftFrontSpeedEnc, leftRearSpeedEnc, rightRearSpeedEnc, rightFrontSpeedEnc;
+	 public static SwerveModule leftFrontSwerve, leftRearSwerve, rightRearSwerve, rightFrontSwerve;
+	 public static SwerveDrive swerve;
+	 public static Gyro gyro;
+	 
+	 
 	public static void init(){
+		//Basic Robot stuff
+		gyro = new Gyro(1);
+		
 		//Lucas Lifter
 		lMotor1 = new Talon(1);
 		lMotor2 = new Talon(2);

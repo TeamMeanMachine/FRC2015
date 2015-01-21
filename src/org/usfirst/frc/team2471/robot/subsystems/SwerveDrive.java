@@ -8,7 +8,6 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in th future.
 package org.usfirst.frc.team2471.robot.subsystems;
-import com.sun.squawk.util.MathUtils;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
@@ -17,7 +16,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
-import org.usfirst.frc.team2471.robot.RobotMap;;
+import org.usfirst.frc.team2471.robot.RobotMap;
 import org.usfirst.frc.team2471.robot.commands.*;
 import org.usfirst.frc.team2471.robot.Filter;
 import org.usfirst.frc.team2471.robot.SwerveVector;
@@ -181,7 +180,7 @@ public class SwerveDrive extends Subsystem  {
         }
         
         if (fieldSteer && turnMag>TURN_DEAD_BAND) {
-            turnJoystickAngle = MathUtils.atan2( -r, s );  // convert the right stick to a goal angle for robot orientation
+            turnJoystickAngle = Math.atan2( -r, s );  // convert the right stick to a goal angle for robot orientation
             SmartDashboard.putNumber("joyStickAngle", -turnJoystickAngle);
             if (!autoSteer) {
                 turnPositionPID.setSetpoint( turnJoystickAngle );
@@ -279,7 +278,7 @@ public class SwerveDrive extends Subsystem  {
         double xAccel = xVelocity - prevXVelocity;  // compute new accel
         double yAccel = yVelocity - prevYVelocity;
         if (Math.abs(xAccel)>0.05 || Math.abs(yAccel)>0.05) {
-           accelerometerAngle = MathUtils.atan2(-xAccel, yAccel);
+           accelerometerAngle = Math.atan2(-xAccel, yAccel);
            SmartDashboard.putNumber("accel angle", -accelerometerAngle);
         }
         prevXVelocity = xVelocity;
