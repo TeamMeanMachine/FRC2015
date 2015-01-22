@@ -35,7 +35,7 @@ public class Lifter extends Subsystem {
 		}
 	}
 	
-	public void Zero(boolean upperorlower){
+	public void Zero(){
 		//upper is true && lower is false
 		boolean side = false;
 		//check both limit switched to see what side to set as default 
