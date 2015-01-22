@@ -4,7 +4,7 @@ import org.usfirst.frc.team2471.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ToteLiftDefault extends Command  {
+public class ToteLiftToteand6 extends Command  {
 
 	@Override
 	protected void initialize() {
@@ -15,7 +15,7 @@ public class ToteLiftDefault extends Command  {
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		Robot.lifter.Zero();
+		Robot.lifter.CoopertitionDefault();
 	}
 
 	@Override

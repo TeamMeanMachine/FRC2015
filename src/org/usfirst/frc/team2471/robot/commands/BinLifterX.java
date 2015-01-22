@@ -1,10 +1,12 @@
 package org.usfirst.frc.team2471.robot.commands;
 
+import org.usfirst.frc.team2471.robot.OI;
 import org.usfirst.frc.team2471.robot.Robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ToteLiftDefault extends Command  {
+public class BinLifterX extends Command  {
 
 	@Override
 	protected void initialize() {
@@ -15,7 +17,7 @@ public class ToteLiftDefault extends Command  {
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		Robot.lifter.Zero();
+	//	Robot.binLifter.Lift(Joystick.AxisType.kX.get());
 	}
 
 	@Override
