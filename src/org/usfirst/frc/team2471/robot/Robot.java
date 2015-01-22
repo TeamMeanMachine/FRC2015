@@ -1,12 +1,19 @@
 
 package org.usfirst.frc.team2471.robot;
 
+import org.usfirst.frc.team2471.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2471.robot.subsystems.BinLifter;
+import org.usfirst.frc.team2471.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team2471.robot.subsystems.Lifter;
+import org.usfirst.frc.team2471.robot.subsystems.Pusher;
+import org.usfirst.frc.team2471.robot.subsystems.Sucker;
+import org.usfirst.frc.team2471.robot.subsystems.SwerveDrive;
+
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team2471.robot.commands.ExampleCommand;
-import org.usfirst.frc.team2471.robot.subsystems.ExampleSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -19,7 +26,13 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
-
+	public static BinLifter binLifter;
+	public static Lifter lifter;
+	public static Pusher pusher;
+	public static Sucker sucker;
+	public static SwerveDrive swerveDrive;
+	public static DriverStation driverStation;
+	
     Command autonomousCommand;
 
     /**
@@ -28,6 +41,13 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
+		lifter = new Lifter();
+		binLifter= new BinLifter();
+		pusher = new Pusher();
+		sucker = new Sucker();
+		driverStation = DriverStation.getInstance();
+		swerveDrive = new SwerveDrive();
+		
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
     }
