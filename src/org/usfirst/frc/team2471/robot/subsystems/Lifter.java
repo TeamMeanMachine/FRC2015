@@ -11,6 +11,8 @@ public class Lifter extends Subsystem {
 	SpeedController lifter;
 	DigitalInput upperLimit;
 	DigitalInput lowerLimit;
+	DigitalInput toteand6; // COOPERTITION DEFAULT
+	DigitalInput toteLimit; //DEFAULT ON INIT
 	
 	public Lifter(){
 		lifter = RobotMap.bMotorlift;
@@ -23,6 +25,7 @@ public class Lifter extends Subsystem {
 		// TODO Auto-generated method stub
 	}
 	
+	//DONT USE ONLY FOR DEBUG IF NEED BE
 	public void SetRawLift(double power){
 		if(!upperLimit.get() && !lowerLimit.get()){
 			lifter.set(power);
@@ -32,7 +35,23 @@ public class Lifter extends Subsystem {
 		}
 	}
 	
-	public void LiftHigh(){
-		
+	public void Zero(boolean upperorlower){
+		//upper is true && lower is false
+		boolean side = false;
+		//check both limit switched to see what side to set as default 
+		do{
+			if (side == false){
+				lifter.set(1.0);
+				if(toteand6.get() == true){
+					side = true;
+				}
+			}
+			else{
+				lifter.set(-1.0);
+				if(lowerLimit.get()){
+					side = false;
+				}
+			}
+		}while(toteLimit.get() == false);
 	}
 }

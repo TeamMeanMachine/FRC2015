@@ -36,8 +36,10 @@ public class RobotMap {
 	
 	//Bryce Lifter
 	public static SpeedController bMotorlift;
-	public static DigitalInput bUpperlimit;
-	public static DigitalInput bLowerLimit;
+	public static DigitalInput bUpperlimit;   //CHANGE TO ULTRASONIC OR SOMETHING OF THE SORT
+	public static DigitalInput bTotelimit;
+	public static DigitalInput bToteand6; // COOPERTITION PRESET
+	public static DigitalInput bLowerLimit; // DEFAULT LIMIT ON INIT
 	
 	//Bryce Pusher
 	public static Solenoid bPush1;
@@ -89,6 +91,8 @@ public class RobotMap {
 		bMotorlift = new Talon(3);
 		bUpperlimit = new DigitalInput(3);
 		bLowerLimit = new DigitalInput(4);
+		bTotelimit = new DigitalInput(5);
+		bToteand6 = new DigitalInput(6); //COOPERTITION PRESET
 		
 		//Bryce Pusher
 		bPush1 = new Solenoid(1);

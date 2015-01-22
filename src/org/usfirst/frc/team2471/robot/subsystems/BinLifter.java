@@ -40,7 +40,7 @@ public class BinLifter extends Subsystem {
 		}
 	}
 	
-	public void Grab(Boolean attach){
+	public void Grab(boolean attach){
 		if(attach){
 			clasp.set(true);
 		}
