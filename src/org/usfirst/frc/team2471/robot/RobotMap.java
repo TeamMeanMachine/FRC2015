@@ -32,6 +32,7 @@ public class RobotMap {
 	public static Solenoid lSolenoid1;
 	public static DigitalInput lUpperLimit;
 	public static DigitalInput lLowerLimit;
+	public static Encoder lRotation;
 	
 	//Bryce Lifter
 	public static SpeedController bMotorlift;
@@ -80,9 +81,20 @@ public class RobotMap {
 		lMotor1 = new Talon(1);
 		lMotor2 = new Talon(2);
 		lSolenoid1 = new Solenoid(0);
+		lRotation = new Encoder(1, 0);
+		lUpperLimit = new DigitalInput(1);
+		lLowerLimit = new DigitalInput(2);
 		
 		//Bryce Lifter
 		bMotorlift = new Talon(3);
+		bUpperlimit = new DigitalInput(3);
+		bLowerLimit = new DigitalInput(4);
+		
+		//Bryce Pusher
+		bPush1 = new Solenoid(1);
+		bPush2 = new Solenoid(2);
+		bPush3 = new Solenoid(3);
+		bPush4 = new Solenoid(4);
 		
 		//Bryce Sucker
 		bSucker1 = new Talon(4);

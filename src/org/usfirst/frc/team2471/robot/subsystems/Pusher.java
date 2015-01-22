@@ -23,4 +23,11 @@ public class Pusher extends Subsystem {
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
 	}
+	
+	public void Push(){
+		bPusher1.set(true);
+		bPusher2.set(true);
+		bPusher3.set(true);
+		bPusher4.set(true);
+	}
 }

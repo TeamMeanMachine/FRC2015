@@ -49,5 +49,8 @@ public class BinLifter extends Subsystem {
 		}
 	}
 	
-	
+	public void Rotate(double power){
+		//  Make command to deal with the encoder for the preset rotations
+		rotate.set(power);
+	}
 }
