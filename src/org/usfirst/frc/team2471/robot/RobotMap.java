@@ -2,6 +2,7 @@ package org.usfirst.frc.team2471.robot;
 
 import org.usfirst.frc.team2471.robot.subsystems.SwerveDrive;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -29,9 +30,19 @@ public class RobotMap {
 	public static SpeedController lMotor1;
 	public static SpeedController lMotor2;
 	public static Solenoid lSolenoid1;
+	public static DigitalInput lUpperLimit;
+	public static DigitalInput lLowerLimit;
 	
 	//Bryce Lifter
 	public static SpeedController bMotorlift;
+	public static DigitalInput bUpperlimit;
+	public static DigitalInput bLowerLimit;
+	
+	//Bryce Pusher
+	public static Solenoid bPush1;
+	public static Solenoid bPush2;
+	public static Solenoid bPush3;
+	public static Solenoid bPush4;
 	
 	//Bryce Sucker
 	public static SpeedController bSucker1;
