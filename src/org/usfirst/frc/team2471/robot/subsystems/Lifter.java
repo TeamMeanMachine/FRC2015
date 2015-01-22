@@ -60,4 +60,10 @@ public class Lifter extends Subsystem {
 			lifter.set(-1.0);
 		}while(lowerLimit.get() == false);
 	}
+	
+	public void CoopertitionDefault(){
+		do{
+			lifter.set(1.0);
+		}while(toteand6.get() ==  false);
+	}
 }

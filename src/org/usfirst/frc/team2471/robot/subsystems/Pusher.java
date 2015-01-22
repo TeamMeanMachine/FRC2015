@@ -30,4 +30,11 @@ public class Pusher extends Subsystem {
 		bPusher3.set(true);
 		bPusher4.set(true);
 	}
+	
+	public void ResetRaw(){
+		bPusher1.set(false);
+		bPusher2.set(false);
+		bPusher3.set(false);
+		bPusher4.set(false);
+	}
 }
