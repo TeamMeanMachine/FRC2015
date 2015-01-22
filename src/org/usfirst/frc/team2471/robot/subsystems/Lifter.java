@@ -54,4 +54,10 @@ public class Lifter extends Subsystem {
 			}
 		}while(toteLimit.get() == false);
 	}
+	
+	public void BottomGoto(){
+		do{
+			lifter.set(-1.0);
+		}while(lowerLimit.get() == false);
+	}
 }
