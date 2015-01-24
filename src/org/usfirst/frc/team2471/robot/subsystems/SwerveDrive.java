@@ -122,6 +122,88 @@ public class SwerveDrive extends Subsystem  {
 //            }
         }
     }
+    public void drive( double x, double y, double r, double s, double _gyroAngle,
+    		double accelX, double accelY, boolean _fieldSteer, boolean _fieldMove){
+
+        fieldMove = _fieldMove;
+        fieldSteer = _fieldSteer;
+        gyroAngle = _gyroAngle + gyroOffset;
+        SmartDashboard.putNumber("gyroAngle", -gyroAngle);
+        GetAccelerationFromJoyStick(x, y);
+        accumulateDistanceTraveled();
+        
+        if (Math.abs(x)<0.1) {
+            x = 0.0;
+        }
+
+        if (Math.abs(y)<0.1) {
+            y = 0.0;
+        }
+
+        if (Math.abs(r)<0.1) {
+            r = 0.0;
+        }
+
+        if (Math.abs(s)<0.1) {
+            s = 0.0;
+        }
+        
+        double magnitude = Math.sqrt( x*x + y*y );
+        double turnMag = Math.sqrt( r*r + s*s );
+        
+        if (magnitude < 0.1 && turnMag < TURN_DEAD_BAND ) {    // check for HandsOff
+            turnSpeedSum = 0.0;
+            lrVect.SetPower(0.0);
+            lfVect.SetPower(0.0);
+            rrVect.SetPower(0.0);
+            rfVect.SetPower(0.0);
+            return;
+        }
+        
+        if (fieldSteer && turnMag > TURN_DEAD_BAND) {
+            turnJoystickAngle = Math.atan2( -r, s );  // convert the right stick to a goal angle for robot orientation
+            SmartDashboard.putNumber("joyStickAngle", -turnJoystickAngle);
+            if (!autoSteer) {
+                turnPositionPID.setSetpoint( turnJoystickAngle );
+                turnPositionPID.enable();
+            }
+       }
+        
+       if (!fieldSteer && !autoSteer) {  // this code allows non-field turning to pid for speed of turning
+//          turnSpeedPID.setSetpoint(r*r*r*-5.0);  // top speed at 70%, is 6 radians / sec, but it seems to fast
+//          turnSpeedPID.enable();
+//          turnSpeedFeed = r*r*r * 5/6; // 1.0 turnPower is too fast.
+          turnPower = r; //*r*r;  // Simple mapping of joystick to turnPower
+      }
+      else {
+          turnSpeedPID.disable();            
+      }
+      
+      double tempGyro;
+      if (fieldMove) {
+          tempGyro = gyroAngle;
+      }
+      else {
+          tempGyro = 0;
+      }
+      
+      // find requested power from each wheel module
+      double lrPower = lrVect.drive(x, y, turnPower, tempGyro);
+      double lfPower = lfVect.drive(x, y, turnPower, tempGyro);
+      double rrPower = rrVect.drive(x, y, turnPower, tempGyro);
+      double rfPower = rfVect.drive(x, y, turnPower, tempGyro);
+      
+      // take the largest power or 1.0 max
+      double maxPower = Math.max( 1.0, Math.max( lrPower, Math.max( lfPower, Math.max( rrPower, rfPower) ) ) );
+      
+      // have each module scale their request down accordingly
+      lrVect.SetMaxPower( maxPower );
+      lfVect.SetMaxPower( maxPower );
+      rrVect.SetMaxPower( maxPower );
+      rfVect.SetMaxPower( maxPower );
+    	
+    }
+    
     
     public void drive( double x, double y, double r, double s, double _gyroAngle,
             double accelX, double accelY, boolean _autoSteer, double _turnSpeed,
