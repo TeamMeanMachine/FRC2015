@@ -51,6 +51,7 @@ public class OI {
     public JoystickButton suck;
     public JoystickButton spit;
     public JoystickButton push;
+    public JoystickButton grab;
     
     public OI(){
     	driverStick = new Joystick(0);
@@ -60,7 +61,8 @@ public class OI {
     	presetTotePickup = new JoystickButton(coStick, 3);
     	suck = new JoystickButton(coStick, 6);
     	spit = new JoystickButton(coStick, 5);
-    	push = new JoystickButton(coStick, 4);
+    	push = new JoystickButton(driverStick, 8);
+    	grab = new JoystickButton(coStick, 4);
     	suck.whileHeld(new Suck());
     	spit.whileHeld(new Spit());
     	push.whenPressed(new Push());

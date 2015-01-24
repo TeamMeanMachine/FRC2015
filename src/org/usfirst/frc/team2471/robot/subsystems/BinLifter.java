@@ -26,6 +26,7 @@ public class BinLifter extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
+		new BinLifter();
 	}
 
 	public void Lift(double power){
@@ -40,7 +41,7 @@ public class BinLifter extends Subsystem {
 		}
 	}
 	
-	public void Grab(boolean attach){
+	public void Grab(){
 		clasp.set(!clasp.get());
 	}
 	
