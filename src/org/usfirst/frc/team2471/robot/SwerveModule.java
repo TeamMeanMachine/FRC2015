@@ -9,7 +9,6 @@
 // it from being updated in th future.
 package org.usfirst.frc.team2471.robot;
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */

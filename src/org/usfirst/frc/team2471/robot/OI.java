@@ -1,7 +1,11 @@
 package org.usfirst.frc.team2471.robot;
 
+import org.usfirst.frc.team2471.robot.commands.Push;
+import org.usfirst.frc.team2471.robot.commands.Spit;
+import org.usfirst.frc.team2471.robot.commands.Suck;
 import org.usfirst.frc.team2471.robot.commands.ToteLiftDefault;
 import org.usfirst.frc.team2471.robot.commands.ToteLiftPickupPreset;
+import org.usfirst.frc.team2471.robot.commands.ToteLiftToteand6;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -44,6 +48,9 @@ public class OI {
     public JoystickButton presetTote;
     public JoystickButton presetTotePickup;
     public JoystickButton presetToteand6;
+    public JoystickButton suck;
+    public JoystickButton spit;
+    public JoystickButton push;
     
     public OI(){
     	driverStick = new Joystick(0);
@@ -51,10 +58,15 @@ public class OI {
     	presetTote = new JoystickButton(coStick, 2);
     	presetToteand6 = new JoystickButton(coStick, 1);
     	presetTotePickup = new JoystickButton(coStick, 3);
-    	presetTote  = new JoystickButton(coStick, 4);
+    	suck = new JoystickButton(coStick, 6);
+    	spit = new JoystickButton(coStick, 5);
+    	push = new JoystickButton(coStick, 4);
+    	suck.whileHeld(new Suck());
+    	spit.whileHeld(new Spit());
+    	push.whenPressed(new Push());
     	presetTote.whenPressed(new ToteLiftDefault());
     	presetTotePickup.whenPressed(new ToteLiftPickupPreset());
-    	
+    	presetToteand6.whenPressed(new ToteLiftToteand6());
     	
     }
 }
