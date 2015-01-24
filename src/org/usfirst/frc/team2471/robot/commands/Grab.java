@@ -7,10 +7,13 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class Grab extends Command {
 
+	public Grab(){
+		requires(Robot.binLifter);
+	}
+	
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

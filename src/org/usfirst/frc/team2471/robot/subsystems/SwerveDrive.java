@@ -122,9 +122,12 @@ public class SwerveDrive extends Subsystem  {
 //            }
         }
     }
+    
+    /*
     public void drive( double x, double y, double r, double s, double _gyroAngle,
-    		double accelX, double accelY, boolean _fieldSteer, boolean _fieldMove){
-
+    		double accelX, double accelY, boolean _fieldSteer, boolean _fieldMove, double _turnSpeed){
+    	
+    	turnSpeed = _turnSpeed;
         fieldMove = _fieldMove;
         fieldSteer = _fieldSteer;
         gyroAngle = _gyroAngle + gyroOffset;
@@ -204,7 +207,7 @@ public class SwerveDrive extends Subsystem  {
     	
     }
     
-    
+    */
     public void drive( double x, double y, double r, double s, double _gyroAngle,
             double accelX, double accelY, boolean _autoSteer, double _turnSpeed,
             boolean _fieldMove, boolean _fieldSteer, boolean trackBall )

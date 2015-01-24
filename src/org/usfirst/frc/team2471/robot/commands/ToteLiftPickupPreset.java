@@ -6,10 +6,14 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ToteLiftPickupPreset extends Command  {
 
+	public ToteLiftPickupPreset() {
+		// TODO Auto-generated constructor stub
+		requires(Robot.lifter);
+	}
+	
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

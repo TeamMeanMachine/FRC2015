@@ -2,6 +2,7 @@ package org.usfirst.frc.team2471.robot;
 
 import org.usfirst.frc.team2471.robot.subsystems.SwerveDrive;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
@@ -80,15 +81,15 @@ public class RobotMap {
 		gyro = new Gyro(1);
 		
 		//Lucas Lifter
-		lMotor1 = new Talon(1);
-		lMotor2 = new Talon(2);
+		lMotor1 = new Talon(13);
+		lMotor2 = new Talon(12);
 		lSolenoid1 = new Solenoid(0);
 		lRotation = new Encoder(1, 0);
-		lUpperLimit = new DigitalInput(1);
+		lUpperLimit = new DigitalInput(7);
 		lLowerLimit = new DigitalInput(2);
 		
 		//Bryce Lifter
-		bMotorlift = new Talon(3);
+		bMotorlift = new Talon(11);
 		bUpperlimit = new DigitalInput(3);
 		bLowerLimit = new DigitalInput(4);
 		bTotelimit = new DigitalInput(5);
@@ -101,46 +102,47 @@ public class RobotMap {
 		bPush4 = new Solenoid(4);
 		
 		//Bryce Sucker
-		bSucker1 = new Talon(4);
-		bSucker2 = new Talon(5);
+		bSucker1 = new Talon(10);
+		bSucker2 = new Talon(9);
 		
 		//Bryce Swerves of doom
-		swerve = new SwerveDrive();
 		// **************************** LF ************************
-        leftFrontTwist = new Talon(1);
+        leftFrontTwist = new CANTalon(1);
         leftFrontTwistEnc = new MagnePot(3);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
         //leftFrontSpeedEnc = new Encoder(1,5, 1,4);
-        leftFrontSpeed = new Talon(2);
+        leftFrontSpeed = new CANTalon(2);
         leftFrontSwerve = new SwerveModule("LF", leftFrontSpeed, leftFrontSpeedEnc, leftFrontTwist, leftFrontTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
         leftFrontSwerve.setTwistOffset(-Math.PI/4.0 + Math.PI/180);
 
         // **************************** LR ************************
-        leftRearTwist = new Talon(3);
+        leftRearTwist = new CANTalon(3);
         leftRearTwistEnc = new MagnePot(4);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
         //leftRearSpeedEnc = new Encoder(1,11, 1,10);
-        leftRearSpeed = new Talon(4);
+        leftRearSpeed = new CANTalon(4);
         leftRearSwerve = new SwerveModule("LR", leftRearSpeed, leftRearSpeedEnc, leftRearTwist, leftRearTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
         leftRearSwerve.setTwistOffset(Math.PI/4.0 + Math.PI*5.0/180);
 
         // **************************** RF ************************
-        rightFrontTwist = new Talon(5);
+        rightFrontTwist = new CANTalon(5);
         rightFrontTwistEnc = new MagnePot(5);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
         //rightFrontSpeedEnc = new Encoder(2,8, 2,7);
-        rightFrontSpeed = new Talon(6);
+        rightFrontSpeed = new CANTalon(6);
         rightFrontSwerve = new SwerveModule("RF", rightFrontSpeed, rightFrontSpeedEnc, rightFrontTwist, rightFrontTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
         rightFrontSwerve.setTwistOffset(-3.0*Math.PI/4.0);
 
         // **************************** RR ************************
-        rightRearTwist = new Talon(7);
+        rightRearTwist = new CANTalon(7);
         rightRearTwistEnc = new MagnePot(6);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
         //rightRearSpeedEnc = new Encoder(2,5, 2,6);
-        rightRearSpeed = new Talon(8);
+        rightRearSpeed = new CANTalon(8);
         rightRearSwerve = new SwerveModule("RR", rightRearSpeed, rightRearSpeedEnc, rightRearTwist, rightRearTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
         rightRearSwerve.setTwistOffset(3.0*Math.PI/4.0 + Math.PI*7.0/180);
+        
+		swerve = new SwerveDrive();
 	}
 	
 	

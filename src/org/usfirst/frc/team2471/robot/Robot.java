@@ -40,13 +40,13 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
+		RobotMap.init();
 		lifter = new Lifter();
-		binLifter= new BinLifter();
+		binLifter = new BinLifter();
 		pusher = new Pusher();
 		sucker = new Sucker();
 		driverStation = DriverStation.getInstance();
-		swerveDrive = new SwerveDrive();
+		oi = new OI();
 		
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();

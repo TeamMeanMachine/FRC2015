@@ -6,10 +6,13 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class Suck extends Command{
 
+	public Suck(){
+		requires(Robot.sucker);
+	}
+	
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

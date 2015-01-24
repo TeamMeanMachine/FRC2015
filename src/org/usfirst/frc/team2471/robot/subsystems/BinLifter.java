@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2471.robot.subsystems;
 
 import org.usfirst.frc.team2471.robot.RobotMap;
+import org.usfirst.frc.team2471.robot.commands.BinLifterCommand;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -26,7 +27,7 @@ public class BinLifter extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
-		new BinLifter();
+		setDefaultCommand(new BinLifterCommand());
 	}
 
 	public void Lift(double power){

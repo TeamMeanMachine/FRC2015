@@ -6,10 +6,13 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class Push extends Command{
 
+	public Push(){
+		requires(Robot.pusher);
+	}
+	
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

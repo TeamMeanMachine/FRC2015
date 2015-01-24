@@ -6,10 +6,13 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ToteLiftToteand6 extends Command  {
 
+	public ToteLiftToteand6() {
+		// TODO Auto-generated constructor stub
+		requires(Robot.lifter);
+	}
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

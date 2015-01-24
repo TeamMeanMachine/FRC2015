@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class  DriveLoop extends Command {
     double prevAngle = 0.0;
     double prevTime = 0.0;
+    
     public DriveLoop() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -58,7 +59,7 @@ public class  DriveLoop extends Command {
         boolean fieldMove = SmartDashboard.getBoolean("FieldMove", true);
         boolean fieldSteer = SmartDashboard.getBoolean("FieldSteer", false);
         
-       RobotMap.swerve.drive(x,y,r+0.7*r2,s,gyroAngle,accelX,accelY, fieldSteer, fieldMove);
+       RobotMap.swerve.drive(x,y,r+0.7*r2,s,gyroAngle,accelX,accelY, false, turnSpeed, true, true, false);
 
 //System.out.println( "AccelX: " + accelX + " AccelY: " + accelY + " AccelZ: " + accelZ);
     }
