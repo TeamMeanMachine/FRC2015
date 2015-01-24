@@ -25,10 +25,10 @@ public class Pusher extends Subsystem {
 	}
 	
 	public void Push(){
-		bPusher1.set(true);
-		bPusher2.set(true);
-		bPusher3.set(true);
-		bPusher4.set(true);
+		bPusher1.set(!bPusher1.get());
+		bPusher2.set(!bPusher2.get());
+		bPusher3.set(!bPusher3.get());
+		bPusher4.set(!bPusher4.get());
 	}
 	
 	public void ResetRaw(){

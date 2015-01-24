@@ -39,31 +39,36 @@ public class Lifter extends Subsystem {
 		//upper is true && lower is false
 		boolean side = false;
 		//check both limit switched to see what side to set as default 
-		do{
+		while(toteLimit.get() == false){
 			if (side == false){
 				lifter.set(1.0);
 				if(toteand6.get() == true){
 					side = true;
+					lifter.set(0);
 				}
 			}
 			else{
 				lifter.set(-1.0);
 				if(lowerLimit.get()){
 					side = false;
+					lifter.set(0);
 				}
 			}
-		}while(toteLimit.get() == false);
+		}
+		lifter.set(0);
 	}
 	
 	public void BottomGoto(){
-		do{
+		while(lowerLimit.get() == false){
 			lifter.set(-1.0);
-		}while(lowerLimit.get() == false);
+		}
+		lifter.set(0);
 	}
 	
 	public void CoopertitionDefault(){
-		do{
+		while(toteand6.get() ==  false);{
 			lifter.set(1.0);
-		}while(toteand6.get() ==  false);
+		}
+		lifter.set(0);
 	}
 }

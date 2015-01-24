@@ -17,7 +17,7 @@ public class BinLifterX extends Command  {
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-	//	Robot.binLifter.Lift(Joystick.AxisType.kX.get());
+	//	Robot.binLifter.Lift(Joystick.AxisType.);
 	}
 
 	@Override

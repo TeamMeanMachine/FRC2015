@@ -1,6 +1,10 @@
 package org.usfirst.frc.team2471.robot;
 
+import org.usfirst.frc.team2471.robot.commands.ToteLiftDefault;
+import org.usfirst.frc.team2471.robot.commands.ToteLiftPickupPreset;
+
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -37,10 +41,21 @@ public class OI {
 	
 	public Joystick driverStick;
     public Joystick coStick;
+    public JoystickButton presetTote;
+    public JoystickButton presetTotePickup;
+    public JoystickButton presetToteand6;
     
     public OI(){
     	driverStick = new Joystick(0);
     	coStick = new Joystick(1);
+    	presetTote = new JoystickButton(coStick, 2);
+    	presetToteand6 = new JoystickButton(coStick, 1);
+    	presetTotePickup = new JoystickButton(coStick, 3);
+    	presetTote  = new JoystickButton(coStick, 4);
+    	presetTote.whenPressed(new ToteLiftDefault());
+    	presetTotePickup.whenPressed(new ToteLiftPickupPreset());
+    	
+    	
     }
 }
 

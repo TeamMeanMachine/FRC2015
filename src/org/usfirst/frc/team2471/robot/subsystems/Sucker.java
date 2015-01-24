@@ -29,4 +29,9 @@ public class Sucker extends Subsystem {
 		suckerB1.set(-1.0);
 		suckerB2.set(1.0);
 	}
+	
+	public void Stop(){
+		suckerB1.set(0);
+		suckerB2.set(0);
+	}
 }

@@ -41,12 +41,7 @@ public class BinLifter extends Subsystem {
 	}
 	
 	public void Grab(boolean attach){
-		if(attach){
-			clasp.set(true);
-		}
-		else if(!attach){
-			clasp.set(false);
-		}
+		clasp.set(!clasp.get());
 	}
 	
 	public void Rotate(double power){
