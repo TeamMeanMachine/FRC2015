@@ -8,9 +8,13 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in th future.
 package org.usfirst.frc.team2471.robot.commands;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.Timer;
+import org.usfirst.frc.team2471.robot.Robot;
 import org.usfirst.frc.team2471.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
@@ -30,15 +34,15 @@ public class  DriveLoop extends Command {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-/*        double x =  RobotTemplate.oi.getJoystick1().getAxis(Joystick.AxisType.kX);
-        double y = -RobotTemplate.oi.getJoystick1().getAxis(Joystick.AxisType.kY);  // odd, but up is negative
-        double r =  RobotTemplate.oi.getJoystick1().getAxis(Joystick.AxisType.kZ);
-        double r2 = RobotTemplate.oi.coStick.getRawAxis(4);
+        double x =  Robot.oi.driverStick.getAxis(Joystick.AxisType.kX);
+        double y = -Robot.oi.driverStick.getAxis(Joystick.AxisType.kY);  // odd, but up is negative
+        double r =  Robot.oi.driverStick.getAxis(Joystick.AxisType.kZ);
+        double r2 = Robot.oi.coStick.getRawAxis(4);
         if (Math.abs(r2) < 0.25) {
             r2 = 0.0;
-        }*/
+        }
         
-//        double s = -RobotTemplate.oi.getJoystick1().getAxis(Joystick.AxisType.kThrottle);  // kThrottle is the y of the right stick
+        double s = -Robot.oi.driverStick.getAxis(Joystick.AxisType.kThrottle);  // kThrottle is the y of the right stick
         double gyroAngle = -RobotMap.gyro.getAngle() * (Math.PI/180.0);
 //        double gyroAngle = -RobotMap.compass.getAngle() * (Math.PI/180.0);
         double accelX = 0;//RobotMap.accel.getAcceleration(ADXL345_I2C.Axes.kX);
@@ -49,12 +53,12 @@ public class  DriveLoop extends Command {
         prevTime = time;
         prevAngle = gyroAngle;
 //        SmartDashboard.putNumber("Turn Speed", turnSpeed);
-        boolean autoSteer = false;
+//        boolean autoSteer = false;
 //        boolean trackBall = RobotTemplate.oi.autoSteerButton.get();
- //       boolean fieldMove = SmartDashboard.getBoolean("FieldMove", true);
-  //      boolean fieldSteer = SmartDashboard.getBoolean("FieldSteer", false);
+        boolean fieldMove = SmartDashboard.getBoolean("FieldMove", true);
+        boolean fieldSteer = SmartDashboard.getBoolean("FieldSteer", false);
         
- //       RobotMap.swerve.drive(x,y,r+0.7*r2,s,gyroAngle,accelX,accelY,autoSteer,turnSpeed, fieldMove, fieldSteer, trackBall);
+       RobotMap.swerve.drive(x,y,r+0.7*r2,s,gyroAngle,accelX,accelY, fieldSteer, fieldMove);
 
 //System.out.println( "AccelX: " + accelX + " AccelY: " + accelY + " AccelZ: " + accelZ);
     }
