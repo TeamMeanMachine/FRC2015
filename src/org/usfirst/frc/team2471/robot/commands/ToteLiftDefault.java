@@ -25,13 +25,14 @@ public class ToteLiftDefault extends Command  {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
+		Robot.lifter.SetRawLift(0);
 		return false;
 	}
 
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		
+		Robot.lifter.SetRawLift(0);
 	}
 
 	@Override

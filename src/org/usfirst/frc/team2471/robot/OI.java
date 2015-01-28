@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2471.robot;
 
+import org.usfirst.frc.team2471.robot.commands.Grab;
 import org.usfirst.frc.team2471.robot.commands.Push;
 import org.usfirst.frc.team2471.robot.commands.Spit;
 import org.usfirst.frc.team2471.robot.commands.Suck;
@@ -66,6 +67,7 @@ public class OI {
     	suck.whileHeld(new Suck());
     	spit.whileHeld(new Spit());
     	push.whenPressed(new Push());
+    	grab.whenPressed(new Grab());
     	presetTote.whenPressed(new ToteLiftDefault());
     	presetTotePickup.whenPressed(new ToteLiftPickupPreset());
     	presetToteand6.whenPressed(new ToteLiftToteand6());

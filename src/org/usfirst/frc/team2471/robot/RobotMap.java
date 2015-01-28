@@ -81,8 +81,8 @@ public class RobotMap {
 		gyro = new Gyro(1);
 		
 		//Lucas Lifter
-		lMotor1 = new Talon(13);
-		lMotor2 = new Talon(12);
+		lMotor1 = new CANTalon(7);
+		lMotor2 = new CANTalon(9);
 		lSolenoid1 = new Solenoid(0);
 		lRotation = new Encoder(1, 0);
 		lUpperLimit = new DigitalInput(7);

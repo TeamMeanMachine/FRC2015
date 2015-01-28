@@ -96,6 +96,7 @@ public class SwerveDrive extends Subsystem  {
         public void pidWrite(double output) {
             if (fieldSteer || autoSteer){
                 turnPower = output;
+                
             }
         }
     }

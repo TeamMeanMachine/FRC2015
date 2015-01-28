@@ -20,6 +20,7 @@ public class Grab extends Command {
 	protected void execute() {
 		// TODO Auto-generated method stub
 		Robot.binLifter.Grab();
+		//System.out.println("IT BE GRABBIN AS A COMMAND");
 	}
 
 	@Override

@@ -31,7 +31,7 @@ public class ToteLiftPickupPreset extends Command  {
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		
+		Robot.lifter.SetRawLift(0);
 	}
 
 	@Override

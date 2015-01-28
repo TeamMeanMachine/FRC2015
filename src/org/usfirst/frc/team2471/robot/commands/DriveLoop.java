@@ -60,8 +60,7 @@ public class  DriveLoop extends Command {
         boolean fieldSteer = SmartDashboard.getBoolean("FieldSteer", false);
         
        RobotMap.swerve.drive(x,y,r+0.7*r2,s,gyroAngle,accelX,accelY, false, turnSpeed, true, true, false);
-
-//System.out.println( "AccelX: " + accelX + " AccelY: " + accelY + " AccelZ: " + accelZ);
+ //      System.out.println( "AccelX: " + accelX + " AccelY: " + accelY + " AccelZ: " + accelZ);
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

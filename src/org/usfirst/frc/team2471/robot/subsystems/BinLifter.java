@@ -32,7 +32,7 @@ public class BinLifter extends Subsystem {
 
 	public void Lift(double power){
 		if (!lowerLimit.get() && !upperLimit.get()){
-			lift.set(power);
+			lift.set(power * 0.5);
 		}
 		else if(lowerLimit.get() || upperLimit.get()){
 			lift.set(0);
@@ -44,10 +44,11 @@ public class BinLifter extends Subsystem {
 	
 	public void Grab(){
 		clasp.set(!clasp.get());
+		System.out.println(clasp.get());
 	}
 	
 	public void Rotate(double power){
 		//  Make command to deal with the encoder for the preset rotations
-		rotate.set(power);
+		rotate.set(power * 0.2);
 	}
 }

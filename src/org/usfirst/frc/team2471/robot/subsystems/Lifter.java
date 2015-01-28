@@ -11,13 +11,15 @@ public class Lifter extends Subsystem {
 	SpeedController lifter;
 	DigitalInput upperLimit;
 	DigitalInput lowerLimit;
-	DigitalInput toteand6; // COOPERTITION DEFAULT
+	DigitalInput toteAnd6; // COOPERTITION DEFAULT
 	DigitalInput toteLimit; //DEFAULT ON INIT
 	
 	public Lifter(){
 		lifter = RobotMap.bMotorlift;
 		upperLimit = RobotMap.bUpperlimit;
 		lowerLimit = RobotMap.bLowerLimit; 
+		toteLimit = RobotMap.bTotelimit;
+		toteAnd6 = RobotMap.bToteand6;
 	}
 	
 	@Override
@@ -42,7 +44,7 @@ public class Lifter extends Subsystem {
 		while(toteLimit.get() == false){
 			if (side == false){
 				lifter.set(1.0);
-				if(toteand6.get() == true){
+				if(toteAnd6.get() == true){
 					side = true;
 					lifter.set(0);
 				}
@@ -66,7 +68,7 @@ public class Lifter extends Subsystem {
 	}
 	
 	public void CoopertitionDefault(){
-		while(toteand6.get() ==  false);{
+		while(toteAnd6.get() ==  false);{
 			lifter.set(1.0);
 		}
 		lifter.set(0);
