@@ -11,9 +11,12 @@ import org.usfirst.frc.team2471.robot.subsystems.SwerveDrive;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -32,7 +35,8 @@ public class Robot extends IterativeRobot {
 	public static Sucker sucker;
 	public static SwerveDrive swerveDrive;
 	public static DriverStation driverStation;
-	
+	public static SendableChooser autoChooser;
+	public static Preferences prefinOnRobot;
     Command autonomousCommand;
 
     /**
@@ -47,7 +51,13 @@ public class Robot extends IterativeRobot {
 		sucker = new Sucker();
 		driverStation = DriverStation.getInstance();
 		oi = new OI();
+		prefinOnRobot = Preferences.getInstance();
+		SmartDashboardInput.GetDash();
+		autoChooser = new SendableChooser();
+  //      autoChooser.addDefault("Name", new (SmartDashboardInput.AutoChooser()));
+//        autoChooser.addObject("Name", new Command());
 		
+        SmartDashboard.putData("AutoChooser", autoChooser);
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
     }
@@ -81,7 +91,7 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
-
+    	SmartDashboardInput.DashSwerve();
     }
 
     /**

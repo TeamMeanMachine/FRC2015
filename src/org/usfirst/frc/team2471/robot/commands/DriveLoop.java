@@ -12,6 +12,7 @@ import org.usfirst.frc.team2471.robot.Robot;
 import org.usfirst.frc.team2471.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -21,6 +22,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class  DriveLoop extends Command {
     double prevAngle = 0.0;
     double prevTime = 0.0;
+    public static Preferences prefin;
     
     public DriveLoop() {
         // Use requires() here to declare subsystem dependencies
@@ -53,13 +55,13 @@ public class  DriveLoop extends Command {
         double turnSpeed = (gyroAngle - prevAngle)/(time - prevTime);
         prevTime = time;
         prevAngle = gyroAngle;
-//        SmartDashboard.putNumber("Turn Speed", turnSpeed);
+        SmartDashboard.putNumber("Turn Speed", turnSpeed);
 //        boolean autoSteer = false;
 //        boolean trackBall = RobotTemplate.oi.autoSteerButton.get();
         boolean fieldMove = SmartDashboard.getBoolean("FieldMove", true);
         boolean fieldSteer = SmartDashboard.getBoolean("FieldSteer", false);
         
-       RobotMap.swerve.drive(x,y,r+0.7*r2,s,gyroAngle,accelX,accelY, false, turnSpeed, true, true, false);
+       RobotMap.swerve.drive(x,y,r+0.7*r2,s,gyroAngle,accelX,accelY, false, turnSpeed, fieldMove, fieldSteer, false);
  //      System.out.println( "AccelX: " + accelX + " AccelY: " + accelY + " AccelZ: " + accelZ);
     }
     // Make this return true when this Command no longer needs to run execute()
@@ -72,5 +74,15 @@ public class  DriveLoop extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    }
+    
+    public static double TurnSpeed(){
+    	double time = Timer.getFPGATimestamp();
+    	double gyroAngle = -RobotMap.gyro.getAngle() * (Math.PI/180.0);
+    	double prevTime = 0.0;
+        double prevAngle = 0.0;
+		double turnSpeed = (gyroAngle - prevAngle)/(time - prevTime);
+    	return turnSpeed;
+    	
     }
 }
