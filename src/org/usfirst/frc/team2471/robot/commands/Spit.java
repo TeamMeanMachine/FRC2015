@@ -24,7 +24,6 @@ public class Spit extends Command{
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		Robot.sucker.Stop();
 		return false;
 	}
 

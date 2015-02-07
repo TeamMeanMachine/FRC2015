@@ -81,12 +81,12 @@ public class RobotMap {
 		gyro = new Gyro(1);
 		
 		//Lucas Lifter
-		lMotor1 = new CANTalon(7);
-		lMotor2 = new CANTalon(9);
+		lMotor1 = new Talon(4);
+		lMotor2 = new Talon(1);
 		lSolenoid1 = new Solenoid(0);
-		lRotation = new Encoder(1, 0);
-		lUpperLimit = new DigitalInput(7);
-		lLowerLimit = new DigitalInput(2);
+		lRotation = new Encoder(8, 7);
+		lUpperLimit = new DigitalInput(0);
+		lLowerLimit = new DigitalInput(1);
 		
 		//Bryce Lifter
 		bMotorlift = new Talon(11);
@@ -102,13 +102,13 @@ public class RobotMap {
 		bPush4 = new Solenoid(4);
 		
 		//Bryce Sucker
-		bSucker1 = new Talon(10);
-		bSucker2 = new Talon(9);
+		bSucker1 = new Talon(3);
+		bSucker2 = new Talon(2);
 		
 		//Bryce Swerves of doom
 		// **************************** LF ************************
         leftFrontTwist = new CANTalon(1);
-        leftFrontTwistEnc = new MagnePot(0);
+        leftFrontTwistEnc = new MagnePot(3);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
         //leftFrontSpeedEnc = new Encoder(1,5, 1,4);
         leftFrontSpeed = new CANTalon(2);
@@ -117,7 +117,7 @@ public class RobotMap {
 
         // **************************** LR ************************
         leftRearTwist = new CANTalon(3);
-        leftRearTwistEnc = new MagnePot(1);
+        leftRearTwistEnc = new MagnePot(0);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
         //leftRearSpeedEnc = new Encoder(1,11, 1,10);
         leftRearSpeed = new CANTalon(4);
@@ -135,7 +135,7 @@ public class RobotMap {
 
         // **************************** RR ************************
         rightRearTwist = new CANTalon(7);
-        rightRearTwistEnc = new MagnePot(3);
+        rightRearTwistEnc = new MagnePot(4);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
         //rightRearSpeedEnc = new Encoder(2,5, 2,6);
         rightRearSpeed = new CANTalon(8);

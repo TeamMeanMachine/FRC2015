@@ -24,7 +24,6 @@ public class Suck extends Command{
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		Robot.sucker.Stop();
 		return false;
 	}
 

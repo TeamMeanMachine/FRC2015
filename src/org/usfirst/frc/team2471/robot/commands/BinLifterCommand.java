@@ -24,8 +24,6 @@ public class BinLifterCommand extends Command  {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		Robot.binLifter.Lift(0);
-		Robot.binLifter.Rotate(0);
 		return false;
 	}
 

@@ -56,8 +56,9 @@ public class SwerveModule implements Runnable {
      * @return the twist
      */
     public double getTwist() {
+        System.out.println(name +  " twistSP: " + twistController.getSetpoint());
+        System.out.println(name + " twistEnc: " + twistEnc.getDistance());
         double rtn = twistEnc.getDistance();
-//        System.out.println(name + " SM Distance: " + rtn);
         rtn = rtn + twistOffset;
         while(rtn > Math.PI) {
             rtn = rtn - 2.0 * Math.PI;
@@ -74,8 +75,10 @@ public class SwerveModule implements Runnable {
      * @param twist the twist to set
      */
     public void setTwist(double twist) {
-//       if (name=="RR") {
-//           System.out.println("setTwist RR: " + twist);
+//       if (name == "RR") {
+//           System.out.println(name +  "setTwist: " + twistController.getSetpoint());
+//           double rtn = twistEnc.getDistance();
+//           System.out.println(name + " SM Distance: " + twistEnc.getDistance());
 //       }
        twistController.setSetpoint(twist);
     }
@@ -117,7 +120,7 @@ public class SwerveModule implements Runnable {
 //        }
         lastMotor = motor;
         twist.set(motor * -1.0);
-//        System.out.println(name + " SM Turn: " + motor * -1.0);
+        System.out.println(name + " Turn Motor: " + motor * -1.0);
     }
     
     public void home() {
