@@ -108,39 +108,39 @@ public class RobotMap {
 		//Bryce Swerves of doom
 		// **************************** LF ************************
         leftFrontTwist = new CANTalon(1);
-        leftFrontTwistEnc = new MagnePot(3);
+        leftFrontTwistEnc = new MagnePot(0);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
         //leftFrontSpeedEnc = new Encoder(1,5, 1,4);
         leftFrontSpeed = new CANTalon(2);
         leftFrontSwerve = new SwerveModule("LF", leftFrontSpeed, leftFrontSpeedEnc, leftFrontTwist, leftFrontTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
-        leftFrontSwerve.setTwistOffset(-Math.PI/4.0 + Math.PI/180);
+        leftFrontSwerve.setTwistOffset(0.0);
 
         // **************************** LR ************************
         leftRearTwist = new CANTalon(3);
-        leftRearTwistEnc = new MagnePot(4);
+        leftRearTwistEnc = new MagnePot(1);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
         //leftRearSpeedEnc = new Encoder(1,11, 1,10);
         leftRearSpeed = new CANTalon(4);
         leftRearSwerve = new SwerveModule("LR", leftRearSpeed, leftRearSpeedEnc, leftRearTwist, leftRearTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
-        leftRearSwerve.setTwistOffset(Math.PI/4.0 + Math.PI*5.0/180);
+        leftRearSwerve.setTwistOffset(0.0);
 
         // **************************** RF ************************
         rightFrontTwist = new CANTalon(5);
-        rightFrontTwistEnc = new MagnePot(5);
+        rightFrontTwistEnc = new MagnePot(2);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
         //rightFrontSpeedEnc = new Encoder(2,8, 2,7);
         rightFrontSpeed = new CANTalon(6);
         rightFrontSwerve = new SwerveModule("RF", rightFrontSpeed, rightFrontSpeedEnc, rightFrontTwist, rightFrontTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
-        rightFrontSwerve.setTwistOffset(-3.0*Math.PI/4.0);
+        rightFrontSwerve.setTwistOffset(0.0);
 
         // **************************** RR ************************
         rightRearTwist = new CANTalon(7);
-        rightRearTwistEnc = new MagnePot(6);
+        rightRearTwistEnc = new MagnePot(3);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
         //rightRearSpeedEnc = new Encoder(2,5, 2,6);
         rightRearSpeed = new CANTalon(8);
         rightRearSwerve = new SwerveModule("RR", rightRearSpeed, rightRearSpeedEnc, rightRearTwist, rightRearTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
-        rightRearSwerve.setTwistOffset(3.0*Math.PI/4.0 + Math.PI*7.0/180);
+        rightRearSwerve.setTwistOffset(0.0);
         
 		swerve = new SwerveDrive();
 	}

@@ -84,6 +84,10 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        System.out.println(RobotMap.leftFrontTwistEnc.getDistance());
+        System.out.println(RobotMap.rightFrontTwistEnc.getDistance());
+        System.out.println(RobotMap.leftRearTwistEnc.getDistance());
+        System.out.println(RobotMap.rightRearTwistEnc.getDistance());
     }
 
     /**
