@@ -86,7 +86,7 @@ public class SwerveVector {
         
   SmartDashboard.putNumber("Joystick Angle", -polar.GetAngle());
         
-        polar.AddAngle( -gyroAngle );  // add to convert the strafe request from field to robot space
+        //polar.AddAngle( -gyroAngle );  // add to convert the strafe request from field to robot space
 
         double vecX = polar.GetX() + Rx(reducedTurn);  // combine strafing with turning via vector addition
         double vecY = polar.GetY() + Ry(reducedTurn);
@@ -94,10 +94,13 @@ public class SwerveVector {
         // Convert vecX and vecY back to polar coords
         polar = new Polar( vecX, vecY );
         desiredAngle = polar.GetAngle();
+
+SmartDashboard.putNumber("RF SetPoint", -desiredAngle);
+        
         desiredPower = polar.GetR();
         FindNearestAngle();  // modifies both desiredAngle and desiredPower, prevents rotation of more than 90 degrees, reverses power if necessary
         
-        swerve.setTwist(desiredAngle);
+        swerve.setTwist(0);  //Desired Angel
         return Math.abs(desiredPower);
     }
     public void SetMaxPower( double maxPower )

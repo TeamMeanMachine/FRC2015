@@ -79,7 +79,6 @@ public class SwerveModule implements Runnable {
        twistController.setSetpoint(twist);
        if (name == "RF") {
            System.out.println(name +  " setPoint: " + twistController.getSetpoint() + " encoder: " + twistEnc.getDistance() );
-           SmartDashboard.putNumber("RF SetPoint", -twistController.getSetpoint());
            SmartDashboard.putNumber("RF Encoder", -twistEnc.getDistance());
        }
     }
