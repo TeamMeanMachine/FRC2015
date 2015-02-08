@@ -30,7 +30,7 @@ public class Lifter extends Subsystem {
 	//DONT USE ONLY FOR DEBUG IF NEED BE
 	public void SetRawLift(double power){
 		if(!upperLimit.get() && !lowerLimit.get()){
-			lifter.set(power);
+			lifter.set(power * 0.5);
 		}
 		else{
 			lifter.set(0);
@@ -38,7 +38,7 @@ public class Lifter extends Subsystem {
 	}
 	
 	public void Zero(){
-		//upper is true && lower is false
+	/*	//upper is true && lower is false
 		boolean side = false;
 		//check both limit switched to see what side to set as default 
 		while(toteLimit.get() == false){
@@ -57,19 +57,30 @@ public class Lifter extends Subsystem {
 				}
 			}
 		}
+		*/
+		if(lowerLimit.get() == false){
+			lifter.set(-1.0);
+		}
 		lifter.set(0);
 	}
 	
 	public void BottomGoto(){
 		while(lowerLimit.get() == false){
-			lifter.set(-1.0);
+			lifter.set(-1.0 * 0.75);
+		}
+		lifter.set(0);
+	}
+	
+	public void TopGoto(){
+		while(upperLimit.get() == false){
+			lifter.set(1.0 * 0.75);
 		}
 		lifter.set(0);
 	}
 	
 	public void CoopertitionDefault(){
 		while(toteAnd6.get() ==  false);{
-			lifter.set(1.0);
+			lifter.set(1.0*.75);
 		}
 		lifter.set(0);
 	}

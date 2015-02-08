@@ -57,11 +57,11 @@ public class OI {
     public OI(){
     	driverStick = new Joystick(0);
     	coStick = new Joystick(1);
-    	presetTote = new JoystickButton(coStick, 2);
-    	presetToteand6 = new JoystickButton(coStick, 1);
-    	presetTotePickup = new JoystickButton(coStick, 3);
-    	suck = new JoystickButton(coStick, 6);
-    	spit = new JoystickButton(coStick, 5);
+    	presetTote = new JoystickButton(driverStick, 2);
+    	presetToteand6 = new JoystickButton(driverStick, 1);
+    	presetTotePickup = new JoystickButton(driverStick, 3);
+    	suck = new JoystickButton(driverStick, 6);
+    	spit = new JoystickButton(driverStick, 5);
     	push = new JoystickButton(driverStick, 8);
     	grab = new JoystickButton(coStick, 4);
     	suck.whileHeld(new Suck());

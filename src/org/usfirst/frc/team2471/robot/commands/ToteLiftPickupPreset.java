@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2471.robot.commands;
 
 import org.usfirst.frc.team2471.robot.Robot;
+import org.usfirst.frc.team2471.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -25,6 +26,9 @@ public class ToteLiftPickupPreset extends Command  {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
+		if(RobotMap.bLowerLimit.get()){
+			return true;
+		}
 		return false;
 	}
 

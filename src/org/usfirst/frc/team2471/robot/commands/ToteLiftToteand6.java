@@ -18,7 +18,7 @@ public class ToteLiftToteand6 extends Command  {
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		Robot.lifter.CoopertitionDefault();
+	//	Robot.lifter.CoopertitionDefault();
 	}
 
 	@Override

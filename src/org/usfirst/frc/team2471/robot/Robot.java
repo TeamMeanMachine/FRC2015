@@ -1,6 +1,8 @@
 
 package org.usfirst.frc.team2471.robot;
 
+import java.awt.SystemTray;
+
 import org.usfirst.frc.team2471.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2471.robot.subsystems.BinLifter;
 import org.usfirst.frc.team2471.robot.subsystems.ExampleSubsystem;
@@ -64,6 +66,7 @@ public class Robot extends IterativeRobot {
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		System.out.println("Lower Limit: " + RobotMap.bLowerLimit.get() + " Upper Limit: " + RobotMap.bUpperlimit.get());
 	}
 
     public void autonomousInit() {

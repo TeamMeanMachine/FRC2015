@@ -86,10 +86,10 @@ public class RobotMap {
 		lLowerLimit = new DigitalInput(1);
 		
 		//Bryce Lifter
-		bMotorlift = new Talon(11);
-		bUpperlimit = new DigitalInput(3);
-		bLowerLimit = new DigitalInput(4);
-		bTotelimit = new DigitalInput(5);
+		bMotorlift = new Talon(0);
+		bUpperlimit = new DigitalInput(2);
+		bLowerLimit = new DigitalInput(3);
+	//	bTotelimit = new DigitalInput(5);		TO DO Ultrasonic
 		bToteand6 = new DigitalInput(6); //COOPERTITION PRESET
 		
 		//Bryce Pusher

@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class SwerveVector {
     private SwerveModule swerve;
     private double Px, Py;
-    private double hyp, xPivot = 0.0, yPivot = 10.0;
+    private double hyp, xPivot = 0.0, yPivot = -10.0;
     private double desiredPower = 0;
     private double desiredAngle = 0;
     private double handsOffAngle = 0;
@@ -84,8 +84,9 @@ public class SwerveVector {
         
         Polar polar = new Polar(x,y);   // convert strafe to polar
         
-  SmartDashboard.putNumber("Joystick Angle", -polar.GetAngle());
-        
+        if (swerve.name == "RF") {
+        	SmartDashboard.putNumber("Joystick Angle", -polar.GetAngle());
+        }        
         //polar.AddAngle( -gyroAngle );  // add to convert the strafe request from field to robot space
 
         double vecX = polar.GetX() + Rx(reducedTurn);  // combine strafing with turning via vector addition
@@ -95,12 +96,14 @@ public class SwerveVector {
         polar = new Polar( vecX, vecY );
         desiredAngle = polar.GetAngle();
 
-SmartDashboard.putNumber("RF SetPoint", -desiredAngle);
+       	SmartDashboard.putNumber(swerve.name + " SP", -desiredAngle);
         
         desiredPower = polar.GetR();
         FindNearestAngle();  // modifies both desiredAngle and desiredPower, prevents rotation of more than 90 degrees, reverses power if necessary
         
-        swerve.setTwist(desiredAngle);  //Desired Angel
+        swerve.setTwist(desiredAngle);
+        SmartDashboard.putNumber(swerve.name + " Enc", -swerve.twistEnc.getDistance());
+
         return Math.abs(desiredPower);
     }
     public void SetMaxPower( double maxPower )
@@ -141,18 +144,18 @@ SmartDashboard.putNumber("RF SetPoint", -desiredAngle);
             delta = delta + 2*Math.PI;
         }
         
-        //desiredAngle = currentAngle + delta;
-        if (delta>Math.PI/2)
-        {
-            delta = delta - Math.PI;
-            desiredAngle = currentAngle + delta;
-            desiredPower = -desiredPower;
-        }
-        else if (delta<-Math.PI/2)
-        {
-            delta = delta + Math.PI;
-            desiredAngle = currentAngle + delta;
-            desiredPower = -desiredPower;
-        }
+        desiredAngle = currentAngle + delta;
+//        if (delta>Math.PI/2)
+//        {
+//            delta = delta - Math.PI;
+//            desiredAngle = currentAngle + delta;
+//            desiredPower = -desiredPower;
+//        }
+//        else if (delta<-Math.PI/2)
+//        {
+//            delta = delta + Math.PI;
+//            desiredAngle = currentAngle + delta;
+//            desiredPower = -desiredPower;
+//        }
     }
 }

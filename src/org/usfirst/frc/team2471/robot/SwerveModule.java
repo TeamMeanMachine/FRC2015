@@ -38,11 +38,11 @@ public class SwerveModule implements Runnable {
         
 //        System.out.println("ServeModule Constructed" + name);
         
-        twistController = new PIDController(0.5, 0.0, 0.4, new PidThing(this), new PidThing(this));
-        //SmartDashboard.putData("Twist", twistController);
-        twistController.setInputRange(-Math.PI, Math.PI);
+        twistController = new PIDController(1.0, 0.0, 0.4, new PidThing(this), new PidThing(this));
+        SmartDashboard.putData(name, twistController);
+        //twistController.setInputRange(-Math.PI, Math.PI);
         twistController.setOutputRange(-1.0, 1.0);
-        twistController.setContinuous(true);
+        twistController.setContinuous(false);
         twistController.setPercentTolerance(3.0);  //1=1%  15==15% etc  verified with docs
         
 //        t = new Thread(this);  // this homes the swerve drives, which isn't needed for magnepots
@@ -77,10 +77,6 @@ public class SwerveModule implements Runnable {
      */
     public void setTwist(double twist) {
        twistController.setSetpoint(twist);
-       if (name == "RF") {
-           System.out.println(name +  " setPoint: " + twistController.getSetpoint() + " encoder: " + twistEnc.getDistance() );
-           SmartDashboard.putNumber("RF Encoder", -twistEnc.getDistance());
-       }
     }
 
     /**
