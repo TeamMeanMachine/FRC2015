@@ -107,7 +107,7 @@ public class RobotMap {
         //leftFrontSpeedEnc = new Encoder(1,5, 1,4);
         leftFrontSpeed = new CANTalon(2);
         leftFrontSwerve = new SwerveModule("LF", leftFrontSpeed, leftFrontSpeedEnc, leftFrontTwist, leftFrontTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
-        leftFrontSwerve.setTwistOffset(Math.PI);
+        leftFrontSwerve.setTwistOffset(0.0);
 
         // **************************** LR ************************
         leftRearTwist = new CANTalon(3);
@@ -116,7 +116,7 @@ public class RobotMap {
         //leftRearSpeedEnc = new Encoder(1,11, 1,10);
         leftRearSpeed = new CANTalon(4);
         leftRearSwerve = new SwerveModule("LR", leftRearSpeed, leftRearSpeedEnc, leftRearTwist, leftRearTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
-        leftRearSwerve.setTwistOffset(Math.PI);
+        leftRearSwerve.setTwistOffset(0.0);
 
         // **************************** RF ************************
         rightFrontTwist = new CANTalon(5);
@@ -125,7 +125,7 @@ public class RobotMap {
         //rightFrontSpeedEnc = new Encoder(2,8, 2,7);
         rightFrontSpeed = new CANTalon(6);
         rightFrontSwerve = new SwerveModule("RF", rightFrontSpeed, rightFrontSpeedEnc, rightFrontTwist, rightFrontTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
-        rightFrontSwerve.setTwistOffset(Math.PI);
+        rightFrontSwerve.setTwistOffset(0.0);
 
         // **************************** RR ************************
         rightRearTwist = new CANTalon(7);

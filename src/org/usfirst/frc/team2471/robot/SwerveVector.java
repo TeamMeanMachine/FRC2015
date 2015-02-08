@@ -100,7 +100,7 @@ SmartDashboard.putNumber("RF SetPoint", -desiredAngle);
         desiredPower = polar.GetR();
         FindNearestAngle();  // modifies both desiredAngle and desiredPower, prevents rotation of more than 90 degrees, reverses power if necessary
         
-        swerve.setTwist(0);  //Desired Angel
+        swerve.setTwist(desiredAngle);  //Desired Angel
         return Math.abs(desiredPower);
     }
     public void SetMaxPower( double maxPower )
