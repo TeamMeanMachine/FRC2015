@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2471.robot;
 
 import org.usfirst.frc.team2471.robot.commands.Grab;
+import org.usfirst.frc.team2471.robot.commands.Hold;
 import org.usfirst.frc.team2471.robot.commands.Push;
 import org.usfirst.frc.team2471.robot.commands.Spit;
 import org.usfirst.frc.team2471.robot.commands.Suck;
@@ -53,6 +54,7 @@ public class OI {
     public JoystickButton spit;
     public JoystickButton push;
     public JoystickButton grab;
+    public JoystickButton hold;
     
     public OI(){
     	driverStick = new Joystick(0);
@@ -64,10 +66,12 @@ public class OI {
     	spit = new JoystickButton(coStick, 5);
     	push = new JoystickButton(driverStick, 8);
     	grab = new JoystickButton(coStick, 4);
+    	hold = new JoystickButton(coStick, 7);
     	suck.whileHeld(new Suck());
     	spit.whileHeld(new Spit());
     	push.whenPressed(new Push());
     	grab.whenPressed(new Grab());
+    	hold.whenPressed(new Hold());
     	presetTote.whenPressed(new ToteLiftDefault());
     	presetTotePickup.whenPressed(new ToteLiftPickupPreset());
     	presetToteand6.whenPressed(new ToteLiftToteand6());
