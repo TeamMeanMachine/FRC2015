@@ -24,20 +24,19 @@ public class Push extends Command{
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		Robot.pusher.ResetRaw();
-		return false;
+		return true;
 	}
 
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		Robot.pusher.ResetRaw();
+//		Robot.pusher.ResetRaw();
 	}
 
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
-		Robot.pusher.ResetRaw();
+//		Robot.pusher.ResetRaw();
 	}
 
 }

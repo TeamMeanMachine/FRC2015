@@ -9,6 +9,7 @@
 // it from being updated in th future.
 package org.usfirst.frc.team2471.robot;
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
@@ -56,8 +57,8 @@ public class SwerveModule implements Runnable {
      * @return the twist
      */
     public double getTwist() {
-        System.out.println(name +  " twistSP: " + twistController.getSetpoint());
-        System.out.println(name + " twistEnc: " + twistEnc.getDistance());
+     //   System.out.println(name +  " twistSP: " + twistController.getSetpoint());
+    //    System.out.println(name + " twistEnc: " + twistEnc.getDistance());
         double rtn = twistEnc.getDistance();
         rtn = rtn + twistOffset;
         while(rtn > Math.PI) {
@@ -75,12 +76,12 @@ public class SwerveModule implements Runnable {
      * @param twist the twist to set
      */
     public void setTwist(double twist) {
-//       if (name == "RR") {
-//           System.out.println(name +  "setTwist: " + twistController.getSetpoint());
-//           double rtn = twistEnc.getDistance();
-//           System.out.println(name + " SM Distance: " + twistEnc.getDistance());
-//       }
        twistController.setSetpoint(twist);
+       if (name == "RF") {
+           System.out.println(name +  " setPoint: " + twistController.getSetpoint() + " encoder: " + twistEnc.getDistance() );
+           SmartDashboard.putNumber("RF SetPoint", -twistController.getSetpoint());
+           SmartDashboard.putNumber("RF Encoder", -twistEnc.getDistance());
+       }
     }
 
     /**
@@ -120,7 +121,7 @@ public class SwerveModule implements Runnable {
 //        }
         lastMotor = motor;
         twist.set(motor * -1.0);
-        System.out.println(name + " Turn Motor: " + motor * -1.0);
+ //       System.out.println(name + " Turn Motor: " + motor * -1.0);
     }
     
     public void home() {
@@ -133,7 +134,7 @@ public class SwerveModule implements Runnable {
         twist.set(0.75);
         double last;
         
-        System.out.println("Home Start: " + name);        
+    //    System.out.println("Home Start: " + name);        
         do {
             last = twistEnc.getDistance();
             try {                    
@@ -146,7 +147,7 @@ public class SwerveModule implements Runnable {
                 System.out.println("SwerveModule thread sleep exception");
             }
         } while(twistEnc.getDistance() - last < 0.01);
-        System.out.println("Home Ended: " + name);        
+ //       System.out.println("Home Ended: " + name);        
         twist.set(0.0);
 //        twistEnc.reset();
         twistController.enable();

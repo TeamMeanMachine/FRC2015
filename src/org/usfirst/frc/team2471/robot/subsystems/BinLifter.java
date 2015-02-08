@@ -21,7 +21,7 @@ public class BinLifter extends Subsystem {
 		rotate = RobotMap.lMotor2;
 		clasp = RobotMap.lSolenoid1;
 		lowerLimit = RobotMap.lLowerLimit;
-		upperLimit = RobotMap.bUpperlimit;
+		upperLimit = RobotMap.lUpperLimit;
 	}
 	
 	@Override
@@ -30,16 +30,19 @@ public class BinLifter extends Subsystem {
 		setDefaultCommand(new BinLifterCommand());
 	}
 
-	public void Lift(double power){
-		if (!lowerLimit.get() && !upperLimit.get()){
-			lift.set(power * 0.5);
+	public void Lift(double power){				//FIX MEH 
+//		System.out.println("Lift: " + power );
+		power = power * -1.0;
+		if(power < 0 && (lowerLimit.get() == false)){
+			power = power * 0.5;
 		}
-		else if(lowerLimit.get() || upperLimit.get()){
-			lift.set(0);
+		else if(power > 0 && (upperLimit.get() == false)){
+			power = power * .75;
 		}
 		else{
-			lift.set(0);
+			power = 0;
 		}
+		lift.set(power);
 	}
 	
 	public void Grab(){
@@ -49,6 +52,6 @@ public class BinLifter extends Subsystem {
 	
 	public void Rotate(double power){
 		//  Make command to deal with the encoder for the preset rotations
-		rotate.set(power * 0.2);
+		rotate.set(power * 1.0);
 	}
 }

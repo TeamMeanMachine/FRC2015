@@ -42,10 +42,6 @@ public class  DriveLoop extends Command {
         double x =  Robot.oi.driverStick.getAxis(Joystick.AxisType.kX);
         double y = -Robot.oi.driverStick.getAxis(Joystick.AxisType.kY);  // odd, but up is negative
         double r =  Robot.oi.driverStick.getAxis(Joystick.AxisType.kZ);
-        double r2 = Robot.oi.coStick.getRawAxis(4);
-        if (Math.abs(r2) < 0.25) {
-            r2 = 0.0;
-        }
         
         double s = -Robot.oi.driverStick.getAxis(Joystick.AxisType.kThrottle);  // kThrottle is the y of the right stick
         double gyroAngle = -RobotMap.gyro.getAngle() * (Math.PI/180.0);
@@ -57,13 +53,13 @@ public class  DriveLoop extends Command {
         double turnSpeed = (gyroAngle - prevAngle)/(time - prevTime);
         prevTime = time;
         prevAngle = gyroAngle;
-        SmartDashboard.putNumber("Turn Speed", turnSpeed);
+//        SmartDashboard.putNumber("Turn Speed", turnSpeed);
 //        boolean autoSteer = false;
 //        boolean trackBall = RobotTemplate.oi.autoSteerButton.get();
         boolean fieldMove = SmartDashboard.getBoolean("FieldMove", true);
-        boolean fieldSteer = SmartDashboard.getBoolean("FieldSteer", false);
+//        boolean fieldSteer = SmartDashboard.getBoolean("FieldSteer", false);
         
-       RobotMap.swerve.drive(x,y,r+0.7*r2,s,gyroAngle,accelX,accelY, false, turnSpeed, fieldMove, fieldSteer, false);
+       RobotMap.swerve.drive(x,y,r,s,gyroAngle,accelX,accelY, false, turnSpeed, fieldMove, false, false);
  //      System.out.println( "AccelX: " + accelX + " AccelY: " + accelY + " AccelZ: " + accelZ);
     }
     // Make this return true when this Command no longer needs to run execute()

@@ -55,7 +55,7 @@ public class SwerveDrive extends Subsystem  {
         turnPositionPID.setAbsoluteTolerance( Math.PI/180.0*5.0 );
         turnPositionPID.setOutputRange(-1.0, 1.0);
         turnPositionPID.enable();
-        SmartDashboard.putData("Turn Position PID", turnPositionPID);
+       // SmartDashboard.putData("Turn Position PID", turnPositionPID);
 
         accelerometerAngle = 0.0;
         autoSteer = false;
@@ -77,14 +77,14 @@ public class SwerveDrive extends Subsystem  {
         turnSpeedPID.setAbsoluteTolerance( 0.01 );
         turnSpeedFeed = 0.0;
         turnSpeedSum = 0.0;
-        SmartDashboard.putData("Turn Speed PID", turnSpeedPID);
+      //  SmartDashboard.putData("Turn Speed PID", turnSpeedPID);
 
-        lrVect= new SwerveVector(RobotMap.leftRearSwerve, -11.0,-11.0, Math.PI/4.0); 
-        lfVect= new SwerveVector(RobotMap.leftFrontSwerve, -11.0,11.0, -Math.PI/4.0);  
-        rrVect= new SwerveVector(RobotMap.rightRearSwerve, 11.0,-11.0, -Math.PI/4.0); 
-        rfVect= new SwerveVector(RobotMap.rightFrontSwerve, 11.0,11.0, Math.PI/4.0);
+        lrVect= new SwerveVector(RobotMap.leftRearSwerve, -12.0,-19.0, Math.PI/4.0); 
+        lfVect= new SwerveVector(RobotMap.leftFrontSwerve, -12.0,19.0, -Math.PI/4.0);  
+        rrVect= new SwerveVector(RobotMap.rightRearSwerve, 12.0,-19.0, -Math.PI/4.0); 
+        rfVect= new SwerveVector(RobotMap.rightFrontSwerve, 12.0,19.0, Math.PI/4.0);
         
-        SmartDashboard.putData("Swerve Drive Subsystem", this);
+      //  SmartDashboard.putData("Swerve Drive Subsystem", this);
     }
  
     class PidTurnPositionSourceOutput implements PIDSource, PIDOutput {
@@ -218,20 +218,20 @@ public class SwerveDrive extends Subsystem  {
         gyroAngle = _gyroAngle + gyroOffset;
         fieldMove = _fieldMove;
         fieldSteer = _fieldSteer;
-        SmartDashboard.putNumber("gyroAngle", -gyroAngle);
+ //       SmartDashboard.putNumber("gyroAngle", -gyroAngle);
         GetAccelerationFromJoyStick(x, y);
         accumulateDistanceTraveled();
         
-        if (trackBall) {
-            double visionR = 0.0;
-            try {
-                visionR = 2.0 * NetworkTable.getTable("SmartDashboard").getNumber("COG_X", 0.0) / 480.0 - 1.0;
-            }
-            catch(TableKeyNotDefinedException e) { 
-                System.out.println(e);
-            }
-            r = r + visionR * 0.5;
-        }
+//        if (trackBall) {
+//            double visionR = 0.0;
+//            try {
+//                visionR = 2.0 * NetworkTable.getTable("SmartDashboard").getNumber("COG_X", 0.0) / 480.0 - 1.0;
+//            }
+//            catch(TableKeyNotDefinedException e) { 
+//                System.out.println(e);
+//            }
+//            r = r + visionR * 0.5;
+//        }
         
         //System.out.println("x: " + x + " y: " + y + " r: " + r + " s: " + s);
         if (Math.abs(x)<0.1) {
@@ -266,7 +266,7 @@ public class SwerveDrive extends Subsystem  {
         
         if (fieldSteer && turnMag>TURN_DEAD_BAND) {
             turnJoystickAngle = Math.atan2( -r, s );  // convert the right stick to a goal angle for robot orientation
-            SmartDashboard.putNumber("joyStickAngle", -turnJoystickAngle);
+    //        SmartDashboard.putNumber("joyStickAngle", -turnJoystickAngle);
             if (!autoSteer) {
                 turnPositionPID.setSetpoint( turnJoystickAngle );
                 turnPositionPID.enable();
@@ -295,7 +295,7 @@ public class SwerveDrive extends Subsystem  {
             tempGyro = 0;
         }
         
-        SmartDashboard.putNumber("TurnPower", turnPower);
+    //    SmartDashboard.putNumber("TurnPower", turnPower);
         
         // find requested power from each wheel module
         double lrPower = lrVect.drive(x, y, turnPower, tempGyro);
@@ -364,7 +364,7 @@ public class SwerveDrive extends Subsystem  {
         double yAccel = yVelocity - prevYVelocity;
         if (Math.abs(xAccel)>0.05 || Math.abs(yAccel)>0.05) {
            accelerometerAngle = Math.atan2(-xAccel, yAccel);
-           SmartDashboard.putNumber("accel angle", -accelerometerAngle);
+     //      SmartDashboard.putNumber("accel angle", -accelerometerAngle);
         }
         prevXVelocity = xVelocity;
         prevYVelocity = yVelocity;

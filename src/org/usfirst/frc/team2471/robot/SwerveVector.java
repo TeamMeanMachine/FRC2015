@@ -4,6 +4,8 @@
  */
 package org.usfirst.frc.team2471.robot;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 /**
  *
  * @author FIRST
@@ -11,7 +13,7 @@ package org.usfirst.frc.team2471.robot;
 public class SwerveVector {
     private SwerveModule swerve;
     private double Px, Py;
-    private double hyp, xPivot = 0.0, yPivot = 0;
+    private double hyp, xPivot = 0.0, yPivot = 10.0;
     private double desiredPower = 0;
     private double desiredAngle = 0;
     private double handsOffAngle = 0;
@@ -81,6 +83,9 @@ public class SwerveVector {
         double reducedTurn = turnPower * 0.55 * (1.0 - 0.3*straightPower);  // diminish turning, it was too fast
         
         Polar polar = new Polar(x,y);   // convert strafe to polar
+        
+  SmartDashboard.putNumber("Joystick Angle", -polar.GetAngle());
+        
         polar.AddAngle( -gyroAngle );  // add to convert the strafe request from field to robot space
 
         double vecX = polar.GetX() + Rx(reducedTurn);  // combine strafing with turning via vector addition
@@ -100,7 +105,7 @@ public class SwerveVector {
         swerve.setSpeed( desiredPower / maxPower );
     }
     
-    public void SetPower( double power )
+	public void SetPower( double power )
     {
         swerve.setSpeed( power );
     }
@@ -133,6 +138,7 @@ public class SwerveVector {
             delta = delta + 2*Math.PI;
         }
         
+        //desiredAngle = currentAngle + delta;
         if (delta>Math.PI/2)
         {
             delta = delta - Math.PI;

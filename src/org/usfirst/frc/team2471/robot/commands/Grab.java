@@ -26,7 +26,7 @@ public class Grab extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class Grab extends Command {
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
-		RobotMap.lSolenoid1.set(false);
+		//RobotMap.lSolenoid1.set(false);
 	}
 
 }
