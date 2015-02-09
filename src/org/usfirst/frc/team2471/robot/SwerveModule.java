@@ -90,6 +90,7 @@ public class SwerveModule implements Runnable {
      * @param speed the speed to set
      */
     public void setSpeed(double speed) {
+        SmartDashboard.putNumber(name + " Post_desiredPower", speed);
         this.speed.set(speed);
     }
     

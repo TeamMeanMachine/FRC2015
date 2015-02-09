@@ -105,7 +105,7 @@ public class RobotMap {
         leftFrontTwistEnc = new MagnePot(3);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
         //leftFrontSpeedEnc = new Encoder(1,5, 1,4);
-        leftFrontSpeed = new CANTalon(2);
+        leftFrontSpeed = new CANTalon(6);
         leftFrontSwerve = new SwerveModule("LF", leftFrontSpeed, leftFrontSpeedEnc, leftFrontTwist, leftFrontTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
         leftFrontSwerve.setTwistOffset(0.0);
 
@@ -123,7 +123,7 @@ public class RobotMap {
         rightFrontTwistEnc = new MagnePot(2);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
         //rightFrontSpeedEnc = new Encoder(2,8, 2,7);
-        rightFrontSpeed = new CANTalon(6);
+        rightFrontSpeed = new CANTalon(2);
         rightFrontSwerve = new SwerveModule("RF", rightFrontSpeed, rightFrontSpeedEnc, rightFrontTwist, rightFrontTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
         rightFrontSwerve.setTwistOffset(0.0);
 

@@ -95,16 +95,17 @@ public class SwerveVector {
         // Convert vecX and vecY back to polar coords
         polar = new Polar( vecX, vecY );
         desiredAngle = polar.GetAngle();
-
-       	SmartDashboard.putNumber(swerve.name + " SP", -desiredAngle);
         
         desiredPower = polar.GetR();
+        
+        SmartDashboard.putNumber(swerve.name + " Pre_desiredPower", desiredPower);
+        
         FindNearestAngle();  // modifies both desiredAngle and desiredPower, prevents rotation of more than 90 degrees, reverses power if necessary
         
         swerve.setTwist(desiredAngle);
+        SmartDashboard.putNumber(swerve.name + " SP", -desiredAngle);
         SmartDashboard.putNumber(swerve.name + " Enc", -swerve.twistEnc.getDistance());
-
-        return Math.abs(desiredPower);
+        return desiredPower;
     }
     public void SetMaxPower( double maxPower )
     {
@@ -143,19 +144,20 @@ public class SwerveVector {
         {
             delta = delta + 2*Math.PI;
         }
+//        
+//        desiredAngle = currentAngle + delta;
         
-        desiredAngle = currentAngle + delta;
-//        if (delta>Math.PI/2)
-//        {
-//            delta = delta - Math.PI;
-//            desiredAngle = currentAngle + delta;
-//            desiredPower = -desiredPower;
-//        }
-//        else if (delta<-Math.PI/2)
-//        {
-//            delta = delta + Math.PI;
-//            desiredAngle = currentAngle + delta;
-//            desiredPower = -desiredPower;
-//        }
+        if (delta>Math.PI/2)
+        {
+            delta = delta - Math.PI;
+            desiredAngle = currentAngle + delta;
+            desiredPower = -desiredPower;
+        }
+        else if (delta<-Math.PI/2)
+        {
+            delta = delta + Math.PI;
+            desiredAngle = currentAngle + delta;
+            desiredPower = -desiredPower;
+        }
     }
 }

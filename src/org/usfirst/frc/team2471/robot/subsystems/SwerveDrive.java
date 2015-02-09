@@ -298,10 +298,10 @@ public class SwerveDrive extends Subsystem  {
     //    SmartDashboard.putNumber("TurnPower", turnPower);
         
         // find requested power from each wheel module
-        double lrPower = lrVect.drive(x, y, turnPower, tempGyro);
-        double lfPower = lfVect.drive(x, y, turnPower, tempGyro);
-        double rrPower = rrVect.drive(x, y, turnPower, tempGyro);
-        double rfPower = rfVect.drive(x, y, turnPower, tempGyro);
+        double lrPower = Math.abs(lrVect.drive(x, y, turnPower, tempGyro));
+        double lfPower = Math.abs(lfVect.drive(x, y, turnPower, tempGyro));
+        double rrPower = Math.abs(rrVect.drive(x, y, turnPower, tempGyro));
+        double rfPower = Math.abs(rfVect.drive(x, y, turnPower, tempGyro));
         
         // take the largest power or 1.0 max
         double maxPower = Math.max( 1.0, Math.max( lrPower, Math.max( lfPower, Math.max( rrPower, rfPower) ) ) );
