@@ -13,38 +13,43 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class SwerveVector {
     private SwerveModule swerve;
     private double Px, Py;
-    private double hyp, xPivot = 0.0, yPivot = -10.0;
+    private double hyp;
     private double desiredPower = 0;
     private double desiredAngle = 0;
     private double handsOffAngle = 0;
     
     public SwerveVector(SwerveModule _swerve, double xPosition, double yPosition, double _handsOffAngle) {
-        swerve = _swerve;
+    	swerve = _swerve;
         Px = xPosition;
         Py = yPosition;
-        hyp = Math.sqrt((Px+xPivot)*(Px+xPivot) + (Py+yPivot)*(Py+yPivot));
         handsOffAngle = _handsOffAngle;
     }
     
+    public void ComputeHypotenuse()
+    {
+        hyp = Math.sqrt((Px - RobotMap.swerve.getXPivot())*(Px - RobotMap.swerve.getXPivot()) + (Py - RobotMap.swerve.getYPivot())*(Py - RobotMap.swerve.getYPivot()));
+    }
+
     public SwerveModule getSwerveModule() {
         return swerve;
     }
     
     double Rx(double rotation) {
-        return (rotation * (Py + yPivot) / hyp);
+        return (rotation * (Py - RobotMap.swerve.getYPivot()) / hyp);
     }
     double Ry(double rotation) {
-        return (rotation * -(Px + xPivot) / hyp);
+        return (rotation * -(Px - RobotMap.swerve.getXPivot()) / hyp);
     }
+    /*
     public void setXOffset(double newX) {
         xPivot = newX;
-        hyp = Math.sqrt((Px+xPivot)*(Px+xPivot) + (Py+yPivot)*(Py+yPivot));
+        hyp = Math.sqrt((Px+xPivot)*(Px+Robot.swerveDrive.getXPivot()) + (Py+yPivot)*(Py+yPivot));
     }
     public void setYOffset(double newY) {
         yPivot = newY;
-        hyp = Math.sqrt((Px+xPivot)*(Px+xPivot) + (Py+yPivot)*(Py+yPivot));
+        hyp = Math.sqrt((Px+Robot.swerveDrive.getXPivot())*(Px+Robot.swerveDrive.getXPivot()) + (Py+yPivot)*(Py+yPivot));
     }
-    
+    */
     class Polar {
         double r;
         double theta;

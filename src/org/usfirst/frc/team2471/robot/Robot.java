@@ -1,15 +1,13 @@
 
 package org.usfirst.frc.team2471.robot;
 
-import java.awt.SystemTray;
-
 import org.usfirst.frc.team2471.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2471.robot.commands.HomeBin;
 import org.usfirst.frc.team2471.robot.subsystems.BinLifter;
 import org.usfirst.frc.team2471.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team2471.robot.subsystems.Lifter;
 import org.usfirst.frc.team2471.robot.subsystems.Pusher;
 import org.usfirst.frc.team2471.robot.subsystems.Sucker;
-import org.usfirst.frc.team2471.robot.subsystems.SwerveDrive;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -35,7 +33,7 @@ public class Robot extends IterativeRobot {
 	public static Lifter lifter;
 	public static Pusher pusher;
 	public static Sucker sucker;
-	public static SwerveDrive swerveDrive;
+//	public static SwerveDrive swerveDrive;
 	public static DriverStation driverStation;
 	public static SendableChooser autoChooser;
 	public static Preferences prefinOnRobot;
@@ -46,6 +44,7 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+    	SmartDashboard.putNumber("yPivot", 10);
 		RobotMap.init();
 		lifter = new Lifter();
 		binLifter = new BinLifter();
@@ -66,7 +65,8 @@ public class Robot extends IterativeRobot {
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		System.out.println("Lower Limit: " + RobotMap.bLowerLimit.get() + " Upper Limit: " + RobotMap.bUpperlimit.get());
+		//System.out.println("Lower Limit: " + RobotMap.bLowerLimit.get() + " Upper Limit: " + RobotMap.bUpperlimit.get());
+		System.out.println("Enc: " + RobotMap.lEnc.get());
 	}
 
     public void autonomousInit() {
@@ -87,10 +87,11 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-        System.out.println(RobotMap.leftFrontTwistEnc.getDistance());
-        System.out.println(RobotMap.rightFrontTwistEnc.getDistance());
-        System.out.println(RobotMap.leftRearTwistEnc.getDistance());
-        System.out.println(RobotMap.rightRearTwistEnc.getDistance());
+//        System.out.println(RobotMap.leftFrontTwistEnc.getDistance());
+//        System.out.println(RobotMap.rightFrontTwistEnc.getDistance());
+//        System.out.println(RobotMap.leftRearTwistEnc.getDistance());
+//        System.out.println(RobotMap.rightRearTwistEnc.getDistance());
+        new HomeBin();
     }
 
     /**

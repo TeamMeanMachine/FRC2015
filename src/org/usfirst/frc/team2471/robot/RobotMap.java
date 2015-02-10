@@ -33,7 +33,7 @@ public class RobotMap {
 	public static Solenoid lSolenoid1;
 	public static DigitalInput lUpperLimit;
 	public static DigitalInput lLowerLimit;
-	public static Encoder lRotation;
+	public static Encoder lEnc;
 	
 	//Bryce Lifter
 	public static SpeedController bMotorlift;
@@ -81,7 +81,7 @@ public class RobotMap {
 		lMotor1 = new Talon(1);
 		lMotor2 = new Talon(4);
 		lSolenoid1 = new Solenoid(0);
-		lRotation = new Encoder(8, 7);
+		lEnc = new Encoder(5, 6);
 		lUpperLimit = new DigitalInput(0);
 		lLowerLimit = new DigitalInput(1);
 		
@@ -90,7 +90,7 @@ public class RobotMap {
 		bUpperlimit = new DigitalInput(2);
 		bLowerLimit = new DigitalInput(3);
 	//	bTotelimit = new DigitalInput(5);		TO DO Ultrasonic
-		bToteand6 = new DigitalInput(6); //COOPERTITION PRESET
+		bToteand6 = new DigitalInput(7); //COOPERTITION PRESET
 		
 		//Bryce Pusher
 		bPush1 = new Solenoid(1);
@@ -137,5 +137,6 @@ public class RobotMap {
         rightRearSwerve.setTwistOffset(Math.PI);
         
 		swerve = new SwerveDrive();
+		swerve.ComputeAllHyp();
 	}
 }

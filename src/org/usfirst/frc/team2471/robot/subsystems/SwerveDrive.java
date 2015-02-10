@@ -47,8 +47,10 @@ public class SwerveDrive extends Subsystem  {
     double totalDistance;
     double prevLF, prevRF, prevLR, prevRR;
     double turnPIDOutput = 0.0;
+    private double xPivot = 0.0, yPivot = 10.0;
     
     public SwerveDrive() {
+//SmartDashboard.putNumber("yPivot", 10);
         turnPositionPID = new PIDController(-1.5, -0.0, -6.0, new PidTurnPositionSourceOutput(), new PidTurnPositionSourceOutput());
         turnPositionPID.setInputRange( -Math.PI, Math.PI );
         turnPositionPID.setContinuous( true );
@@ -56,7 +58,6 @@ public class SwerveDrive extends Subsystem  {
         turnPositionPID.setOutputRange(-1.0, 1.0);
         turnPositionPID.enable();
        // SmartDashboard.putData("Turn Position PID", turnPositionPID);
-
         accelerometerAngle = 0.0;
         autoSteer = false;
         fieldSteer = false;
@@ -85,6 +86,15 @@ public class SwerveDrive extends Subsystem  {
         rfVect= new SwerveVector(RobotMap.rightFrontSwerve, 12.0,19.0, Math.PI/4.0);
         
       //  SmartDashboard.putData("Swerve Drive Subsystem", this);
+    }
+    
+    public double getXPivot()
+    {
+    	return xPivot;
+    }
+    public double getYPivot()
+    {
+    	return yPivot;
     }
  
     class PidTurnPositionSourceOutput implements PIDSource, PIDOutput {
@@ -369,4 +379,12 @@ public class SwerveDrive extends Subsystem  {
         prevXVelocity = xVelocity;
         prevYVelocity = yVelocity;
     }
+
+	public void ComputeAllHyp() {
+		// TODO Auto-generated method stub
+		lrVect.ComputeHypotenuse();
+        lfVect.ComputeHypotenuse();
+        rrVect.ComputeHypotenuse();
+        rfVect.ComputeHypotenuse();
+	}
 }
