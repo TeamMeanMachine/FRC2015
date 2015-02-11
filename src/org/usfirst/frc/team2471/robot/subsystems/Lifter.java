@@ -2,6 +2,7 @@ package org.usfirst.frc.team2471.robot.subsystems;
 
 import org.usfirst.frc.team2471.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -15,6 +16,7 @@ public class Lifter extends Subsystem {
 	DigitalInput toteAnd6; // COOPERTITION DEFAULT
 	DigitalInput toteLimit; //DEFAULT ON INIT
 	Solenoid catcher;
+	AnalogInput toteMax;
 	
 	public Lifter(){
 		lifter = RobotMap.bMotorlift;
@@ -23,6 +25,7 @@ public class Lifter extends Subsystem {
 		toteLimit = RobotMap.bTotelimit;
 		toteAnd6 = RobotMap.bToteand6;
 		catcher = RobotMap.bCatch;
+		toteMax = RobotMap.bToteMax;
 	}
 	
 	@Override
@@ -30,13 +33,24 @@ public class Lifter extends Subsystem {
 		// TODO Auto-generated method stub
 	}
 	
-	//DONT USE ONLY FOR DEBUG IF NEED BE
+	//DONT USE ONLY FOR DEBUG IF NEED BE (LOL)
 	public void SetRawLift(double power){
 		if(!upperLimit.get() && !lowerLimit.get()){
 			lifter.set(power * 0.5);
 		}
 		else{
 			lifter.set(0);
+		}
+	}
+	
+	public void Liften4days(){
+		catcher.set(false);
+		while(lowerLimit.get() == false){
+			lifter.set(-1 * 0.5);
+		}
+		catcher.set(true);
+		while(upperLimit.get() == false){
+			lifter.set(1.0 * 0.5);
 		}
 	}
 	

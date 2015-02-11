@@ -2,6 +2,7 @@ package org.usfirst.frc.team2471.robot;
 
 import org.usfirst.frc.team2471.robot.subsystems.SwerveDrive;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
@@ -9,7 +10,6 @@ import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -43,7 +43,7 @@ public class RobotMap {
 	public static DigitalInput bToteand6; // COOPERTITION PRESET
 	public static DigitalInput bLowerLimit; // DEFAULT LIMIT ON INIT
 	public static Solenoid bCatch;
-	
+	public static AnalogInput bToteMax;
 	//Bryce Pusher
 	public static Solenoid bPush1;
 	
@@ -94,6 +94,7 @@ public class RobotMap {
 	//	bTotelimit = new DigitalInput(5);		TO DO Ultrasonic
 		bToteand6 = new DigitalInput(7); //COOPERTITION PRESET
 		bCatch = new Solenoid(2);
+		bToteMax = new AnalogInput(6);
 		
 		//Bryce Pusher
 		bPush1 = new Solenoid(1);

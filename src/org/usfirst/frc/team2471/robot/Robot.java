@@ -113,6 +113,7 @@ public class Robot extends IterativeRobot {
 
         SmartDashboard.putData("Lift Access", lifter);
 		SmartDashboard.putData("Swerve Access", RobotMap.swerve);
+		System.out.println("IR Sensor " + RobotMap.bToteMax.getValue());
  //       System.out.println("Encoder Twists: " + RobotMap.leftFrontTwist.get() + " " + RobotMap.leftRearTwist.get() + " " + RobotMap.rightFrontTwist.get() + " " + RobotMap.rightRearTwist.get());
     }
     

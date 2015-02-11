@@ -19,12 +19,13 @@ public class ToteLiftToteand6 extends Command  {
 	protected void execute() {
 		// TODO Auto-generated method stub
 	//	Robot.lifter.CoopertitionDefault();
+		Robot.lifter.Liften4days();
 	}
 
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
