@@ -47,7 +47,7 @@ public class SwerveDrive extends Subsystem  {
     double totalDistance;
     double prevLF, prevRF, prevLR, prevRR;
     double turnPIDOutput = 0.0;
-    private double xPivot = 0.0, yPivot = 10.0;
+    private double xPivot = 0.0;
     
     public SwerveDrive() {
 //SmartDashboard.putNumber("yPivot", 10);
@@ -94,7 +94,7 @@ public class SwerveDrive extends Subsystem  {
     }
     public double getYPivot()
     {
-    	return yPivot;
+    	return SmartDashboard.getNumber("yPivot");
     }
  
     class PidTurnPositionSourceOutput implements PIDSource, PIDOutput {

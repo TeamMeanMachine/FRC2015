@@ -38,6 +38,7 @@ public class Robot extends IterativeRobot {
 	public static SendableChooser autoChooser;
 	public static Preferences prefinOnRobot;
     Command autonomousCommand;
+    Command homeBinCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -61,12 +62,14 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("AutoChooser", autoChooser);
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
+        homeBinCommand = new HomeBin();
     }
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		//System.out.println("Lower Limit: " + RobotMap.bLowerLimit.get() + " Upper Limit: " + RobotMap.bUpperlimit.get());
 		System.out.println("Enc: " + RobotMap.lEnc.get());
+		SmartDashboard.putNumber("Encoder_Bin", RobotMap.lEnc.get());
 	}
 
     public void autonomousInit() {
@@ -91,7 +94,7 @@ public class Robot extends IterativeRobot {
 //        System.out.println(RobotMap.rightFrontTwistEnc.getDistance());
 //        System.out.println(RobotMap.leftRearTwistEnc.getDistance());
 //        System.out.println(RobotMap.rightRearTwistEnc.getDistance());
-        new HomeBin();
+        if (homeBinCommand !=null) homeBinCommand.start();
     }
 
     /**
@@ -107,6 +110,9 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+
+        SmartDashboard.putData("Lift Access", lifter);
+		SmartDashboard.putData("Swerve Access", RobotMap.swerve);
  //       System.out.println("Encoder Twists: " + RobotMap.leftFrontTwist.get() + " " + RobotMap.leftRearTwist.get() + " " + RobotMap.rightFrontTwist.get() + " " + RobotMap.rightRearTwist.get());
     }
     

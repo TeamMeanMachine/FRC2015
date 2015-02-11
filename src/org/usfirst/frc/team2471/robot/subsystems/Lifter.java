@@ -3,6 +3,7 @@ package org.usfirst.frc.team2471.robot.subsystems;
 import org.usfirst.frc.team2471.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -13,6 +14,7 @@ public class Lifter extends Subsystem {
 	DigitalInput lowerLimit;
 	DigitalInput toteAnd6; // COOPERTITION DEFAULT
 	DigitalInput toteLimit; //DEFAULT ON INIT
+	Solenoid catcher;
 	
 	public Lifter(){
 		lifter = RobotMap.bMotorlift;
@@ -20,6 +22,7 @@ public class Lifter extends Subsystem {
 		lowerLimit = RobotMap.bLowerLimit; 
 		toteLimit = RobotMap.bTotelimit;
 		toteAnd6 = RobotMap.bToteand6;
+		catcher = RobotMap.bCatch;
 	}
 	
 	@Override
@@ -65,6 +68,7 @@ public class Lifter extends Subsystem {
 	}
 	
 	public void BottomGoto(){
+		catcher.set(false);
 		while(lowerLimit.get() == false){
 			lifter.set(-1.0 * 0.75);
 		}
@@ -72,6 +76,7 @@ public class Lifter extends Subsystem {
 	}
 	
 	public void TopGoto(){
+		catcher.set(true);
 		while(upperLimit.get() == false){
 			lifter.set(1.0 * 1.0);
 		}

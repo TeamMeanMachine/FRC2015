@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -41,6 +42,7 @@ public class RobotMap {
 	public static DigitalInput bTotelimit;
 	public static DigitalInput bToteand6; // COOPERTITION PRESET
 	public static DigitalInput bLowerLimit; // DEFAULT LIMIT ON INIT
+	public static Solenoid bCatch;
 	
 	//Bryce Pusher
 	public static Solenoid bPush1;
@@ -91,6 +93,7 @@ public class RobotMap {
 		bLowerLimit = new DigitalInput(3);
 	//	bTotelimit = new DigitalInput(5);		TO DO Ultrasonic
 		bToteand6 = new DigitalInput(7); //COOPERTITION PRESET
+		bCatch = new Solenoid(2);
 		
 		//Bryce Pusher
 		bPush1 = new Solenoid(1);
