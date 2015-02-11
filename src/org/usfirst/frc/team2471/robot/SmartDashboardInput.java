@@ -34,22 +34,29 @@ public class SmartDashboardInput {
 			}
 		}
 	}
-	
+	/*
 	public static void DashSwerve(){
 		actually = Preferences.getInstance();
 		actually.putBoolean("fieldSteer", SmartDashboard.getBoolean("fieldSteer"));
 		actually.putBoolean("fieldMove", SmartDashboard.getBoolean("fieldMove"));
 		actually.putDouble("turnSpeed", SmartDashboard.getNumber("turnSpeed"));
 	}
-	
+	*/
 	public static void GetDash() {
 		// TODO Auto-generated method stub
 		actually = Preferences.getInstance();
-		SmartDashboard.putBoolean("fieldSteer", actually.getBoolean("fieldSteer", false));
-		SmartDashboard.putBoolean("fieldMove", actually.getBoolean("fieldMove", false));
-		SmartDashboard.putNumber("turnSpeed", actually.getDouble("turnSpeed", DriveLoop.TurnSpeed()));
+		for (int i = 0; i <= hiceNameNumber.length; i++){
+			if (hiceNameNumber[i] != null){
+				SmartDashboard.putNumber(hiceNameNumber[i], hiceNumber[i]);
+			}
+		}
+		for (int i = 0; i <= hiceNameBool.length; i++){
+			if (hiceNameBool != null){
+				SmartDashboard.putBoolean(hiceNameBool[i], hiceBool[i]);
+			}
+		}
 	}
-	
+
 	public static void SaveDataDash(){
 		actually = Preferences.getInstance();
 	/*	SendableChooser hiceChooser = Robot.autoChooser.getSelected();
@@ -57,7 +64,7 @@ public class SmartDashboardInput {
 		actually.putString("autoCommand", hice);  */
 		
 	}
-	public static boolean HiceNumber(String name, double number){
+	public static boolean HiceSetNumber(String name, double number){
 		for (int i = 0; i <= hiceNameNumber.length; i++){
 			if (name.equals(hiceNameNumber[i])){
 				return false;
@@ -70,7 +77,7 @@ public class SmartDashboardInput {
 		return true;
 	}
 	
-	public static boolean HiceBoolean(String name, boolean choice){
+	public static boolean HiceSetBoolean(String name, boolean choice){
 		for (int i = 0; i <= hiceNameBool.length; i++){
 			if (name.equals(hiceNameBool[i])){
 				return false;
@@ -81,6 +88,28 @@ public class SmartDashboardInput {
 			}
 		}
 		return true;
+	}
+
+	public static double HiceGetNumber(String name){
+		double justincase = 0.0;
+		for (int i = 0; i <= hiceNameNumber.length; i++){
+			if (name.equals(hiceNameNumber[i])){
+				justincase = hiceNumber[i];
+			}
+		}
+		actually = Preferences.getInstance();
+		return actually.getDouble(name, justincase);
+	}
+	
+	public static boolean HiceGetBoolean(String name){
+		boolean justincase = false;
+		for (int i = 0; i <= hiceNameBool.length; i++){
+			if (name.equals(hiceNameBool[i])){
+				justincase = hiceBool[i];
+			}
+		}
+		actually = Preferences.getInstance();
+		return actually.getBoolean(name, justincase);
 	}
 	/*
 	public static Class<? extends String> AutoChooser(){
