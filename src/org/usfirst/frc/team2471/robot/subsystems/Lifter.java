@@ -46,11 +46,11 @@ public class Lifter extends Subsystem {
 	public void Liften4days(){
 		catcher.set(false);
 		while(lowerLimit.get() == false){
-			lifter.set(-1 * 0.5);
+			lifter.set(-1 * 0.75);
 		}
 		catcher.set(true);
-		while(upperLimit.get() == false){
-			lifter.set(1.0 * 0.5);
+		while(upperLimit.get() == false && (RobotMap.bToteMax.getVoltage() < .65)){
+			lifter.set(1.0);
 		}
 	}
 	
@@ -91,15 +91,15 @@ public class Lifter extends Subsystem {
 	
 	public void TopGoto(){
 		catcher.set(true);
-		while(upperLimit.get() == false){
-			lifter.set(1.0 * 1.0);
+		while(upperLimit.get() == false && (RobotMap.bToteMax.getVoltage() < .65)){
+			lifter.set(1.0);
 		}
 		lifter.set(0);
 	}
 	
 	public void CoopertitionDefault(){
 		while(toteAnd6.get() ==  false);{
-			lifter.set(1.0*1.0);
+			lifter.set(1.0);
 		}
 		lifter.set(0);
 	}

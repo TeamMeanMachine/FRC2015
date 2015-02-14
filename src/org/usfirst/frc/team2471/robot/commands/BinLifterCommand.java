@@ -18,7 +18,7 @@ public class BinLifterCommand extends Command  {
 	protected void execute() {
 		// TODO Auto-generated method stub
 		Robot.binLifter.Lift(Robot.oi.coStick.getRawAxis(1));
-		Robot.binLifter.Rotate(Robot.oi.coStick.getRawAxis(0));
+		Robot.binLifter.Rotate(Robot.oi.coStick.getRawAxis(2));
 	}
 
 	@Override

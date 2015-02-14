@@ -35,6 +35,7 @@ public class RobotMap {
 	public static DigitalInput lUpperLimit;
 	public static DigitalInput lLowerLimit;
 	public static Encoder lEnc;
+	public static DigitalInput lRotate;
 	
 	//Bryce Lifter
 	public static SpeedController bMotorlift;
@@ -78,7 +79,6 @@ public class RobotMap {
 	public static void init(){
 		//Basic Robot stuff
 		gyro = new Gyro(1);
-		
 		//Lucas Lifter
 		lMotor1 = new Talon(1);
 		lMotor2 = new Talon(4);
@@ -86,6 +86,7 @@ public class RobotMap {
 		lEnc = new Encoder(5, 6);
 		lUpperLimit = new DigitalInput(0);
 		lLowerLimit = new DigitalInput(1);
+		lRotate = new DigitalInput(4);
 		
 		//Bryce Lifter
 		bMotorlift = new Talon(0);
@@ -94,7 +95,7 @@ public class RobotMap {
 	//	bTotelimit = new DigitalInput(5);		TO DO Ultrasonic
 		bToteand6 = new DigitalInput(7); //COOPERTITION PRESET
 		bCatch = new Solenoid(2);
-		bToteMax = new AnalogInput(6);
+		bToteMax = new AnalogInput(7);
 		
 		//Bryce Pusher
 		bPush1 = new Solenoid(1);

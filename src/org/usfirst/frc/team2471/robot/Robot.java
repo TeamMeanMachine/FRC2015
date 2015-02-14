@@ -54,7 +54,7 @@ public class Robot extends IterativeRobot {
 		driverStation = DriverStation.getInstance();
 		oi = new OI();
 		prefinOnRobot = Preferences.getInstance();
-		SmartDashboardInput.GetDash();
+	//	SmartDashboardInput.GetDash();
 		autoChooser = new SendableChooser();
   //      autoChooser.addDefault("Name", new (SmartDashboardInput.AutoChooser()));
 //        autoChooser.addObject("Name", new Command());
@@ -63,13 +63,15 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
         homeBinCommand = new HomeBin();
+        
     }
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		//System.out.println("Lower Limit: " + RobotMap.bLowerLimit.get() + " Upper Limit: " + RobotMap.bUpperlimit.get());
-		System.out.println("Enc: " + RobotMap.lEnc.get());
-		SmartDashboard.putNumber("Encoder_Bin", RobotMap.lEnc.get());
+		//System.out.println("Enc: " + RobotMap.lEnc.get());
+		//SmartDashboard.putNumber("Encoder_Bin", RobotMap.lEnc.get());
+		//System.out.println("IR Sensor " + RobotMap.bToteMax.getVoltage());
 	}
 
     public void autonomousInit() {
@@ -102,7 +104,7 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
-    	SmartDashboardInput.DashSwerve();
+   // 	SmartDashboardInput.SaveDataDash();
     }
 
     /**
@@ -110,10 +112,13 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-
+        boolean trigger = false;
+        if (RobotMap.bToteMax.getVoltage() >= .7){
+        	trigger = true;
+        }
+        SmartDashboard.putBoolean("IR Sensor ", trigger);
         SmartDashboard.putData("Lift Access", lifter);
 		SmartDashboard.putData("Swerve Access", RobotMap.swerve);
-		System.out.println("IR Sensor " + RobotMap.bToteMax.getValue());
  //       System.out.println("Encoder Twists: " + RobotMap.leftFrontTwist.get() + " " + RobotMap.leftRearTwist.get() + " " + RobotMap.rightFrontTwist.get() + " " + RobotMap.rightRearTwist.get());
     }
     
@@ -123,5 +128,4 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
     }
-    
 }

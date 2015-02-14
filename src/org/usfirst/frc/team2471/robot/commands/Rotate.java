@@ -1,27 +1,21 @@
 package org.usfirst.frc.team2471.robot.commands;
 
 import org.usfirst.frc.team2471.robot.Robot;
-import org.usfirst.frc.team2471.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Push extends Command{
+public class Rotate extends Command{
 
-	public Push(){
-		requires(Robot.pusher);
-	}
-	
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		RobotMap.bCatch.set(false);
-		Robot.pusher.Push();
-		Robot.sucker.Spit();
+		Robot.binLifter.RotateToStop(1.0);
 	}
 
 	@Override
@@ -33,13 +27,13 @@ public class Push extends Command{
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-//		Robot.pusher.ResetRaw();
+		Robot.binLifter.rStop();
 	}
 
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
-//		Robot.pusher.ResetRaw();
+		Robot.binLifter.rStop();
 	}
 
 }

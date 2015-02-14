@@ -17,6 +17,7 @@ public class BinLifter extends Subsystem {
 	DigitalInput upperLimit;
 	DigitalInput lowerLimit;
 	Encoder liftDistance;
+	DigitalInput rotateStop;
 	
 	public BinLifter(){
 		lift = RobotMap.lMotor1;
@@ -25,6 +26,7 @@ public class BinLifter extends Subsystem {
 		lowerLimit = RobotMap.lLowerLimit;
 		upperLimit = RobotMap.lUpperLimit;
 		liftDistance = RobotMap.lEnc;
+		rotateStop = RobotMap.lRotate;
 	}
 	
 	@Override
@@ -69,8 +71,40 @@ public class BinLifter extends Subsystem {
 		}
 	}
 	*/
-	public void Rotate(double power){
+	public void RotateToStop(double power){
 		//  Make command to deal with the encoder for the preset rotations
-		rotate.set(power * 1.0);
+		while (rotateStop.get() == false){
+			rotate.set(power * 0.425);
+		}
+		rotate.set(0.0);
+	}
+	
+	public void RotateBackwards(double power){
+		//  Make command to deal with the encoder for the preset rotations
+		while (rotateStop.get() == false){
+			rotate.set(power * -0.425);
+		}
+		rotate.set(0.0);
+	}
+	
+	public void Rotate180(double power){
+		while(rotateStop.get() == false){
+			rotate.set(power * 0.425);
+		}
+		rotate.set(0.0);
+		while(rotateStop.get() == false){
+			rotate.set(power * 0.425);
+		}
+		rotate.set(0.0);
+	}
+	public void rStop() {
+		// TODO Auto-generated method stub
+		rotate.set(0);
+	}
+
+	public void Rotate(double rawAxis) {
+		// TODO Auto-generated method stub
+		rotate.set(rawAxis);
+		
 	}
 }

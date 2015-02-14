@@ -27,6 +27,7 @@ public class ToteLiftPickupPreset extends Command  {
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
 		if(RobotMap.bLowerLimit.get()){
+			//System.out.println("STOP IT!");
 			return true;
 		}
 		return false;

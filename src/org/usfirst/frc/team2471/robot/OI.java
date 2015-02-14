@@ -2,6 +2,9 @@ package org.usfirst.frc.team2471.robot;
 
 import org.usfirst.frc.team2471.robot.commands.Grab;
 import org.usfirst.frc.team2471.robot.commands.Push;
+import org.usfirst.frc.team2471.robot.commands.Rotate;
+import org.usfirst.frc.team2471.robot.commands.Rotate180;
+import org.usfirst.frc.team2471.robot.commands.RotateBackwards;
 import org.usfirst.frc.team2471.robot.commands.Spit;
 import org.usfirst.frc.team2471.robot.commands.Suck;
 import org.usfirst.frc.team2471.robot.commands.ToteLiftDefault;
@@ -53,6 +56,9 @@ public class OI {
     public JoystickButton spit;
     public JoystickButton push;
     public JoystickButton grab;
+    public JoystickButton rotate;
+    public JoystickButton rotateBackwards;
+    public JoystickButton rotate180;
     
     public OI(){
     	driverStick = new Joystick(0);
@@ -64,6 +70,12 @@ public class OI {
     	spit = new JoystickButton(driverStick, 5);
     	push = new JoystickButton(driverStick, 8);
     	grab = new JoystickButton(coStick, 4);
+    	rotate = new JoystickButton(coStick, 3);
+    	rotateBackwards = new JoystickButton(coStick, 1);
+    	rotate180 = new JoystickButton(coStick, 2);
+    	rotate180.whenPressed(new Rotate180());
+    	rotateBackwards.whenPressed(new RotateBackwards());
+    	rotate.whenPressed(new Rotate());
     	suck.whileHeld(new Suck());
     	spit.whileHeld(new Spit());
     	push.whenPressed(new Push());

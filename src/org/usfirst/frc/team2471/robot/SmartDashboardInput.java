@@ -1,24 +1,16 @@
 package org.usfirst.frc.team2471.robot;
 
-import java.util.ArrayList;
-
-import org.usfirst.frc.team2471.robot.commands.DriveLoop;
-
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class SmartDashboardInput {
 	public static Preferences actually;
-	public static double hiceNumber[];
-	public static String hiceNameNumber[];
-	public static String hiceNameBool[];
-	public static boolean hiceBool[];
+	public static double hiceNumber[] = new double[100];
+	public static String hiceNameNumber[] = new String[100];
+	public static String hiceNameBool[] = new String[100];
+	public static boolean hiceBool[] = new boolean[100];
 	
 	public SmartDashboardInput(){
-		hiceNumber = new double[100];
-		hiceNameNumber = new String[100];
-		hiceBool = new boolean[100];
-		hiceNameBool = new String[100];
 	}
 	
 	public static void SaveDash(){
@@ -42,6 +34,7 @@ public class SmartDashboardInput {
 		actually.putDouble("turnSpeed", SmartDashboard.getNumber("turnSpeed"));
 	}
 	*/
+	/*
 	public static void GetDash() {
 		// TODO Auto-generated method stub
 		actually = Preferences.getInstance();
@@ -56,7 +49,7 @@ public class SmartDashboardInput {
 			}
 		}
 	}
-
+	*/
 	public static void SaveDataDash(){
 		actually = Preferences.getInstance();
 	/*	SendableChooser hiceChooser = Robot.autoChooser.getSelected();
