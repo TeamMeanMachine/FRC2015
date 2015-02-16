@@ -17,8 +17,18 @@ public class BinLifterCommand extends Command  {
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		Robot.binLifter.Lift(Robot.oi.coStick.getRawAxis(1));
-		Robot.binLifter.Rotate(Robot.oi.coStick.getRawAxis(2));
+		double powerUp = Robot.oi.coStick.getRawAxis(2);
+		double powerDown = Robot.oi.coStick.getRawAxis(3);
+		if(powerUp > 0.1) {
+			Robot.binLifter.Lift(powerUp);
+		}
+		else if(powerDown > 0.1) {
+			Robot.binLifter.Lift(-powerDown);
+		}
+		else {
+			Robot.binLifter.Lift(0.0);
+		}
+		//Robot.binLifter.Rotate(Robot.oi.coStick.getRawAxis(3));
 	}
 
 	@Override
@@ -31,14 +41,14 @@ public class BinLifterCommand extends Command  {
 	protected void end() {
 		// TODO Auto-generated method stub
 		Robot.binLifter.Lift(0);
-		Robot.binLifter.Rotate(0);
+		Robot.binLifter.rotate(0);
 	}
 
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
 		Robot.binLifter.Lift(0);
-		Robot.binLifter.Rotate(0);
+		Robot.binLifter.rotate(0);
 	}
 
 }

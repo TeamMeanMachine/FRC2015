@@ -71,11 +71,12 @@ public class OI {
     	push = new JoystickButton(driverStick, 8);
     	grab = new JoystickButton(coStick, 4);
     	rotate = new JoystickButton(coStick, 3);
+    	rotate.whenPressed(new Rotate(90));
     	rotateBackwards = new JoystickButton(coStick, 1);
     	rotate180 = new JoystickButton(coStick, 2);
     	rotate180.whenPressed(new Rotate180());
     	rotateBackwards.whenPressed(new RotateBackwards());
-    	rotate.whenPressed(new Rotate());
+//    	rotate.whenPressed(new Rotate());
     	suck.whileHeld(new Suck());
     	spit.whileHeld(new Spit());
     	push.whenPressed(new Push());

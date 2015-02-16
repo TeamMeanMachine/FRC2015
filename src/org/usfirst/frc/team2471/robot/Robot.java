@@ -3,6 +3,7 @@ package org.usfirst.frc.team2471.robot;
 
 import org.usfirst.frc.team2471.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2471.robot.commands.HomeBin;
+import org.usfirst.frc.team2471.robot.commands.HomeBinRotate;
 import org.usfirst.frc.team2471.robot.subsystems.BinLifter;
 import org.usfirst.frc.team2471.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team2471.robot.subsystems.Lifter;
@@ -39,6 +40,8 @@ public class Robot extends IterativeRobot {
 	public static Preferences prefinOnRobot;
     Command autonomousCommand;
     Command homeBinCommand;
+    Command homeRotateCommand;
+    boolean binHomed;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -63,7 +66,9 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
         homeBinCommand = new HomeBin();
-        
+        homeRotateCommand = new HomeBinRotate();
+        binHomed = false;
+        RobotMap.gyro.initGyro();
     }
 	
 	public void disabledPeriodic() {
@@ -72,11 +77,19 @@ public class Robot extends IterativeRobot {
 		//System.out.println("Enc: " + RobotMap.lEnc.get());
 		//SmartDashboard.putNumber("Encoder_Bin", RobotMap.lEnc.get());
 		//System.out.println("IR Sensor " + RobotMap.bToteMax.getVoltage());
+		/*double x2 = Robot.oi.coStick.getAxis(Joystick.AxisType.kX);
+        double y2 = -Robot.oi.coStick.getAxis(Joystick.AxisType.kY);  // odd, but up is negative
+        double r2 =  Robot.oi.coStick.getRawAxis(4);
+        System.out.println(" X : " + x2 + " Y: " + y2 + " R: " + r2);*/
+		//System.out.println("Rotate Encoder:  " + RobotMap.lRotate.getTotalDegrees());
+		//System.out.println("Bottom: " + RobotMap.bLowerLimit.get());
+		//System.out.println("RL: " + RobotMap.leftFrontTwistEnc.getDistance());
 	}
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
+        RobotMap.gyro.reset();
     }
 
     /**
@@ -96,7 +109,8 @@ public class Robot extends IterativeRobot {
 //        System.out.println(RobotMap.rightFrontTwistEnc.getDistance());
 //        System.out.println(RobotMap.leftRearTwistEnc.getDistance());
 //        System.out.println(RobotMap.rightRearTwistEnc.getDistance());
-        if (homeBinCommand !=null) homeBinCommand.start();
+        RobotMap.gyro.reset();
+        homeRotateCommand.start();
     }
 
     /**
@@ -112,6 +126,10 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        if(!binHomed) {
+        	//homeBinCommand.start();
+        	binHomed = true;
+        }
         boolean trigger = false;
         if (RobotMap.bToteMax.getVoltage() >= .7){
         	trigger = true;
@@ -120,6 +138,8 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Lift Access", lifter);
 		SmartDashboard.putData("Swerve Access", RobotMap.swerve);
  //       System.out.println("Encoder Twists: " + RobotMap.leftFrontTwist.get() + " " + RobotMap.leftRearTwist.get() + " " + RobotMap.rightFrontTwist.get() + " " + RobotMap.rightRearTwist.get());
+		
+		
     }
     
     /**

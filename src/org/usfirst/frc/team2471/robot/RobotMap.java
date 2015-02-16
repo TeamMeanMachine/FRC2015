@@ -35,7 +35,8 @@ public class RobotMap {
 	public static DigitalInput lUpperLimit;
 	public static DigitalInput lLowerLimit;
 	public static Encoder lEnc;
-	public static DigitalInput lRotate;
+	public static AbsoluteEncoder lRotate;
+	public static DigitalInput lRotateHome;
 	
 	//Bryce Lifter
 	public static SpeedController bMotorlift;
@@ -79,6 +80,7 @@ public class RobotMap {
 	public static void init(){
 		//Basic Robot stuff
 		gyro = new Gyro(1);
+		
 		//Lucas Lifter
 		lMotor1 = new Talon(1);
 		lMotor2 = new Talon(4);
@@ -86,7 +88,9 @@ public class RobotMap {
 		lEnc = new Encoder(5, 6);
 		lUpperLimit = new DigitalInput(0);
 		lLowerLimit = new DigitalInput(1);
-		lRotate = new DigitalInput(4);
+		lRotate = new AbsoluteEncoder(5);
+		lRotate.setSensitivity(15.43);
+		lRotateHome = new DigitalInput(4);
 		
 		//Bryce Lifter
 		bMotorlift = new Talon(0);

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2471.robot.subsystems;
 
+import org.usfirst.frc.team2471.robot.AbsoluteEncoder;
 import org.usfirst.frc.team2471.robot.RobotMap;
 import org.usfirst.frc.team2471.robot.commands.BinLifterCommand;
 
@@ -17,7 +18,7 @@ public class BinLifter extends Subsystem {
 	DigitalInput upperLimit;
 	DigitalInput lowerLimit;
 	Encoder liftDistance;
-	DigitalInput rotateStop;
+	AbsoluteEncoder rotateStop;
 	
 	public BinLifter(){
 		lift = RobotMap.lMotor1;
@@ -36,18 +37,18 @@ public class BinLifter extends Subsystem {
 	}
 
 	public void Lift(double power){				//FIX MEH 
-//		System.out.println("Lift: " + power );
-		power = power * -1.0;
+		//System.out.println("Lift: " + power );
+		System.out.println("LowerLimit" + lowerLimit.get());
 		if(power < 0 && (lowerLimit.get() == false)){
 			power = power * 0.5;
 		}
 		else if(power > 0 && (upperLimit.get() == false)){
-			power = power * .75;
+			power = power * 0.75;
 		}
 		else{
-			power = 0;
+			power = 0.0;
 		}
-		lift.set(power);
+		lift.set(-power);
 	}
 	
 	public void Zero(){
@@ -71,7 +72,7 @@ public class BinLifter extends Subsystem {
 		}
 	}
 	*/
-	public void RotateToStop(double power){
+	/*public void RotateToStop(double power){
 		//  Make command to deal with the encoder for the preset rotations
 		while (rotateStop.get() == false){
 			rotate.set(power * 0.425);
@@ -96,15 +97,15 @@ public class BinLifter extends Subsystem {
 			rotate.set(power * 0.425);
 		}
 		rotate.set(0.0);
-	}
+	}*/
 	public void rStop() {
 		// TODO Auto-generated method stub
 		rotate.set(0);
 	}
 
-	public void Rotate(double rawAxis) {
+	public void rotate(double power) {
 		// TODO Auto-generated method stub
-		rotate.set(rawAxis);
+		rotate.set(power);
 		
 	}
 }
