@@ -47,8 +47,14 @@ public class  DriveLoop extends Command {
         double x2 = Robot.oi.coStick.getAxis(Joystick.AxisType.kX);
         double y2 = -Robot.oi.coStick.getAxis(Joystick.AxisType.kY);  // odd, but up is negative
         double r2 =  Robot.oi.coStick.getRawAxis(4);
-        double s = -Robot.oi.driverStick.getAxis(Joystick.AxisType.kThrottle);  // kThrottle is the y of the right stick
-        double s2 = -Robot.oi.coStick.getAxis(Joystick.AxisType.kThrottle);
+//        double s = -Robot.oi.driverStick.getAxis(Joystick.AxisType.kThrottle);  // kThrottle is the y of the right stick
+//        double s2 = -Robot.oi.coStick.getAxis(Joystick.AxisType.kThrottle);
+        double speedBinMag = Math.sqrt((x2 * x2) + (y2 * y2));
+        double speedToteMag = Math.sqrt(((x * x) + (y * y)));
+        
+        if (speedBinMag < 0.10){
+        	x2 = y2 = 0.0;
+        }
         
         double gyroAngle = -RobotMap.gyro.getAngle() * (Math.PI/180.0);
 //        double gyroAngle = -RobotMap.compass.getAngle() * (Math.PI/180.0);
@@ -65,11 +71,10 @@ public class  DriveLoop extends Command {
         
         boolean fieldMove = SmartDashboard.getBoolean("FieldMove", true);
 //        boolean fieldSteer = SmartDashboard.getBoolean("FieldSteer", false);
-        
+       
         double speedBin = SmartDashboard.getNumber("SpeedBin");
         double speedTote = SmartDashboard.getNumber("SpeedTote");
-        double speedBinMag = Math.sqrt((x2 * x2) + (y2 * y2));
-        double speedToteMag = Math.sqrt(((x * x) + (y * y)));
+        
         double speedSum = speedBin*speedBinMag + speedTote*speedToteMag;
         if (speedSum > 1.0){
         	speedBin /= speedSum;
@@ -78,10 +83,10 @@ public class  DriveLoop extends Command {
         
         double refinedX = (x * speedTote) + (-x2 * speedBin);
         double refinedY = (y * speedTote) + (-y2 * speedBin);
-        double refinedR = (r * speedTote) + (-r2 * speedBin);
-        double refinedS = (s * speedTote) + (-s2 * speedBin);
+        double refinedR = (r * speedTote) + (r2 * speedBin);
+//        double refinedS = (s * speedTote) + (-s2 * speedBin);
         
-       RobotMap.swerve.drive(refinedX,refinedY,refinedR,refinedS,gyroAngle,accelX,accelY, false, turnSpeed, fieldMove, false, false);
+       RobotMap.swerve.drive(refinedX,refinedY,refinedR,0.0,gyroAngle,accelX,accelY, false, turnSpeed, fieldMove, false, false);
  //      System.out.println( "AccelX: " + accelX + " AccelY: " + accelY + " AccelZ: " + accelZ);
     }
     // Make this return true when this Command no longer needs to run execute()

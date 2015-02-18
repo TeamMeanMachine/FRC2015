@@ -23,6 +23,7 @@ public class Rotate extends PIDCommand{
 
 	@Override
 	protected void usePIDOutput(double output) {
+		System.out.println("Rotating: " + output);
 		Robot.binLifter.rotate(-output);
 	}
 

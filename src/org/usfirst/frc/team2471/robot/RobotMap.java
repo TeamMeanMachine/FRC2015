@@ -85,7 +85,7 @@ public class RobotMap {
 		lMotor1 = new Talon(1);
 		lMotor2 = new Talon(4);
 		lSolenoid1 = new Solenoid(0);
-		lEnc = new Encoder(5, 6);
+		lEnc = new Encoder(5, 6, 8);
 		lUpperLimit = new DigitalInput(0);
 		lLowerLimit = new DigitalInput(1);
 		lRotate = new AbsoluteEncoder(5);

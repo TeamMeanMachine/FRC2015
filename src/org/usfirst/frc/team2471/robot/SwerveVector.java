@@ -91,7 +91,9 @@ public class SwerveVector {
         
         if (swerve.name == "RF") {
         	SmartDashboard.putNumber("Joystick Angle", -polar.GetAngle());
-        }        
+        }
+        
+        SmartDashboard.putNumber("gyroAngle", -gyroAngle);
         polar.AddAngle( -gyroAngle );  // add to convert the strafe request from field to robot space
 
         double vecX = polar.GetX() + Rx(reducedTurn);  // combine strafing with turning via vector addition
