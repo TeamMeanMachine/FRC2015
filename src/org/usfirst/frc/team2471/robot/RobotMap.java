@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -125,7 +126,7 @@ public class RobotMap {
         //leftRearSpeedEnc = new Encoder(1,11, 1,10);
         leftRearSpeed = new CANTalon(4);
         leftRearSwerve = new SwerveModule("LR", leftRearSpeed, leftRearSpeedEnc, leftRearTwist, leftRearTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
-        leftRearSwerve.setTwistOffset(0.0);
+        leftRearSwerve.setTwistOffset(Math.PI);
 
         // **************************** RF ************************
         rightFrontTwist = new CANTalon(5);
@@ -147,5 +148,7 @@ public class RobotMap {
         
 		swerve = new SwerveDrive();
 		swerve.ComputeAllHyp();
+		
+		SmartDashboard.putData(swerve);
 	}
 }

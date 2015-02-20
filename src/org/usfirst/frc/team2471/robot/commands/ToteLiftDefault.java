@@ -20,7 +20,6 @@ public class ToteLiftDefault extends Command  {
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-	//	Robot.lifter.Zero();
 		Robot.lifter.TopGoto();
 	}
 

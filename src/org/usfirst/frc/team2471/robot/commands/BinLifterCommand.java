@@ -16,6 +16,7 @@ public class BinLifterCommand extends Command  {
 
 	@Override
 	protected void execute() {
+		
 		// TODO Auto-generated method stub
 		double powerUp = Robot.oi.coStick.getRawAxis(2);
 		double powerDown = Robot.oi.coStick.getRawAxis(3);
@@ -29,6 +30,7 @@ public class BinLifterCommand extends Command  {
 			Robot.binLifter.Lift(0.0);
 		}
 		//Robot.binLifter.Rotate(Robot.oi.coStick.getRawAxis(3));
+		//Robot.binLifter.Lift();
 	}
 
 	@Override

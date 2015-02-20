@@ -48,7 +48,6 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-    	SmartDashboard.putNumber("yPivot", 10);
 		RobotMap.init();
 		lifter = new Lifter();
 		binLifter = new BinLifter();
@@ -57,6 +56,8 @@ public class Robot extends IterativeRobot {
 		driverStation = DriverStation.getInstance();
 		oi = new OI();
 		prefinOnRobot = Preferences.getInstance();
+		SmartDashboard.putData( Scheduler.getInstance());
+		
 	//	SmartDashboardInput.GetDash();
 		autoChooser = new SendableChooser();
   //      autoChooser.addDefault("Name", new (SmartDashboardInput.AutoChooser()));
@@ -110,7 +111,8 @@ public class Robot extends IterativeRobot {
 //        System.out.println(RobotMap.leftRearTwistEnc.getDistance());
 //        System.out.println(RobotMap.rightRearTwistEnc.getDistance());
         RobotMap.gyro.reset();
-        homeRotateCommand.start();
+//        homeRotateCommand.start();
+        RobotMap.lRotate.reset();
     }
 
     /**

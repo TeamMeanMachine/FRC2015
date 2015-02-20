@@ -48,9 +48,9 @@ public class SwerveDrive extends Subsystem  {
     double prevLF, prevRF, prevLR, prevRR;
     double turnPIDOutput = 0.0;
     private double xPivot = 0.0;
+    private double yPivot = 0.0;
     
     public SwerveDrive() {
-//SmartDashboard.putNumber("yPivot", 10);
         turnPositionPID = new PIDController(-1.5, -0.0, -6.0, new PidTurnPositionSourceOutput(), new PidTurnPositionSourceOutput());
         turnPositionPID.setInputRange( -Math.PI, Math.PI );
         turnPositionPID.setContinuous( true );
@@ -94,7 +94,15 @@ public class SwerveDrive extends Subsystem  {
     }
     public double getYPivot()
     {
-    	return SmartDashboard.getNumber("yPivot");
+    	return yPivot;
+    }
+    public void setXPivot( double _xPivot )
+    {
+    	xPivot = _xPivot;
+    }
+    public void setYPivot( double _yPivot )
+    {
+    	yPivot = _yPivot;
     }
  
     class PidTurnPositionSourceOutput implements PIDSource, PIDOutput {
