@@ -83,7 +83,7 @@ public class Lifter extends Subsystem {
 	
 	public void BottomGoto(){
 		catcher.set(false);
-			lifter.set(-1.0 * 0.75);
+			lifter.set(-1.0 * .85);
 	}
 	
 	public void TopGoto(){

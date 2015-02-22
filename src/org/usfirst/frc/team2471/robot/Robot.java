@@ -84,7 +84,9 @@ public class Robot extends IterativeRobot {
         System.out.println(" X : " + x2 + " Y: " + y2 + " R: " + r2);*/
 		//System.out.println("Rotate Encoder:  " + RobotMap.lRotate.getTotalDegrees());
 		//System.out.println("Bottom: " + RobotMap.bLowerLimit.get());
-		//System.out.println("RL: " + RobotMap.leftFrontTwistEnc.getDistance());
+		System.out.println("RL: " + RobotMap.leftFrontTwistEnc.getDistance());
+		//System.out.println("Encoder Wrist: " + RobotMap.lRotate.getTotalDegrees());
+		System.out.println("FL: " + RobotMap.leftFrontTwistEnc.getDistance());
 	}
 
     public void autonomousInit() {
@@ -140,6 +142,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Lift Access", lifter);
 		SmartDashboard.putData("Swerve Access", RobotMap.swerve);
  //       System.out.println("Encoder Twists: " + RobotMap.leftFrontTwist.get() + " " + RobotMap.leftRearTwist.get() + " " + RobotMap.rightFrontTwist.get() + " " + RobotMap.rightRearTwist.get());
+		//System.out.println("RL: " + RobotMap.leftRearSpeedEnc.getDistance() +  " RR: " + RobotMap.rightRearSpeedEnc.getDistance());
 		
 		
     }

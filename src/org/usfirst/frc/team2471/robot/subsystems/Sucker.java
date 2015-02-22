@@ -34,4 +34,12 @@ public class Sucker extends Subsystem {
 		suckerB1.set(0);
 		suckerB2.set(0);
 	}
+	
+	public void suckRight( double power){
+		suckerB1.set(power);
+	}
+	
+	public void suckLeft( double power){
+		suckerB2.set(power);
+	}
 }

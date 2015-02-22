@@ -9,33 +9,9 @@ public class ToteLiftToteand6 extends CommandGroup  {
 
 	public ToteLiftToteand6() {
 		// TODO Auto-generated constructor stub
-		requires(Robot.lifter);
-	}
-	@Override
-	protected void initialize() {
-		// TODO Auto-generated method stub
-	}
+		//requires(Robot.lifter);
 
-	@Override
-	protected void execute() {
-		// TODO Auto-generated method stub
-	//	Robot.lifter.CoopertitionDefault();
 		addSequential(new ToteLiftPickupPreset());
 		addSequential(new ToteLiftDefault());
 	}
-
-	@Override
-	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	protected void end() {
-	}
-
-	@Override
-	protected void interrupted() {
-	}
-
 }

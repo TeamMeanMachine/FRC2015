@@ -17,8 +17,8 @@ public class Pusher extends Subsystem {
 		// TODO Auto-generated method stub
 	}
 	
-	public void Push(){
-		bPusher1.set(!bPusher1.get());
+	public void Push(boolean state){
+		bPusher1.set(state);
 	}
 	
 	public void ResetRaw(){

@@ -80,8 +80,8 @@ public class AbsoluteEncoder implements PIDSource {
     }
     
     public void reset() {
-    	lastDegrees = 0;
-    	rollovers = 0;
-    	offset = getDegrees();
+//    	lastDegrees = 0;
+//    	rollovers = 0;
+//    	offset = getDegrees();
     }
 }

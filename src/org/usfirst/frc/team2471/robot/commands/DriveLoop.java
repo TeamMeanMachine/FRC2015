@@ -116,7 +116,7 @@ public class  DriveLoop extends Command {
         }
         
         // call drive, indicate field move false, since we already did that computation
-       RobotMap.swerve.drive(-refinedX,-refinedY,-refinedR,0.0,gyroAngle,accelX,accelY, false, turnSpeed, false, false, false);
+       RobotMap.swerve.drive(refinedX,refinedY,refinedR,0.0,gyroAngle,accelX,accelY, false, turnSpeed, false, false, false);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2471.robot;
 
 import org.usfirst.frc.team2471.robot.commands.Grab;
+import org.usfirst.frc.team2471.robot.commands.GyroReset;
 import org.usfirst.frc.team2471.robot.commands.Push;
 import org.usfirst.frc.team2471.robot.commands.Rotate;
 import org.usfirst.frc.team2471.robot.commands.Rotate180;
@@ -59,34 +60,38 @@ public class OI {
     public JoystickButton push;
     public JoystickButton grab;
     public JoystickButton rotate;
-    public JoystickButton rotateBackwards;
-    public JoystickButton rotate180;
+   // public JoystickButton rotateBackwards;
+   // public JoystickButton rotate180;
     public JoystickButton rotateRight; 
     public JoystickButton rotateLeft;
+    public JoystickButton gyroReset;
+    
     public OI(){
     	driverStick = new Joystick(0);
     	coStick = new Joystick(1);
     	presetTote = new JoystickButton(driverStick, 3);
     	presetToteand6 = new JoystickButton(driverStick, 1);
     	presetTotePickup = new JoystickButton(driverStick, 2);
-    	rotateRight = new  JoystickButton(coStick, 5);
-    	rotateLeft = new  JoystickButton(coStick, 6);
-        rotateRight.whileHeld(new RotateNeew());
-        rotateLeft.whileHeld(new Rotateleft());
+//    	rotateRight = new  JoystickButton(coStick, 5);
+//    	rotateLeft = new  JoystickButton(coStick, 6);
+//        rotateRight.whileHeld(new RotateNeew());
+        gyroReset = new JoystickButton(driverStick, 9);
+//        rotateLeft.whileHeld(new Rotateleft());
+        gyroReset.whenPressed(new GyroReset());
     	suck = new JoystickButton(driverStick, 6);
     	spit = new JoystickButton(driverStick, 5);
-    	push = new JoystickButton(driverStick, 8);
+    	push = new JoystickButton(driverStick, 4);
     	grab = new JoystickButton(coStick, 4);
     	rotate = new JoystickButton(coStick, 3);
     	rotate.whenPressed(new Rotate(180));
-    	rotateBackwards = new JoystickButton(coStick, 1);
-    	rotate180 = new JoystickButton(coStick, 2);
-    	rotate180.whenPressed(new Rotate(0));
-    	rotateBackwards.whenPressed(new RotateBackwards());
+    	//rotateBackwards = new JoystickButton(coStick, 1);
+   // 	rotate180 = new JoystickButton(coStick, 2);
+   // 	rotate180.whenPressed(new Rotate(0));
+    	//rotateBackwards.whenPressed(new RotateBackwards());
 //    	rotate.whenPressed(new Rotate());
     	suck.whileHeld(new Suck());
     	spit.whileHeld(new Spit());
-    	push.whenPressed(new Push());
+    	push.whileHeld(new Push());
     	grab.whenPressed(new Grab());
     	presetTote.whenPressed(new ToteLiftDefault());
     	presetTotePickup.whenPressed(new ToteLiftPickupPreset());
