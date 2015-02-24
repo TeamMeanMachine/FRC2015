@@ -37,6 +37,7 @@ public class DriveDistanceCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if(!started) {
+            //startDistance = (RobotMap.leftRearSpeedEnc.getDistance() + RobotMap.rightRearSpeedEnc.getDistance() + RobotMap.leftFrontSpeedEnc.getDistance() + RobotMap.rightFrontSpeedEnc.getDistance())/4;
             startDistance = (RobotMap.leftRearSpeedEnc.getDistance() + RobotMap.rightRearSpeedEnc.getDistance())/2;
             started = true;
         }
@@ -49,8 +50,9 @@ public class DriveDistanceCommand extends Command {
 //        System.out.println("SD: " + startDistance);
 //        System.out.println("Sonar: " + RobotMap.sonar.getDistance());
 //        System.out.println("Distance: " + distance);
-        return (startDistance - (RobotMap.leftRearSpeedEnc.getDistance() + RobotMap.rightRearSpeedEnc.getDistance())/2) > distance || isTimedOut();
-        //return isTimedOut();
+        //return (startDistance - (RobotMap.leftRearSpeedEnc.getDistance() + RobotMap.rightRearSpeedEnc.getDistance() + RobotMap.leftFrontSpeedEnc.getDistance() + RobotMap.rightFrontSpeedEnc.getDistance())/4) > distance || isTimedOut();
+    	return (startDistance - (RobotMap.leftRearSpeedEnc.getDistance() + RobotMap.rightRearSpeedEnc.getDistance())/2)> distance || isTimedOut();
+    	//return isTimedOut();
     }
 
     // Called once after isFinished returns true

@@ -84,9 +84,9 @@ public class Robot extends IterativeRobot {
         System.out.println(" X : " + x2 + " Y: " + y2 + " R: " + r2);*/
 		//System.out.println("Rotate Encoder:  " + RobotMap.lRotate.getTotalDegrees());
 		//System.out.println("Bottom: " + RobotMap.bLowerLimit.get());
-		System.out.println("RL: " + RobotMap.leftFrontTwistEnc.getDistance());
-		//System.out.println("Encoder Wrist: " + RobotMap.lRotate.getTotalDegrees());
-		System.out.println("FL: " + RobotMap.leftFrontTwistEnc.getDistance());
+		//System.out.println("RL: " + RobotMap.leftFrontTwistEnc.getDistance());
+		System.out.println("Encoder Wrist: " + RobotMap.lRotate.getTotalDegrees());
+		//System.out.println("FL: " + RobotMap.leftFrontTwistEnc.getDistance());
 	}
 
     public void autonomousInit() {

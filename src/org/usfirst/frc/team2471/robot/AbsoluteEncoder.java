@@ -41,7 +41,7 @@ public class AbsoluteEncoder implements PIDSource {
             rollovers++;
         }
         lastDegrees = degrees;
-        return degrees + rollovers * (360 / 4.667);
+        return degrees + rollovers * (360 / 4.0);
     }
 
     public double pidGet() {
@@ -80,8 +80,8 @@ public class AbsoluteEncoder implements PIDSource {
     }
     
     public void reset() {
-//    	lastDegrees = 0;
-//    	rollovers = 0;
+    	lastDegrees = 0;
+    	rollovers = 0;
 //    	offset = getDegrees();
     }
 }

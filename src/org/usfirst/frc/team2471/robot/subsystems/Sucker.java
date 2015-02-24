@@ -21,8 +21,8 @@ public class Sucker extends Subsystem {
 	}
 	
 	public void Suck(){
-		suckerB1.set(.75);
-		suckerB2.set(-.75);
+		suckerB1.set(.85);
+		suckerB2.set(-.85);
 	}
 	
 	public void Spit(){

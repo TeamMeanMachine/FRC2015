@@ -61,7 +61,7 @@ public class OI {
     public JoystickButton grab;
     public JoystickButton rotate;
    // public JoystickButton rotateBackwards;
-   // public JoystickButton rotate180;
+    public JoystickButton rotateHome;
     public JoystickButton rotateRight; 
     public JoystickButton rotateLeft;
     public JoystickButton gyroReset;
@@ -85,7 +85,8 @@ public class OI {
     	rotate = new JoystickButton(coStick, 3);
     	rotate.whenPressed(new Rotate(180));
     	//rotateBackwards = new JoystickButton(coStick, 1);
-   // 	rotate180 = new JoystickButton(coStick, 2);
+    	rotateHome = new JoystickButton(coStick, 8);
+    	rotateHome.whenPressed(new Rotate(0));
    // 	rotate180.whenPressed(new Rotate(0));
     	//rotateBackwards.whenPressed(new RotateBackwards());
 //    	rotate.whenPressed(new Rotate());

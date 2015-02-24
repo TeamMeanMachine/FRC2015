@@ -86,11 +86,11 @@ public class RobotMap {
 		lMotor1 = new Talon(1);
 		lMotor2 = new Talon(4);
 		lSolenoid1 = new Solenoid(0);
-		lEnc = new Encoder(5, 6, 8);
+		lEnc = new Encoder(5, 6);
 		lUpperLimit = new DigitalInput(0);
 		lLowerLimit = new DigitalInput(1);
 		lRotate = new AbsoluteEncoder(5);
-		lRotate.setSensitivity(15.43);
+		lRotate.setSensitivity(18.0);
 		lRotateHome = new DigitalInput(4);
 		
 		//Bryce Lifter
@@ -98,7 +98,7 @@ public class RobotMap {
 		bUpperlimit = new DigitalInput(2);
 		bLowerLimit = new DigitalInput(3);
 	//	bTotelimit = new DigitalInput(5);		TO DO Ultrasonic
-		bToteand6 = new DigitalInput(7); //COOPERTITION PRESET
+	//	bToteand6 = new DigitalInput(7); //COOPERTITION PRESET
 		bCatch = new Solenoid(2);
 		bToteMax = new AnalogInput(7);
 		
@@ -114,7 +114,7 @@ public class RobotMap {
         leftFrontTwist = new CANTalon(1);
         leftFrontTwistEnc = new MagnePot(3);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
-        //leftFrontSpeedEnc = new Encoder(1,5, 1,4);
+        leftFrontSpeedEnc = new Encoder(11, 12);
         leftFrontSpeed = new CANTalon(6);
         leftFrontSwerve = new SwerveModule("LF", leftFrontSpeed, leftFrontSpeedEnc, leftFrontTwist, leftFrontTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
         leftFrontSwerve.setTwistOffset(Math.PI);
@@ -123,29 +123,29 @@ public class RobotMap {
         leftRearTwist = new CANTalon(3);
         leftRearTwistEnc = new MagnePot(0);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
-        //leftRearSpeedEnc = new Encoder(5, 6);
+        leftRearSpeedEnc = new Encoder(7, 8);
         leftRearSpeed = new CANTalon(4);
         leftRearSwerve = new SwerveModule("LR", leftRearSpeed, leftRearSpeedEnc, leftRearTwist, leftRearTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
-        leftRearSwerve.setTwistOffset(Math.PI);
+        leftRearSwerve.setTwistOffset(0.0);
 
         // **************************** RF ************************
         rightFrontTwist = new CANTalon(5);
         rightFrontTwistEnc = new MagnePot(2);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
-        //rightFrontSpeedEnc = new Encoder(2,8, 2,7);
+        rightFrontSpeedEnc = new Encoder(13, 14);
         rightFrontSpeed = new CANTalon(2);
         rightFrontSwerve = new SwerveModule("RF", rightFrontSpeed, rightFrontSpeedEnc, rightFrontTwist, rightFrontTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
-        rightFrontSwerve.setTwistOffset(0.0);
+        rightFrontSwerve.setTwistOffset(Math.PI);
 
         // **************************** RR ************************
         rightRearTwist = new CANTalon(7);
         rightRearTwistEnc = new MagnePot(4);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
-        //rightRearSpeedEnc = new Encoder(7, 8);
+        rightRearSpeedEnc = new Encoder(9, 10);
         
         rightRearSpeed = new CANTalon(8);
         rightRearSwerve = new SwerveModule("RR", rightRearSpeed, rightRearSpeedEnc, rightRearTwist, rightRearTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
-        rightRearSwerve.setTwistOffset(Math.PI);
+        rightRearSwerve.setTwistOffset(0.0);
         
 		swerve = new SwerveDrive();
 		swerve.ComputeAllHyp();

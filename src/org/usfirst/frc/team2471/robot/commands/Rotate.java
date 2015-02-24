@@ -25,7 +25,7 @@ public class Rotate extends PIDCommand{
 	protected void usePIDOutput(double output) {
 		System.out.println("Rotating: " + output);
 		
-		Robot.binLifter.rotate(-output * Math.sin(RobotMap.lRotate.getTotalDegrees() / 2 * 3/4 + 1));
+		Robot.binLifter.rotate(-output);
 	}
 
 	@Override

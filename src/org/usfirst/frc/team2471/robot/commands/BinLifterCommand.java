@@ -23,7 +23,7 @@ public class BinLifterCommand extends Command  {
 		double powerLeft = Robot.oi.coStick.getRawAxis(2);
 		double powerRight = Robot.oi.coStick.getRawAxis(3);
 		double minPower = 0.6;
-		double multiplier = -0.5*(1.0-minPower) * Math.cos(RobotMap.lRotate.getTotalDegrees() * Math.PI / 180.0) + (1.0-0.5*(1.0-minPower));
+		double multiplier = 1.0; //-0.5*(1.0-minPower) * Math.cos(RobotMap.lRotate.getTotalDegrees()*2 * Math.PI / 180.0) + (1.0-0.5*(1.0-minPower));
 		if(powerLeft > 0.1) {
 			Robot.binLifter.rotate(powerLeft * multiplier);
 		}
@@ -38,10 +38,10 @@ public class BinLifterCommand extends Command  {
 //		double powerUp = Robot.oi.coStick.getRawAxis(2);
 //		double powerDown = Robot.oi.coStick.getRawAxis(3);
 		if(Robot.oi.coStick.getRawButton(6)) {
-			Robot.binLifter.Lift(0.75);
+			Robot.binLifter.Lift(-0.75);
 		}
 		else if(Robot.oi.coStick.getRawButton(5)) {
-			Robot.binLifter.Lift(-0.5);
+			Robot.binLifter.Lift(0.5);
 		}
 		else {
 			Robot.binLifter.Lift(0.0);
