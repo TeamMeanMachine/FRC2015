@@ -1,24 +1,27 @@
 package org.usfirst.frc.team2471.robot.commands;
 
+import org.usfirst.frc.team2471.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Rotate180 extends Command {
-
-    public Rotate180() {
+public class ResetGyroCommand extends Command {
+    
+    public ResetGyroCommand(double startOffset) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        RobotMap.swerve.setGyroOffset(startOffset);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    //	Robot.binLifter.rotate(180);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        RobotMap.gyro.reset();
     }
 
     // Make this return true when this Command no longer needs to run execute()

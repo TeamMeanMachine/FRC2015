@@ -119,8 +119,7 @@ public class SwerveVector {
         {
             delta = delta + 2*Math.PI;
         }
-//        
-//        desiredAngle = currentAngle + delta;
+
         
         if (delta>Math.PI/2)
         {
@@ -134,5 +133,7 @@ public class SwerveVector {
             desiredAngle = currentAngle + delta;
             desiredPower = -desiredPower;
         }
+        else
+           desiredAngle = currentAngle + delta;
     }
 }

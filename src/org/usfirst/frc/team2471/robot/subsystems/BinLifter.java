@@ -38,9 +38,9 @@ public class BinLifter extends Subsystem {
 
 	public void Lift(double power){				//FIX MEH 
 		//System.out.println("Lift: " + power );
-		System.out.println("LowerLimit" + lowerLimit.get());
+		//System.out.println("LowerLimit" + lowerLimit.get());
 		if(power < 0 && (lowerLimit.get() == false)){
-			power = power * 0.5;
+			power = power * 0.75;
 		}
 		else if(power > 0 && (upperLimit.get() == false)){
 			power = power * 0.75;

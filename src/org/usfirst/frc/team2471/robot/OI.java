@@ -3,16 +3,12 @@ package org.usfirst.frc.team2471.robot;
 import org.usfirst.frc.team2471.robot.commands.Grab;
 import org.usfirst.frc.team2471.robot.commands.GyroReset;
 import org.usfirst.frc.team2471.robot.commands.Push;
-import org.usfirst.frc.team2471.robot.commands.Rotate;
-import org.usfirst.frc.team2471.robot.commands.Rotate180;
-import org.usfirst.frc.team2471.robot.commands.RotateBackwards;
-import org.usfirst.frc.team2471.robot.commands.RotateNeew;
-import org.usfirst.frc.team2471.robot.commands.Rotateleft;
 import org.usfirst.frc.team2471.robot.commands.Spit;
 import org.usfirst.frc.team2471.robot.commands.Suck;
-import org.usfirst.frc.team2471.robot.commands.ToteLiftDefault;
+import org.usfirst.frc.team2471.robot.commands.ToteLiftCycle;
+import org.usfirst.frc.team2471.robot.commands.ToteLiftMiddle;
 import org.usfirst.frc.team2471.robot.commands.ToteLiftPickupPreset;
-import org.usfirst.frc.team2471.robot.commands.ToteLiftToteand6;
+import org.usfirst.frc.team2471.robot.commands.ToteLiftTop;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -52,9 +48,10 @@ public class OI {
 	
 	public Joystick driverStick;
     public Joystick coStick;
-    public JoystickButton presetTote;
-    public JoystickButton presetTotePickup;
-    public JoystickButton presetToteand6;
+    public JoystickButton totePresetMiddle;
+    public JoystickButton totePresetBottom;
+    public JoystickButton totePresetTop;
+    public JoystickButton toteCycle, toteCycle2;
     public JoystickButton suck;
     public JoystickButton spit;
     public JoystickButton push;
@@ -65,28 +62,33 @@ public class OI {
     public JoystickButton rotateRight; 
     public JoystickButton rotateLeft;
     public JoystickButton gyroReset;
+    public JoystickButton wristBrake;
     
     public OI(){
     	driverStick = new Joystick(0);
     	coStick = new Joystick(1);
-    	presetTote = new JoystickButton(driverStick, 3);
-    	presetToteand6 = new JoystickButton(driverStick, 1);
-    	presetTotePickup = new JoystickButton(driverStick, 2);
+    	totePresetMiddle = new JoystickButton(driverStick, 2);
+    	toteCycle = new JoystickButton(driverStick, 3);
+    	toteCycle2 = new JoystickButton(coStick, 1);
+    	totePresetBottom = new JoystickButton(driverStick, 1);
+    	totePresetTop = new JoystickButton(driverStick, 8);
+    	//wristBrake = new JoystickButton(coStick, 2);
+    	//wristBrake.whileHeld(new RotateBrake());
 //    	rotateRight = new  JoystickButton(coStick, 5);
 //    	rotateLeft = new  JoystickButton(coStick, 6);
 //        rotateRight.whileHeld(new RotateNeew());
-        gyroReset = new JoystickButton(driverStick, 9);
+        gyroReset = new JoystickButton(driverStick, 7);
 //        rotateLeft.whileHeld(new Rotateleft());
         gyroReset.whenPressed(new GyroReset());
     	suck = new JoystickButton(driverStick, 6);
     	spit = new JoystickButton(driverStick, 5);
     	push = new JoystickButton(driverStick, 4);
     	grab = new JoystickButton(coStick, 4);
-    	rotate = new JoystickButton(coStick, 3);
-    	rotate.whenPressed(new Rotate(180));
+    	//rotate = new JoystickButton(coStick, 3);
+    	//rotate.whenPressed(new Rotate(180));
     	//rotateBackwards = new JoystickButton(coStick, 1);
-    	rotateHome = new JoystickButton(coStick, 8);
-    	rotateHome.whenPressed(new Rotate(0));
+    	//rotateHome = new JoystickButton(coStick, 8);
+    	//rotateHome.whenPressed(new Rotate(0));
    // 	rotate180.whenPressed(new Rotate(0));
     	//rotateBackwards.whenPressed(new RotateBackwards());
 //    	rotate.whenPressed(new Rotate());
@@ -94,9 +96,12 @@ public class OI {
     	spit.whileHeld(new Spit());
     	push.whileHeld(new Push());
     	grab.whenPressed(new Grab());
-    	presetTote.whenPressed(new ToteLiftDefault());
-    	presetTotePickup.whenPressed(new ToteLiftPickupPreset());
-    	presetToteand6.whenPressed(new ToteLiftToteand6());
+    	totePresetMiddle.whenPressed(new ToteLiftMiddle());
+    	totePresetBottom.whenPressed(new ToteLiftPickupPreset());
+    	totePresetTop.whenPressed(new ToteLiftTop());
+    	toteCycle.whenPressed(new ToteLiftCycle());
+    	toteCycle2.whenPressed(new ToteLiftCycle());
+    	
     	
     }
 }

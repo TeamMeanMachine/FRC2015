@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoOneTotePush extends CommandGroup {
+public class AutoYellowPickUp extends CommandGroup {
     
-    public  AutoOneTotePush() {
+    public  AutoYellowPickUp() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -23,12 +23,12 @@ public class AutoOneTotePush extends CommandGroup {
         // would require.
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
-        // arm.
-//    	addSequential(new DriveTimeCommand(3.0, 0.75, 0.0, 0.0, 0.0));
-//    	addSequential(new DriveTimeCommand(0.25, -0.5, 0.0, 0.0, 0.0));
-    	//addSequential(new DriveDistanceCommand(120.0, 0.0, 0.5, 0.5, 0.0));
-    	//addSequential(new DriveDistanceCommand(44.0, -1.0, 0.0, -0.5, 0.0));
-    	addSequential(new ResetGyroCommand(Math.PI/2.0));
-    	addSequential(new DriveDistanceCommand(97.0, 0.0, 1.0, -1.0, 0.0));
+    	
+        addParallel(new Suck());
+    	addSequential(new DriveTimeCommand(1.5, -0.3, 0.0, -1.0, -0.6));
+    	addParallel(new ToteLiftCycle());
+    	addSequential(new DriveTimeCommand(1.50, 0.0, 0.0, -1.0, -0.2));
+    	
+    	
     }
 }

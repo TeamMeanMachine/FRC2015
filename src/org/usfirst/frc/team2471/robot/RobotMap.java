@@ -47,6 +47,7 @@ public class RobotMap {
 	public static DigitalInput bLowerLimit; // DEFAULT LIMIT ON INIT
 	public static Solenoid bCatch;
 	public static AnalogInput bToteMax;
+	public static AnalogInput bToteMid;
 	//Bryce Pusher
 	public static Solenoid bPush1;
 	
@@ -100,7 +101,8 @@ public class RobotMap {
 	//	bTotelimit = new DigitalInput(5);		TO DO Ultrasonic
 	//	bToteand6 = new DigitalInput(7); //COOPERTITION PRESET
 		bCatch = new Solenoid(2);
-		bToteMax = new AnalogInput(7);
+		bToteMax = new AnalogInput(6);
+		bToteMid = new AnalogInput(7);
 		
 		//Bryce Pusher
 		bPush1 = new Solenoid(1);
@@ -124,6 +126,7 @@ public class RobotMap {
         leftRearTwistEnc = new MagnePot(0);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
         leftRearSpeedEnc = new Encoder(7, 8);
+        leftRearSpeedEnc.setDistancePerPulse(0.0208);
         leftRearSpeed = new CANTalon(4);
         leftRearSwerve = new SwerveModule("LR", leftRearSpeed, leftRearSpeedEnc, leftRearTwist, leftRearTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
         leftRearSwerve.setTwistOffset(0.0);
@@ -142,7 +145,8 @@ public class RobotMap {
         rightRearTwistEnc = new MagnePot(4);
         //int aSlot, int aChannel, int bSlot, int bChannel, int indexSlot, int indexChannel
         rightRearSpeedEnc = new Encoder(9, 10);
-        
+        rightRearSpeedEnc.setDistancePerPulse(0.0208);
+        rightRearSpeedEnc.setReverseDirection(true);
         rightRearSpeed = new CANTalon(8);
         rightRearSwerve = new SwerveModule("RR", rightRearSpeed, rightRearSpeedEnc, rightRearTwist, rightRearTwistEnc ); //SpeedController _speedController, Encoder _speedEnc, SpeedController _twistController, Encoder _twistEnc
         rightRearSwerve.setTwistOffset(0.0);

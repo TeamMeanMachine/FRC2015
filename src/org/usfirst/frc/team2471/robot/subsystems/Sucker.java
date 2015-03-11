@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2471.robot.subsystems;
 
 import org.usfirst.frc.team2471.robot.RobotMap;
+import org.usfirst.frc.team2471.robot.commands.VariableSuck;
 
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -18,6 +19,7 @@ public class Sucker extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
+		setDefaultCommand(new VariableSuck());
 	}
 	
 	public void Suck(){
@@ -26,8 +28,8 @@ public class Sucker extends Subsystem {
 	}
 	
 	public void Spit(){
-		suckerB1.set(-0.4);
-		suckerB2.set(0.4);
+		suckerB1.set(-0.35);
+		suckerB2.set(0.35);
 	}
 	
 	public void Stop(){
@@ -36,10 +38,10 @@ public class Sucker extends Subsystem {
 	}
 	
 	public void suckRight( double power){
-		suckerB1.set(power);
+		suckerB1.set(-power);
 	}
 	
 	public void suckLeft( double power){
-		suckerB2.set(power);
+		suckerB2.set(-power);
 	}
 }

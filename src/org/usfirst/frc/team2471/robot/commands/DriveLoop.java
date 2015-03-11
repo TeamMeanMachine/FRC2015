@@ -30,7 +30,7 @@ public class  DriveLoop extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         SmartDashboard.putNumber("Tote Speed", 1.0);
-        SmartDashboard.putNumber("RC Speed" , 0.7);
+        SmartDashboard.putNumber("RC Speed" , 0.4);
         SmartDashboard.putNumber("Tote Pivot", 10);
     	SmartDashboard.putNumber("RC Pivot", -22);
     	
@@ -46,7 +46,7 @@ public class  DriveLoop extends Command {
     protected void execute() {
         double x =  Robot.oi.driverStick.getAxis(Joystick.AxisType.kX);
         double y = -Robot.oi.driverStick.getAxis(Joystick.AxisType.kY);  // odd, but up is negative
-        double r =  Robot.oi.driverStick.getAxis(Joystick.AxisType.kZ);
+        double r =  Robot.oi.driverStick.getRawAxis(4);
         double x2 = Robot.oi.coStick.getAxis(Joystick.AxisType.kX);
         double y2 = -Robot.oi.coStick.getAxis(Joystick.AxisType.kY);  // odd, but up is negative
         double r2 =  Robot.oi.coStick.getRawAxis(4);
@@ -56,6 +56,12 @@ public class  DriveLoop extends Command {
         double speedToteMag = Math.sqrt((x * x + y * y));
         
         // Bin driver dead bands for sloppy MS controller
+        if (speedToteMag < 0.20){
+        	x = y = 0.0;
+        }
+        if (Math.abs(r) < 0.20)
+        	r = 0.0;
+        
         if (speedBinMag < 0.10){
         	x2 = y2 = 0.0;
         }
@@ -85,7 +91,7 @@ public class  DriveLoop extends Command {
             speedTote /= speedSum;
         }
         
-	    if (fieldMove)
+	    if (fieldMove && !Robot.oi.driverStick.getRawButton(8))
 	    {
 	        Polar polar = new Polar(x,y);   // convert strafe to polar
 	        

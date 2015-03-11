@@ -37,12 +37,14 @@ public class DriveDistanceCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if(!started) {
-            //startDistance = (RobotMap.leftRearSpeedEnc.getDistance() + RobotMap.rightRearSpeedEnc.getDistance() + RobotMap.leftFrontSpeedEnc.getDistance() + RobotMap.rightFrontSpeedEnc.getDistance())/4;
-            startDistance = (RobotMap.leftRearSpeedEnc.getDistance() + RobotMap.rightRearSpeedEnc.getDistance())/2;
+            //startDistance = (Math.abs(RobotMap.leftRearSpeedEnc.getDistance()) + Math.abs(RobotMap.rightRearSpeedEnc.getDistance()) + Math.abs(RobotMap.leftFrontSpeedEnc.getDistance()) + Math.abs(RobotMap.rightFrontSpeedEnc.getDistance()))/4;
+            startDistance = (Math.abs(RobotMap.leftRearSpeedEnc.getDistance()) + Math.abs(RobotMap.rightRearSpeedEnc.getDistance()))/2;
+            //startDistance = (Math.abs(RobotMap.leftRearSpeedEnc.getDistance()));
             started = true;
         }
         double gyroAngle = -RobotMap.gyro.getAngle() * (Math.PI/180.0);
         RobotMap.swerve.drive(x, y, r, s, gyroAngle, 0.0, 0.0, false, 0.0, true, true, false);
+        //System.out.println("Encoder Thing: " + (Math.abs(RobotMap.leftRearSpeedEnc.getDistance())));
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -50,9 +52,11 @@ public class DriveDistanceCommand extends Command {
 //        System.out.println("SD: " + startDistance);
 //        System.out.println("Sonar: " + RobotMap.sonar.getDistance());
 //        System.out.println("Distance: " + distance);
-        //return (startDistance - (RobotMap.leftRearSpeedEnc.getDistance() + RobotMap.rightRearSpeedEnc.getDistance() + RobotMap.leftFrontSpeedEnc.getDistance() + RobotMap.rightFrontSpeedEnc.getDistance())/4) > distance || isTimedOut();
-    	return (startDistance - (RobotMap.leftRearSpeedEnc.getDistance() + RobotMap.rightRearSpeedEnc.getDistance())/2)> distance || isTimedOut();
-    	//return isTimedOut();
+        //return ((Math.abs(RobotMap.leftRearSpeedEnc.getDistance()) + Math.abs(RobotMap.rightRearSpeedEnc.getDistance()) + Math.abs(RobotMap.leftFrontSpeedEnc.getDistance()) + Math.abs(RobotMap.rightFrontSpeedEnc.getDistance()))/4 ) - startDistance > distance || isTimedOut();
+    	//System.out.println((Math.abs(RobotMap.leftRearSpeedEnc.getDistance()) + Math.abs(RobotMap.rightRearSpeedEnc.getDistance()))/2);
+        return (((Math.abs(RobotMap.leftRearSpeedEnc.getDistance()) + Math.abs(RobotMap.rightRearSpeedEnc.getDistance()))/2) - startDistance > distance) || isTimedOut();
+        //return ((Math.abs(RobotMap.leftRearSpeedEnc.getDistance()) - startDistance > distance) || isTimedOut());
+        //return isTimedOut();
     }
 
     // Called once after isFinished returns true
@@ -60,6 +64,7 @@ public class DriveDistanceCommand extends Command {
         double gyroAngle = -RobotMap.gyro.getAngle() * (Math.PI/180.0);
         RobotMap.swerve.drive(0.0, 0.0, 0.0, 0.0, gyroAngle, 0.0, 0.0, false, 0.0, true, true, false);  // stop motors
         started = false;
+        //new ResetDriveEncoders();
     }
 
     // Called when another command which requires one or more of the same

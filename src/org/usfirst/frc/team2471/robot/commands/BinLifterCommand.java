@@ -20,15 +20,21 @@ public class BinLifterCommand extends Command  {
 	protected void execute() {
 		
 		// TODO Auto-generated method stub
-		double powerLeft = Robot.oi.coStick.getRawAxis(2);
-		double powerRight = Robot.oi.coStick.getRawAxis(3);
-		double minPower = 0.6;
-		double multiplier = 1.0; //-0.5*(1.0-minPower) * Math.cos(RobotMap.lRotate.getTotalDegrees()*2 * Math.PI / 180.0) + (1.0-0.5*(1.0-minPower));
+		double powerLeft = 0.0;
+		if(Robot.oi.coStick.getRawButton(2)){
+			powerLeft = 1.0;
+		}
+		double powerRight = 0.0;
+		if(Robot.oi.coStick.getRawButton(3)){
+			powerRight = 1.0;
+		}
+		double minPower = 0.25;
+		double multiplier = -0.5*(1.0-minPower) * Math.cos(RobotMap.lRotate.getTotalDegrees()*2 * Math.PI / 180.0) + (1.0-0.5*(1.0-minPower));
 		if(powerLeft > 0.1) {
 			Robot.binLifter.rotate(powerLeft * multiplier);
 		}
 		else if(powerRight > 0.1) {
-			Robot.binLifter.rotate(-powerRight * multiplier);
+			Robot.binLifter.rotate(-powerRight * multiplier);   
 		}
 		else {
 			Robot.binLifter.rotate(0.0);
@@ -37,11 +43,11 @@ public class BinLifterCommand extends Command  {
 		
 //		double powerUp = Robot.oi.coStick.getRawAxis(2);
 //		double powerDown = Robot.oi.coStick.getRawAxis(3);
-		if(Robot.oi.coStick.getRawButton(6)) {
-			Robot.binLifter.Lift(-0.75);
+		if(Robot.oi.coStick.getRawButton(6)) {  // up
+			Robot.binLifter.Lift(-1.0);
 		}
-		else if(Robot.oi.coStick.getRawButton(5)) {
-			Robot.binLifter.Lift(0.5);
+		else if(Robot.oi.coStick.getRawButton(5)) {  // down
+			Robot.binLifter.Lift(0.75);
 		}
 		else {
 			Robot.binLifter.Lift(0.0);

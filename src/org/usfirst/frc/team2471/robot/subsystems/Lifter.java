@@ -46,7 +46,7 @@ public class Lifter extends Subsystem {
 	public void Liften4days(){
 		catcher.set(false);
 		while(lowerLimit.get() == false){
-			lifter.set(-1 * 0.75);
+			lifter.set(-1.0 * 1.0);
 		}
 		catcher.set(true);
 		while(upperLimit.get() == false && (RobotMap.bToteMax.getVoltage() < .65)){
@@ -83,7 +83,7 @@ public class Lifter extends Subsystem {
 	
 	public void BottomGoto(){
 		catcher.set(false);
-			lifter.set(-1.0 * .85);
+		lifter.set(-1.0 * 1.0);
 	}
 	
 	public void TopGoto(){

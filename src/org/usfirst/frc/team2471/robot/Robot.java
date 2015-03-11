@@ -1,7 +1,10 @@
 
 package org.usfirst.frc.team2471.robot;
 
-import org.usfirst.frc.team2471.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2471.robot.commands.AutoGrabCan;
+import org.usfirst.frc.team2471.robot.commands.AutoStayThere;
+import org.usfirst.frc.team2471.robot.commands.AutoThreeTote;
+import org.usfirst.frc.team2471.robot.commands.AutoYellowPickUp;
 import org.usfirst.frc.team2471.robot.commands.HomeBin;
 import org.usfirst.frc.team2471.robot.commands.HomeBinRotate;
 import org.usfirst.frc.team2471.robot.subsystems.BinLifter;
@@ -42,6 +45,7 @@ public class Robot extends IterativeRobot {
     Command homeBinCommand;
     Command homeRotateCommand;
     boolean binHomed;
+    double autoAngle;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -56,16 +60,21 @@ public class Robot extends IterativeRobot {
 		driverStation = DriverStation.getInstance();
 		oi = new OI();
 		prefinOnRobot = Preferences.getInstance();
-		SmartDashboard.putData( Scheduler.getInstance());
+		//SmartDashboard.putNumber("AutoAngle", 0.0);
+//		SmartDashboard.putData( Scheduler.getInstance());
 		
 	//	SmartDashboardInput.GetDash();
 		autoChooser = new SendableChooser();
-  //      autoChooser.addDefault("Name", new (SmartDashboardInput.AutoChooser()));
+        autoChooser.addDefault("3 Tote Pick Up", new AutoThreeTote());
+        autoChooser.addObject("Stay", new AutoStayThere());
+        autoChooser.addObject("Grab Can", new AutoGrabCan());
+        autoChooser.addObject("1 Tote Pick Up", new AutoYellowPickUp());
+        
 //        autoChooser.addObject("Name", new Command());
 		
         SmartDashboard.putData("AutoChooser", autoChooser);
         // instantiate the command used for the autonomous period
-        autonomousCommand = new ExampleCommand();
+        
         homeBinCommand = new HomeBin();
         homeRotateCommand = new HomeBinRotate();
         binHomed = false;
@@ -84,15 +93,39 @@ public class Robot extends IterativeRobot {
         System.out.println(" X : " + x2 + " Y: " + y2 + " R: " + r2);*/
 		//System.out.println("Rotate Encoder:  " + RobotMap.lRotate.getTotalDegrees());
 		//System.out.println("Bottom: " + RobotMap.bLowerLimit.get());
-		//System.out.println("RL: " + RobotMap.leftFrontTwistEnc.getDistance());
-		System.out.println("Encoder Wrist: " + RobotMap.lRotate.getTotalDegrees());
-		//System.out.println("FL: " + RobotMap.leftFrontTwistEnc.getDistance());
+		SmartDashboard.putNumber("FL Twist Encoder", RobotMap.leftFrontTwistEnc.getDistance());
+		SmartDashboard.putNumber("FR Twist Encoder", RobotMap.rightFrontTwistEnc.getDistance());
+		SmartDashboard.putNumber("RL Twist Encoder", RobotMap.leftRearTwistEnc.getDistance());
+		SmartDashboard.putNumber("RR Twist Encoder", RobotMap.rightRearTwistEnc.getDistance());
+		//System.out.println("Speed: " + RobotMap.rightRearSpeedEnc.getDistance());
+		//SmartDashboard.putNumber("Rotate enc", RobotMap.lRotate.getDegrees());
+		//SmartDashboard.putNumber("Angle Auto", autoAngle);
+		//System.out.println("FL: " + RobotMap.leftFrontTwistEnc.getDistance() + " FR: " + RobotMap.rightFrontTwistEnc.getDistance());
+		//System.out.println("this is workings");
+		//System.out.println("Encoder Wrist: " + RobotMap.lRotate.getTotalDegrees());
+		//System.out.println("RR: " + RobotMap.rightRearTwistEnc.getDistance());
 	}
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
+    	RobotMap.gyro.reset(); 
+        RobotMap.swerve.setGyroOffset(151.0*Math.PI/180.0);
+    	//RobotMap.swerve.setGyroOffset(90.0*Math.PI/180.0); 
+    	//RobotMap.swerve.setGyroOffset(0.0*Math.PI/180.0);
+    	//double angle = SmartDashboard.getNumber("AutoAngle", 0.0);
+    	//RobotMap.swerve.setGyroOffset(angle * Math.PI/180.0);
+    	RobotMap.rightRearSpeedEnc.reset();
+    	RobotMap.leftRearSpeedEnc.reset();
+    	RobotMap.rightFrontSpeedEnc.reset();
+    	RobotMap.leftFrontSpeedEnc.reset();
+    	//autonomousCommand = new AutoThreeTote();
+    	//autonomousCommand = new AutoOneTotePush();
+    	//autonomousCommand = new AutoStayThere();
+    	//autonomousCommand = new AutoYellowPickUp();
+    	//autonomousCommand = new AutoGrabCan();
+    	//autonomousCommand = new AutoGrabCanAndMove();
+    	autonomousCommand = (Command)autoChooser.getSelected();
         if (autonomousCommand != null) autonomousCommand.start();
-        RobotMap.gyro.reset();
     }
 
     /**
@@ -112,7 +145,7 @@ public class Robot extends IterativeRobot {
 //        System.out.println(RobotMap.rightFrontTwistEnc.getDistance());
 //        System.out.println(RobotMap.leftRearTwistEnc.getDistance());
 //        System.out.println(RobotMap.rightRearTwistEnc.getDistance());
-        RobotMap.gyro.reset();
+//        RobotMap.gyro.reset();
 //        homeRotateCommand.start();
         RobotMap.lRotate.reset();
     }
@@ -123,6 +156,7 @@ public class Robot extends IterativeRobot {
      */
     public void disabledInit(){
    // 	SmartDashboardInput.SaveDataDash();
+    	//TMMDashboard.saveAllValuesToPrefs();
     }
 
     /**
@@ -141,10 +175,16 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean("IR Sensor ", trigger);
         SmartDashboard.putData("Lift Access", lifter);
 		SmartDashboard.putData("Swerve Access", RobotMap.swerve);
+		SmartDashboard.putNumber("FL Drive Encoder", RobotMap.leftFrontSpeedEnc.getDistance());
+		SmartDashboard.putNumber("FR Drive Encoder", RobotMap.rightFrontSpeedEnc.getDistance());
+		SmartDashboard.putNumber("RL Drive Encoder", RobotMap.leftRearSpeedEnc.getDistance());
+		SmartDashboard.putNumber("RR Drive Encoder", RobotMap.rightRearSpeedEnc.getDistance());
  //       System.out.println("Encoder Twists: " + RobotMap.leftFrontTwist.get() + " " + RobotMap.leftRearTwist.get() + " " + RobotMap.rightFrontTwist.get() + " " + RobotMap.rightRearTwist.get());
 		//System.out.println("RL: " + RobotMap.leftRearSpeedEnc.getDistance() +  " RR: " + RobotMap.rightRearSpeedEnc.getDistance());
 		
-		
+		//System.out.println("Distance L: " + RobotMap.leftRearSpeedEnc.getDistance() + "\tDistance R: " + RobotMap.rightRearSpeedEnc.getDistance());
+		//System.out.println("ToteMid: " + RobotMap.bToteMid.getVoltage());
+		System.out.println(RobotMap.leftRearSpeedEnc.getDistance());
     }
     
     /**
