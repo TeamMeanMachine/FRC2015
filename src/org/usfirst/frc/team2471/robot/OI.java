@@ -67,17 +67,17 @@ public class OI {
     public OI(){
     	driverStick = new Joystick(0);
     	coStick = new Joystick(1);
-    	totePresetMiddle = new JoystickButton(driverStick, 2);
-    	toteCycle = new JoystickButton(driverStick, 3);
+    	totePresetMiddle = new JoystickButton(driverStick, 3);
+    	toteCycle = new JoystickButton(driverStick, 1);
     	toteCycle2 = new JoystickButton(coStick, 1);
-    	totePresetBottom = new JoystickButton(driverStick, 1);
+    	totePresetBottom = new JoystickButton(driverStick, 2);
     	totePresetTop = new JoystickButton(driverStick, 8);
     	//wristBrake = new JoystickButton(coStick, 2);
     	//wristBrake.whileHeld(new RotateBrake());
 //    	rotateRight = new  JoystickButton(coStick, 5);
 //    	rotateLeft = new  JoystickButton(coStick, 6);
 //        rotateRight.whileHeld(new RotateNeew());
-        gyroReset = new JoystickButton(driverStick, 7);
+        gyroReset = new JoystickButton(driverStick, 10);
 //        rotateLeft.whileHeld(new Rotateleft());
         gyroReset.whenPressed(new GyroReset());
     	suck = new JoystickButton(driverStick, 6);

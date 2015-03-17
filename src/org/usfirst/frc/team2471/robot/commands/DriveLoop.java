@@ -46,7 +46,7 @@ public class  DriveLoop extends Command {
     protected void execute() {
         double x =  Robot.oi.driverStick.getAxis(Joystick.AxisType.kX);
         double y = -Robot.oi.driverStick.getAxis(Joystick.AxisType.kY);  // odd, but up is negative
-        double r =  Robot.oi.driverStick.getRawAxis(4);
+        double r =  Robot.oi.driverStick.getAxis(Joystick.AxisType.kZ);
         double x2 = Robot.oi.coStick.getAxis(Joystick.AxisType.kX);
         double y2 = -Robot.oi.coStick.getAxis(Joystick.AxisType.kY);  // odd, but up is negative
         double r2 =  Robot.oi.coStick.getRawAxis(4);
@@ -56,11 +56,11 @@ public class  DriveLoop extends Command {
         double speedToteMag = Math.sqrt((x * x + y * y));
         
         // Bin driver dead bands for sloppy MS controller
-        if (speedToteMag < 0.20){
-        	x = y = 0.0;
-        }
-        if (Math.abs(r) < 0.20)
-        	r = 0.0;
+//        if (speedToteMag < 0.10){
+//        	x = y = 0.0;
+//        }
+//        if (Math.abs(r) < 0.10)
+//        	r = 0.0;
         
         if (speedBinMag < 0.10){
         	x2 = y2 = 0.0;

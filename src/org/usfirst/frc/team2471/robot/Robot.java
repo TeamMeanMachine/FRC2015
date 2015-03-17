@@ -65,7 +65,7 @@ public class Robot extends IterativeRobot {
 		
 	//	SmartDashboardInput.GetDash();
 		autoChooser = new SendableChooser();
-        autoChooser.addDefault("3 Tote Pick Up", new AutoThreeTote());
+        autoChooser.addDefault("3 Tote Pick Up", new AutoStayThere());
         autoChooser.addObject("Stay", new AutoStayThere());
         autoChooser.addObject("Grab Can", new AutoGrabCan());
         autoChooser.addObject("1 Tote Pick Up", new AutoYellowPickUp());
@@ -100,6 +100,7 @@ public class Robot extends IterativeRobot {
 		//System.out.println("Speed: " + RobotMap.rightRearSpeedEnc.getDistance());
 		//SmartDashboard.putNumber("Rotate enc", RobotMap.lRotate.getDegrees());
 		//SmartDashboard.putNumber("Angle Auto", autoAngle);
+		SmartDashboard.putNumber("IR V;", RobotMap.bToteMax.getVoltage());
 		//System.out.println("FL: " + RobotMap.leftFrontTwistEnc.getDistance() + " FR: " + RobotMap.rightFrontTwistEnc.getDistance());
 		//System.out.println("this is workings");
 		//System.out.println("Encoder Wrist: " + RobotMap.lRotate.getTotalDegrees());
@@ -109,7 +110,7 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
     	RobotMap.gyro.reset(); 
-        RobotMap.swerve.setGyroOffset(151.0*Math.PI/180.0);
+        RobotMap.swerve.setGyroOffset(140.0*Math.PI/180.0);
     	//RobotMap.swerve.setGyroOffset(90.0*Math.PI/180.0); 
     	//RobotMap.swerve.setGyroOffset(0.0*Math.PI/180.0);
     	//double angle = SmartDashboard.getNumber("AutoAngle", 0.0);

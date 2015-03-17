@@ -16,6 +16,10 @@ public class DriveDistanceCommand extends Command {
     boolean started = false;
     double startDistance;
     
+    public DriveDistanceCommand( double _distance, double _x, double _y, double _r, double _s, double _timeout ) {
+    	this(_distance, _x, _y, _r, _s);
+    	setTimeout(_timeout);
+    }
     public DriveDistanceCommand( double _distance, double _x, double _y, double _r, double _s ) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

@@ -27,31 +27,34 @@ public class AutoThreeTote extends CommandGroup {
     	
     	//DriveDistanceCommand( double _distance, double _x, double _y, double _r, double _s )
     	
+    	//addSequential(new DriveTimeCommand(.5, 0.0, 0.0, -1.0, -0.5));
     	addParallel(new SuckRaw(0.4, 0.7));
-    	addSequential(new DriveDistanceCommand(28.0, -0.3, 0.0, -1.0, -0.5));
+    	addSequential(new DriveDistanceCommand(27.0, -0.25, 0.0, -1.0, -0.5, 3.0));
     	addSequential(new ResetDriveEncoders());
-    	addSequential(new DriveTimeCommand(.25, 0.0, 0.0, -1.0, -0.5));
+    	addSequential(new DriveTimeCommand(.75, 0.0, 0.0, -1.0, -0.5));
     	addParallel(new ToteLiftCycle());
     	addSequential(new DriveTimeCommand(1.0, 0.0, 0.0, -1.0, -0.5));
     	addParallel(new VariableSpit(1.0 , 1.0));
-    	addSequential(new DriveDistanceCommand(54.0, -0.5, 0.0, -1.0, -0.5));
+    	addSequential(new DriveDistanceCommand(36.0, -0.45, 0.0, -1.0, -0.0, 3.0));
     	addSequential(new ResetDriveEncoders());
-    	addParallel(new SuckRaw(0.4, 0.7));
-    	addSequential(new DriveDistanceCommand(26.0, -0.25, 0.0, -1.0, -0.5));
+    	addParallel(new SuckRaw(0.4, 1.0));
+    	addSequential(new DriveDistanceCommand(41.0, -0.26, 0.0, -1.0, -0.5));
     	addSequential(new ResetDriveEncoders());
     	addParallel(new ToteLiftCycle());
     	addSequential(new DriveTimeCommand(1.2, 0.0, 0.0, -1.0, -0.5));
     	addParallel(new VariableSpit(1.0, 1.0));
-    	addSequential(new DriveDistanceCommand(63.0, -0.5, 0.0, -1.0, -0.5));
+    	addSequential(new DriveDistanceCommand(42.0, -0.45, 0.0, -1.0, -0.0, 3.0));
     	addSequential(new ResetDriveEncoders());
     	addParallel(new SuckRaw(0.4, 0.7));
-    	addSequential(new DriveDistanceCommand(25.0, -0.28, 0.0, -1.0, -0.5));
+    	addSequential(new DriveDistanceCommand(45.0, -0.26, 0.0, -1.0, -0.5, 3.0));
     	addSequential(new ResetDriveEncoders());
     	addParallel(new ToteLiftPickupPreset());
-    	addSequential(new DriveTimeCommand(1.0, 0.0, 0.0, -1.0, -0.5));
-    	addSequential(new DriveDistanceCommand(40.0, 0.0, 0.75, 0.0, 0.5));
+    	addSequential(new DriveTimeCommand(1.25, 0.0, 0.0, -1.0, -0.5));
+    	addSequential(new DriveTimeCommand(1.0, 0.0, 0.5, 0.0, 1.0));
+    	//addSequential(new DriveDistanceCommand(30.0, 0.0, 0.75, 0.0, 0.75));
     	addSequential(new ResetDriveEncoders());
-    	addParallel(new VariableSpit(.75, .75));
+    	addParallel(new Push());
+    	addParallel(new VariableSpit(1.0, 1.0));
     	addSequential(new GyroReset());
     	
     	

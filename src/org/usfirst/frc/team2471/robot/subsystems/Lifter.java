@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2471.robot.subsystems;
 
+import org.usfirst.frc.team2471.robot.Robot;
 import org.usfirst.frc.team2471.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -87,6 +88,7 @@ public class Lifter extends Subsystem {
 	}
 	
 	public void TopGoto(){
+		//Robot.sucker.Suck();
 		catcher.set(true);
 		lifter.set(1.0);
 	}
