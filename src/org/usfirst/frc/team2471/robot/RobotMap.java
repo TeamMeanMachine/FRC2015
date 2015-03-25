@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
@@ -46,6 +48,7 @@ public class RobotMap {
 	public static DigitalInput bToteand6; // COOPERTITION PRESET
 	public static DigitalInput bLowerLimit; // DEFAULT LIMIT ON INIT
 	public static Solenoid bCatch;
+	public static Solenoid bHolderThing;
 	public static AnalogInput bToteMax;
 	public static AnalogInput bToteMid;
 	//Bryce Pusher
@@ -54,6 +57,9 @@ public class RobotMap {
 	//Bryce Sucker
 	public static SpeedController bSucker1;
 	public static SpeedController bSucker2;
+	
+	//Lucas Graber
+	public static Solenoid lGrabber;
 	
 	//AHAM..... SWERVES
 	//LEFT
@@ -77,6 +83,10 @@ public class RobotMap {
 	 public static SwerveModule leftFrontSwerve, leftRearSwerve, rightRearSwerve, rightFrontSwerve;
 	 public static SwerveDrive swerve;
 	 public static Gyro gyro;
+	 
+	 public static PowerDistributionPanel pdp;
+	 
+	 public static Servo servo;
 	 
 	 
 	public static void init(){
@@ -103,6 +113,8 @@ public class RobotMap {
 		bCatch = new Solenoid(2);
 		bToteMax = new AnalogInput(6);
 		bToteMid = new AnalogInput(7);
+		bHolderThing = new Solenoid(3);
+		
 		
 		//Bryce Pusher
 		bPush1 = new Solenoid(1);
@@ -110,6 +122,9 @@ public class RobotMap {
 		//Bryce Sucker
 		bSucker1 = new Talon(3);
 		bSucker2 = new Talon(2);
+		
+		//Lucas Grabber
+		lGrabber = new Solenoid(4);
 		
 		//Bryce Swerves of doom
 		// **************************** LF ************************
@@ -154,6 +169,10 @@ public class RobotMap {
 		swerve = new SwerveDrive();
 		swerve.ComputeAllHyp();
 		
+		pdp = new PowerDistributionPanel();
+		
 		SmartDashboard.putData(swerve);
+		
+		servo = new Servo(6);
 	}
 }

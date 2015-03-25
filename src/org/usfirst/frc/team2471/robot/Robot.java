@@ -9,6 +9,7 @@ import org.usfirst.frc.team2471.robot.commands.HomeBin;
 import org.usfirst.frc.team2471.robot.commands.HomeBinRotate;
 import org.usfirst.frc.team2471.robot.subsystems.BinLifter;
 import org.usfirst.frc.team2471.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team2471.robot.subsystems.Grabber;
 import org.usfirst.frc.team2471.robot.subsystems.Lifter;
 import org.usfirst.frc.team2471.robot.subsystems.Pusher;
 import org.usfirst.frc.team2471.robot.subsystems.Sucker;
@@ -41,12 +42,14 @@ public class Robot extends IterativeRobot {
 	public static DriverStation driverStation;
 	public static SendableChooser autoChooser;
 	public static Preferences prefinOnRobot;
+	public static Grabber grabber;
     Command autonomousCommand;
     Command homeBinCommand;
     Command homeRotateCommand;
     boolean binHomed;
     double autoAngle;
 
+    double maxLiftCurrent;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -55,6 +58,7 @@ public class Robot extends IterativeRobot {
 		RobotMap.init();
 		lifter = new Lifter();
 		binLifter = new BinLifter();
+		grabber = new Grabber();
 		pusher = new Pusher();
 		sucker = new Sucker();
 		driverStation = DriverStation.getInstance();
@@ -65,7 +69,7 @@ public class Robot extends IterativeRobot {
 		
 	//	SmartDashboardInput.GetDash();
 		autoChooser = new SendableChooser();
-        autoChooser.addDefault("3 Tote Pick Up", new AutoStayThere());
+        autoChooser.addDefault("3 Tote Pick Up", new AutoThreeTote());
         autoChooser.addObject("Stay", new AutoStayThere());
         autoChooser.addObject("Grab Can", new AutoGrabCan());
         autoChooser.addObject("1 Tote Pick Up", new AutoYellowPickUp());
@@ -149,6 +153,7 @@ public class Robot extends IterativeRobot {
 //        RobotMap.gyro.reset();
 //        homeRotateCommand.start();
         RobotMap.lRotate.reset();
+        maxLiftCurrent = 0.0;
     }
 
     /**
@@ -185,7 +190,18 @@ public class Robot extends IterativeRobot {
 		
 		//System.out.println("Distance L: " + RobotMap.leftRearSpeedEnc.getDistance() + "\tDistance R: " + RobotMap.rightRearSpeedEnc.getDistance());
 		//System.out.println("ToteMid: " + RobotMap.bToteMid.getVoltage());
-		System.out.println(RobotMap.leftRearSpeedEnc.getDistance());
+//		System.out.println(RobotMap.leftRearSpeedEnc.getDistance());
+		double liftCurrent = RobotMap.pdp.getCurrent(1);
+		if(liftCurrent > maxLiftCurrent)
+			maxLiftCurrent = liftCurrent;
+		System.out.println("Current lifter current: " + liftCurrent + "Max: " + maxLiftCurrent);
+		
+		if(oi.coStick.getRawButton(6)) {
+			RobotMap.servo.set(90);
+		}
+		else {
+			RobotMap.servo.set(0);
+		}
     }
     
     /**

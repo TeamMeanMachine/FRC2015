@@ -5,10 +5,11 @@ import org.usfirst.frc.team2471.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Push extends Command{
+public class ToteLiftSkipOverride extends Command  {
 
-	public Push(){
-		requires(Robot.pusher);
+	public ToteLiftSkipOverride() {
+		// TODO Auto-generated constructor stub
+		requires(Robot.lifter);
 	}
 	
 	@Override
@@ -19,9 +20,7 @@ public class Push extends Command{
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		RobotMap.bCatch.set(true);
-		Robot.pusher.Push(true);
-		Robot.sucker.Spit();
+		Robot.lifter.BottomGoto();
 	}
 
 	@Override
@@ -33,19 +32,13 @@ public class Push extends Command{
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-//		Robot.pusher.ResetRaw();
-		Robot.sucker.Stop();
-		Robot.pusher.Push(false);
-		RobotMap.bCatch.set(false);
+		Robot.lifter.SetRawLift(0);
 	}
 
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
-//		Robot.pusher.ResetRaw();
-		Robot.sucker.Stop();
-		Robot.pusher.Push(false);
-		RobotMap.bCatch.set(false);
+		Robot.lifter.SetRawLift(0);
 	}
 
 }

@@ -26,7 +26,7 @@ public class ToteLiftMiddle extends Command  {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		if(RobotMap.bToteMax.getVoltage() >= 1.7 || RobotMap.bUpperlimit.get()){
+		if(RobotMap.bToteMax.getVoltage() >= 1.7 || RobotMap.bUpperlimit.get() || RobotMap.pdp.getCurrent(1) > 70.0 ){
 			return true;
 		}
 		return false;

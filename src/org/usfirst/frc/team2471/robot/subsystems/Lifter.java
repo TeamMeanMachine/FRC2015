@@ -99,4 +99,16 @@ public class Lifter extends Subsystem {
 		}
 		lifter.set(0);
 	}
+	
+	public void hold() {
+		RobotMap.bHolderThing.set(true);
+	}
+	
+	public void unHold() {
+		RobotMap.bHolderThing.set(false);
+	}
+	
+	public void holdToggle() {
+		RobotMap.bHolderThing.set(!RobotMap.bHolderThing.get());
+	}
 }

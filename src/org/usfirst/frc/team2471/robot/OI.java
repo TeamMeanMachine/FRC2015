@@ -3,11 +3,14 @@ package org.usfirst.frc.team2471.robot;
 import org.usfirst.frc.team2471.robot.commands.Grab;
 import org.usfirst.frc.team2471.robot.commands.GyroReset;
 import org.usfirst.frc.team2471.robot.commands.Push;
+import org.usfirst.frc.team2471.robot.commands.ShoulderShrug;
 import org.usfirst.frc.team2471.robot.commands.Spit;
 import org.usfirst.frc.team2471.robot.commands.Suck;
+import org.usfirst.frc.team2471.robot.commands.ToteHoldToggle;
 import org.usfirst.frc.team2471.robot.commands.ToteLiftCycle;
 import org.usfirst.frc.team2471.robot.commands.ToteLiftMiddle;
 import org.usfirst.frc.team2471.robot.commands.ToteLiftPickupPreset;
+import org.usfirst.frc.team2471.robot.commands.ToteLiftSkipOverride;
 import org.usfirst.frc.team2471.robot.commands.ToteLiftTop;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -63,11 +66,15 @@ public class OI {
     public JoystickButton rotateLeft;
     public JoystickButton gyroReset;
     public JoystickButton wristBrake;
+    public JoystickButton toggleHold;
+    public JoystickButton liftOverride;
+    public JoystickButton thiefOfCansAndDignity;
     
     public OI(){
     	driverStick = new Joystick(0);
     	coStick = new Joystick(1);
     	totePresetMiddle = new JoystickButton(driverStick, 3);
+    	thiefOfCansAndDignity = new JoystickButton(driverStick, 9);
     	toteCycle = new JoystickButton(driverStick, 1);
     	toteCycle2 = new JoystickButton(coStick, 1);
     	totePresetBottom = new JoystickButton(driverStick, 2);
@@ -84,6 +91,8 @@ public class OI {
     	spit = new JoystickButton(driverStick, 5);
     	push = new JoystickButton(driverStick, 4);
     	grab = new JoystickButton(coStick, 4);
+    	toggleHold = new JoystickButton(coStick, 2);
+    	liftOverride = new JoystickButton(coStick, 3);
     	//rotate = new JoystickButton(coStick, 3);
     	//rotate.whenPressed(new Rotate(180));
     	//rotateBackwards = new JoystickButton(coStick, 1);
@@ -95,12 +104,16 @@ public class OI {
     	suck.whileHeld(new Suck());
     	spit.whileHeld(new Spit());
     	push.whileHeld(new Push());
+    	thiefOfCansAndDignity.whenPressed(new ShoulderShrug(true));
+    	thiefOfCansAndDignity.whenReleased(new ShoulderShrug(false));
     	grab.whenPressed(new Grab());
     	totePresetMiddle.whenPressed(new ToteLiftMiddle());
     	totePresetBottom.whenPressed(new ToteLiftPickupPreset());
     	totePresetTop.whenPressed(new ToteLiftTop());
     	toteCycle.whenPressed(new ToteLiftCycle());
     	toteCycle2.whenPressed(new ToteLiftCycle());
+    	toggleHold.whenPressed(new ToteHoldToggle());
+    	liftOverride.whileHeld(new ToteLiftSkipOverride());
     	
     	
     }

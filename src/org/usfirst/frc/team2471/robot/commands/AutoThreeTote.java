@@ -50,7 +50,7 @@ public class AutoThreeTote extends CommandGroup {
     	addSequential(new ResetDriveEncoders());
     	addParallel(new ToteLiftPickupPreset());
     	addSequential(new DriveTimeCommand(1.25, 0.0, 0.0, -1.0, -0.5));
-    	addSequential(new DriveTimeCommand(1.0, 0.0, 0.5, 0.0, 1.0));
+    	addSequential(new DriveDistanceCommand(90.0, -0.25, 0.5, -1.0, 0.0));
     	//addSequential(new DriveDistanceCommand(30.0, 0.0, 0.75, 0.0, 0.75));
     	addSequential(new ResetDriveEncoders());
     	addParallel(new Push());
