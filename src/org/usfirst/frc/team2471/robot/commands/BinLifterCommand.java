@@ -65,13 +65,11 @@ public class BinLifterCommand extends Command  {
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		Robot.binLifter.rotate(0);
 	}
 
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
-		Robot.binLifter.rotate(0);
 	}
 
 }

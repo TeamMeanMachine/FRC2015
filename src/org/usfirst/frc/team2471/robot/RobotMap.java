@@ -51,6 +51,7 @@ public class RobotMap {
 	public static Solenoid bHolderThing;
 	public static AnalogInput bToteMax;
 	public static AnalogInput bToteMid;
+	
 	//Bryce Pusher
 	public static Solenoid bPush1;
 	

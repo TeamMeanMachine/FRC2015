@@ -21,7 +21,7 @@ public class CopyOfRotate extends PIDCommand{
 
 	@Override
 	protected void usePIDOutput(double output) {
-		Robot.binLifter.rotate(output);
+		Robot.claw.rotate(output);
 	}
 
 	@Override

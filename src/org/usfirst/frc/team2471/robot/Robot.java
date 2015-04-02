@@ -9,6 +9,7 @@ import org.usfirst.frc.team2471.robot.commands.HomeBin;
 import org.usfirst.frc.team2471.robot.commands.HomeBinRotate;
 import org.usfirst.frc.team2471.robot.commands.ShoulderShrug;
 import org.usfirst.frc.team2471.robot.subsystems.BinLifter;
+import org.usfirst.frc.team2471.robot.subsystems.Claw;
 import org.usfirst.frc.team2471.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team2471.robot.subsystems.Grabber;
 import org.usfirst.frc.team2471.robot.subsystems.Lifter;
@@ -36,6 +37,7 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 	public static BinLifter binLifter;
+	public static Claw claw;
 	public static Lifter lifter;
 	public static Pusher pusher;
 	public static Sucker sucker;
@@ -58,6 +60,7 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		RobotMap.init();
 		lifter = new Lifter();
+		claw = new Claw();
 		binLifter = new BinLifter();
 		grabber = new Grabber();
 		pusher = new Pusher();

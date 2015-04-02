@@ -13,7 +13,7 @@ public class HomeBinRotate extends Command {
     public HomeBinRotate() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.binLifter);
+    	requires(Robot.claw);
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +22,7 @@ public class HomeBinRotate extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.binLifter.rotate(0.25);
+    	Robot.claw.rotate(0.25);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -33,12 +33,12 @@ public class HomeBinRotate extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	RobotMap.lRotate.reset();
-    	Robot.binLifter.rotate(0.0);
+    	Robot.claw.rotate(0.0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.binLifter.rotate(0.0);
+    	Robot.claw.rotate(0.0);
     }
 }

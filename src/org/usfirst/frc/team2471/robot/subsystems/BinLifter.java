@@ -80,23 +80,6 @@ public class BinLifter extends Subsystem {
 		rotate.set(0.0);
 	}
 	*/
-	public void rotateUp(double power){
-		if(RobotMap.pdp.getCurrent(15) < 10.0){
-			rotate.set(power * 0.425);
-		}
-		else{
-			rotate.set(0.0);
-		}
-	}
-	public void rotateDown(double power){
-		//  Make command to deal with the encoder for the preset rotations
-		if(RobotMap.pdp.getCurrent(15) < 10.0){
-			rotate.set(power * -0.425);
-		}
-		else{
-			rotate.set(0.0);
-		}
-	}
 	/*public void Rotate180(double power){
 		while(rotateStop.get() == false){
 			rotate.set(power * 0.425);
@@ -111,11 +94,5 @@ public class BinLifter extends Subsystem {
 	public void rStop() {
 		// TODO Auto-generated method stub
 		rotate.set(0);
-	}
-
-	public void rotate(double power) {
-		// TODO Auto-generated method stub
-		rotate.set(power);
-		
 	}
 }
