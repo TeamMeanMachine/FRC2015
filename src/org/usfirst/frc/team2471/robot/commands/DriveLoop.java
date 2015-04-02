@@ -30,7 +30,7 @@ public class  DriveLoop extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         SmartDashboard.putNumber("Tote Speed", 1.0);
-        SmartDashboard.putNumber("RC Speed" , 0.4);
+        SmartDashboard.putNumber("RC Speed" , 0.6);
         SmartDashboard.putNumber("Tote Pivot", 10);
     	SmartDashboard.putNumber("RC Pivot", -22);
     	
@@ -62,10 +62,10 @@ public class  DriveLoop extends Command {
 //        if (Math.abs(r) < 0.10)
 //        	r = 0.0;
         
-        if (speedBinMag < 0.10){
+        if (speedBinMag < 0.2){
         	x2 = y2 = 0.0;
         }
-        if (Math.abs(r2) < 0.10)
+        if (Math.abs(r2) < 0.2)
         	r2 = 0.0;
         
         double gyroAngle = -RobotMap.gyro.getAngle() * (Math.PI/180.0);

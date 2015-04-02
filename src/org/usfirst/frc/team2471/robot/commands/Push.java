@@ -19,7 +19,8 @@ public class Push extends Command{
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		RobotMap.bCatch.set(true);
+		RobotMap.bCatch.set(false);
+		RobotMap.bHolderThing.set(true);
 		Robot.pusher.Push(true);
 		Robot.sucker.Spit();
 	}
@@ -36,7 +37,7 @@ public class Push extends Command{
 //		Robot.pusher.ResetRaw();
 		Robot.sucker.Stop();
 		Robot.pusher.Push(false);
-		RobotMap.bCatch.set(false);
+		RobotMap.bHolderThing.set(false);
 	}
 
 	@Override
@@ -45,7 +46,7 @@ public class Push extends Command{
 //		Robot.pusher.ResetRaw();
 		Robot.sucker.Stop();
 		Robot.pusher.Push(false);
-		RobotMap.bCatch.set(false);
+		RobotMap.bHolderThing.set(false);
 	}
 
 }

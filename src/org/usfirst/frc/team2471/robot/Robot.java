@@ -3,10 +3,11 @@ package org.usfirst.frc.team2471.robot;
 
 import org.usfirst.frc.team2471.robot.commands.AutoGrabCan;
 import org.usfirst.frc.team2471.robot.commands.AutoStayThere;
-import org.usfirst.frc.team2471.robot.commands.AutoThreeTote;
+import org.usfirst.frc.team2471.robot.commands.AutoStepCan;
 import org.usfirst.frc.team2471.robot.commands.AutoYellowPickUp;
 import org.usfirst.frc.team2471.robot.commands.HomeBin;
 import org.usfirst.frc.team2471.robot.commands.HomeBinRotate;
+import org.usfirst.frc.team2471.robot.commands.ShoulderShrug;
 import org.usfirst.frc.team2471.robot.subsystems.BinLifter;
 import org.usfirst.frc.team2471.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team2471.robot.subsystems.Grabber;
@@ -69,7 +70,8 @@ public class Robot extends IterativeRobot {
 		
 	//	SmartDashboardInput.GetDash();
 		autoChooser = new SendableChooser();
-        autoChooser.addDefault("3 Tote Pick Up", new AutoThreeTote());
+        //autoChooser.addDefault("3 Tote Pick Up", new AutoThreeTote());
+        autoChooser.addDefault("Can Step", new AutoStepCan());
         autoChooser.addObject("Stay", new AutoStayThere());
         autoChooser.addObject("Grab Can", new AutoGrabCan());
         autoChooser.addObject("1 Tote Pick Up", new AutoYellowPickUp());
@@ -105,6 +107,7 @@ public class Robot extends IterativeRobot {
 		//SmartDashboard.putNumber("Rotate enc", RobotMap.lRotate.getDegrees());
 		//SmartDashboard.putNumber("Angle Auto", autoAngle);
 		SmartDashboard.putNumber("IR V;", RobotMap.bToteMax.getVoltage());
+		//System.out.println(RobotMap.bToteMax.getVoltage());
 		//System.out.println("FL: " + RobotMap.leftFrontTwistEnc.getDistance() + " FR: " + RobotMap.rightFrontTwistEnc.getDistance());
 		//System.out.println("this is workings");
 		//System.out.println("Encoder Wrist: " + RobotMap.lRotate.getTotalDegrees());
@@ -152,8 +155,10 @@ public class Robot extends IterativeRobot {
 //        System.out.println(RobotMap.rightRearTwistEnc.getDistance());
 //        RobotMap.gyro.reset();
 //        homeRotateCommand.start();
-        RobotMap.lRotate.reset();
+//        RobotMap.lRotate.reset();
         maxLiftCurrent = 0.0;
+        Command upCommand = new ShoulderShrug(false);
+        upCommand.start();
     }
 
     /**
@@ -185,6 +190,12 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("FR Drive Encoder", RobotMap.rightFrontSpeedEnc.getDistance());
 		SmartDashboard.putNumber("RL Drive Encoder", RobotMap.leftRearSpeedEnc.getDistance());
 		SmartDashboard.putNumber("RR Drive Encoder", RobotMap.rightRearSpeedEnc.getDistance());
+		SmartDashboard.putNumber("RL Twist Encoder post", RobotMap.leftRearTwistEnc.getDistance());
+		RobotMap.leftRearSwerve.m_RawEncoderAngle = RobotMap.leftRearTwistEnc.getDistance();
+		RobotMap.rightRearSwerve.m_RawEncoderAngle = RobotMap.rightRearTwistEnc.getDistance();
+		RobotMap.leftFrontSwerve.m_RawEncoderAngle = RobotMap.leftFrontTwistEnc.getDistance();
+		RobotMap.rightFrontSwerve.m_RawEncoderAngle = RobotMap.rightFrontTwistEnc.getDistance();
+		
  //       System.out.println("Encoder Twists: " + RobotMap.leftFrontTwist.get() + " " + RobotMap.leftRearTwist.get() + " " + RobotMap.rightFrontTwist.get() + " " + RobotMap.rightRearTwist.get());
 		//System.out.println("RL: " + RobotMap.leftRearSpeedEnc.getDistance() +  " RR: " + RobotMap.rightRearSpeedEnc.getDistance());
 		

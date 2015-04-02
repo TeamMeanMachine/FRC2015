@@ -20,26 +20,26 @@ public class BinLifterCommand extends Command  {
 	protected void execute() {
 		
 		// TODO Auto-generated method stub
-		double powerLeft = 0.0;
-		if(Robot.oi.coStick.getRawButton(2)){
-			powerLeft = 1.0;
-		}
-		double powerRight = 0.0;
-		if(Robot.oi.coStick.getRawButton(3)){
-			powerRight = 1.0;
-		}
-		double minPower = 0.25;
-		double multiplier = -0.5*(1.0-minPower) * Math.cos(RobotMap.lRotate.getTotalDegrees()*2 * Math.PI / 180.0) + (1.0-0.5*(1.0-minPower));
-		if(powerLeft > 0.1) {
-			Robot.binLifter.rotate(powerLeft * multiplier);
-		}
-		else if(powerRight > 0.1) {
-			Robot.binLifter.rotate(-powerRight * multiplier);   
-		}
-		else {
-			Robot.binLifter.rotate(0.0);
-		}
-		
+//		double powerLeft = 0.0;
+//		if(Robot.oi.coStick.getRawButton(4)){
+//			powerLeft = 1.0;
+//		}
+//		double powerRight = 0.0;
+//		if(Robot.oi.coStick.getRawButton(1)){
+//			powerRight = 1.0;
+//		}
+//		double minPower = 0.25;
+//		double multiplier = -0.5*(1.0-minPower) * Math.cos(RobotMap.lRotate.getTotalDegrees()*2 * Math.PI / 180.0) + (1.0-0.5*(1.0-minPower));
+//		if(powerLeft > 0.1) {
+//			Robot.binLifter.rotateUp(1.0);
+//		}
+//		else if(powerRight > 0.1) {
+//			Robot.binLifter.rotateDown(1.0);   
+//		}
+//		else {
+//			Robot.binLifter.rotate(0.0);
+//		}
+//		
 		
 //		double powerUp = Robot.oi.coStick.getRawAxis(2);
 //		double powerDown = Robot.oi.coStick.getRawAxis(3);

@@ -39,10 +39,10 @@ public class BinLifter extends Subsystem {
 	public void Lift(double power){				//FIX MEH 
 		//System.out.println("Lift: " + power );
 		//System.out.println("LowerLimit" + lowerLimit.get());
-		if(power < 0 && (lowerLimit.get() == false)){
+		if(power < 0){
 			power = power * 0.75;
 		}
-		else if(power > 0 && (upperLimit.get() == false)){
+		else if(power > 0){
 			power = power * 0.75;
 		}
 		else{
@@ -79,25 +79,35 @@ public class BinLifter extends Subsystem {
 		}
 		rotate.set(0.0);
 	}
-	
-	public void RotateBackwards(double power){
+	*/
+	public void rotateUp(double power){
+		if(RobotMap.pdp.getCurrent(7) < 10.0){
+			rotate.set(power * 0.425);
+		}
+		else{
+			rotate.set(0.0);
+		}
+	}
+	public void rotateDown(double power){
 		//  Make command to deal with the encoder for the preset rotations
-		while (rotateStop.get() == false){
+		if(RobotMap.pdp.getCurrent(7) < 10.0){
 			rotate.set(power * -0.425);
+		}
+		else{
+			rotate.set(0.0);
+		}
+	}
+	/*public void Rotate180(double power){
+		while(rotateStop.get() == false){
+			rotate.set(power * 0.425);
+		}
+		rotate.set(0.0);
+		while(rotateStop.get() == false){
+			rotate.set(power * 0.425);
 		}
 		rotate.set(0.0);
 	}
-	
-	public void Rotate180(double power){
-		while(rotateStop.get() == false){
-			rotate.set(power * 0.425);
-		}
-		rotate.set(0.0);
-		while(rotateStop.get() == false){
-			rotate.set(power * 0.425);
-		}
-		rotate.set(0.0);
-	}*/
+*/	
 	public void rStop() {
 		// TODO Auto-generated method stub
 		rotate.set(0);

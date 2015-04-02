@@ -1,16 +1,16 @@
 package org.usfirst.frc.team2471.robot;
 
+import org.usfirst.frc.team2471.robot.commands.BinLifterRotateDown;
+import org.usfirst.frc.team2471.robot.commands.BinLifterRotateUp;
 import org.usfirst.frc.team2471.robot.commands.Grab;
 import org.usfirst.frc.team2471.robot.commands.GyroReset;
 import org.usfirst.frc.team2471.robot.commands.Push;
 import org.usfirst.frc.team2471.robot.commands.ShoulderShrug;
 import org.usfirst.frc.team2471.robot.commands.Spit;
 import org.usfirst.frc.team2471.robot.commands.Suck;
-import org.usfirst.frc.team2471.robot.commands.ToteHoldToggle;
 import org.usfirst.frc.team2471.robot.commands.ToteLiftCycle;
 import org.usfirst.frc.team2471.robot.commands.ToteLiftMiddle;
 import org.usfirst.frc.team2471.robot.commands.ToteLiftPickupPreset;
-import org.usfirst.frc.team2471.robot.commands.ToteLiftSkipOverride;
 import org.usfirst.frc.team2471.robot.commands.ToteLiftTop;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -69,6 +69,8 @@ public class OI {
     public JoystickButton toggleHold;
     public JoystickButton liftOverride;
     public JoystickButton thiefOfCansAndDignity;
+    public JoystickButton binPresetUp;
+    public JoystickButton binPresetDown;
     
     public OI(){
     	driverStick = new Joystick(0);
@@ -76,9 +78,11 @@ public class OI {
     	totePresetMiddle = new JoystickButton(driverStick, 3);
     	thiefOfCansAndDignity = new JoystickButton(driverStick, 9);
     	toteCycle = new JoystickButton(driverStick, 1);
-    	toteCycle2 = new JoystickButton(coStick, 1);
+    	toteCycle2 = new JoystickButton(coStick, 2);
     	totePresetBottom = new JoystickButton(driverStick, 2);
     	totePresetTop = new JoystickButton(driverStick, 8);
+    	binPresetUp = new JoystickButton(coStick, 4);
+    	binPresetDown = new JoystickButton(coStick, 1);
     	//wristBrake = new JoystickButton(coStick, 2);
     	//wristBrake.whileHeld(new RotateBrake());
 //    	rotateRight = new  JoystickButton(coStick, 5);
@@ -90,9 +94,9 @@ public class OI {
     	suck = new JoystickButton(driverStick, 6);
     	spit = new JoystickButton(driverStick, 5);
     	push = new JoystickButton(driverStick, 4);
-    	grab = new JoystickButton(coStick, 4);
-    	toggleHold = new JoystickButton(coStick, 2);
-    	liftOverride = new JoystickButton(coStick, 3);
+    	grab = new JoystickButton(coStick, 3);
+    	//toggleHold = new JoystickButton(coStick, 2);
+    	//liftOverride = new JoystickButton(coStick, 3);
     	//rotate = new JoystickButton(coStick, 3);
     	//rotate.whenPressed(new Rotate(180));
     	//rotateBackwards = new JoystickButton(coStick, 1);
@@ -101,6 +105,9 @@ public class OI {
    // 	rotate180.whenPressed(new Rotate(0));
     	//rotateBackwards.whenPressed(new RotateBackwards());
 //    	rotate.whenPressed(new Rotate());
+    	binPresetUp.whenPressed(new BinLifterRotateUp());
+    	binPresetDown.whenPressed(new BinLifterRotateDown());
+    	
     	suck.whileHeld(new Suck());
     	spit.whileHeld(new Spit());
     	push.whileHeld(new Push());
@@ -112,8 +119,8 @@ public class OI {
     	totePresetTop.whenPressed(new ToteLiftTop());
     	toteCycle.whenPressed(new ToteLiftCycle());
     	toteCycle2.whenPressed(new ToteLiftCycle());
-    	toggleHold.whenPressed(new ToteHoldToggle());
-    	liftOverride.whileHeld(new ToteLiftSkipOverride());
+    	//toggleHold.whenPressed(new ToteHoldToggle());
+    	//liftOverride.whileHeld(new ToteLiftSkipOverride());
     	
     	
     }

@@ -32,14 +32,12 @@ public class ShoulderShrug extends Command{
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		Robot.grabber.grab(false);
 		
 	}
 
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
-		Robot.grabber.grab(false);
 	}
 
 }
