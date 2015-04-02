@@ -39,10 +39,10 @@ public class BinLifter extends Subsystem {
 	public void Lift(double power){				//FIX MEH 
 		//System.out.println("Lift: " + power );
 		//System.out.println("LowerLimit" + lowerLimit.get());
-		if(power < 0){
+		if(power < 0 && (lowerLimit.get() == false)){
 			power = power * 0.75;
 		}
-		else if(power > 0){
+		else if(power > 0 && (upperLimit.get() == false)){
 			power = power * 0.75;
 		}
 		else{
@@ -81,7 +81,7 @@ public class BinLifter extends Subsystem {
 	}
 	*/
 	public void rotateUp(double power){
-		if(RobotMap.pdp.getCurrent(7) < 10.0){
+		if(RobotMap.pdp.getCurrent(15) < 10.0){
 			rotate.set(power * 0.425);
 		}
 		else{
@@ -90,7 +90,7 @@ public class BinLifter extends Subsystem {
 	}
 	public void rotateDown(double power){
 		//  Make command to deal with the encoder for the preset rotations
-		if(RobotMap.pdp.getCurrent(7) < 10.0){
+		if(RobotMap.pdp.getCurrent(15) < 10.0){
 			rotate.set(power * -0.425);
 		}
 		else{
