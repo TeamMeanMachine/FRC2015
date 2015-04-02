@@ -191,11 +191,6 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("RL Drive Encoder", RobotMap.leftRearSpeedEnc.getDistance());
 		SmartDashboard.putNumber("RR Drive Encoder", RobotMap.rightRearSpeedEnc.getDistance());
 		SmartDashboard.putNumber("RL Twist Encoder post", RobotMap.leftRearTwistEnc.getDistance());
-		RobotMap.leftRearSwerve.m_RawEncoderAngle = RobotMap.leftRearTwistEnc.getDistance();
-		RobotMap.rightRearSwerve.m_RawEncoderAngle = RobotMap.rightRearTwistEnc.getDistance();
-		RobotMap.leftFrontSwerve.m_RawEncoderAngle = RobotMap.leftFrontTwistEnc.getDistance();
-		RobotMap.rightFrontSwerve.m_RawEncoderAngle = RobotMap.rightFrontTwistEnc.getDistance();
-		
  //       System.out.println("Encoder Twists: " + RobotMap.leftFrontTwist.get() + " " + RobotMap.leftRearTwist.get() + " " + RobotMap.rightFrontTwist.get() + " " + RobotMap.rightRearTwist.get());
 		//System.out.println("RL: " + RobotMap.leftRearSpeedEnc.getDistance() +  " RR: " + RobotMap.rightRearSpeedEnc.getDistance());
 		

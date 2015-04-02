@@ -79,8 +79,7 @@ public class SwerveVector {
         
         swerve.setTwist(desiredAngle);
         SmartDashboard.putNumber(swerve.name + " SP", -desiredAngle);
-        SmartDashboard.putNumber(swerve.name + " Enc", swerve.twistEnc.getDistance());
-        SmartDashboard.putNumber(swerve.name + "Error", swerve.twistController.getError());
+        SmartDashboard.putNumber(swerve.name + " Enc", -swerve.twistEnc.getDistance());
         return desiredPower;
     }
     public void SetMaxPower( double maxPower )
@@ -110,8 +109,7 @@ public class SwerveVector {
     
     void FindNearestAngle()
     {
-        //double currentAngle = swerve.getTwist();
-    	double currentAngle = swerve.m_RawEncoderAngle + swerve.twistOffset;
+        double currentAngle = swerve.getTwist();
         double delta = desiredAngle - currentAngle;
         if (delta>Math.PI)
         {
@@ -121,6 +119,7 @@ public class SwerveVector {
         {
             delta = delta + 2*Math.PI;
         }
+
         
         if (delta>Math.PI/2)
         {
