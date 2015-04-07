@@ -125,7 +125,7 @@ public class RobotMap {
 		bSucker2 = new Talon(2);
 		
 		//Lucas Grabber
-		lGrabber = new Solenoid(4);
+		lGrabber = new Solenoid(5);
 		
 		//Bryce Swerves of doom
 		// **************************** LF ************************

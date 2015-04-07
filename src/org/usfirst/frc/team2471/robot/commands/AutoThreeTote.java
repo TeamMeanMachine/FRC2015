@@ -29,7 +29,7 @@ public class AutoThreeTote extends CommandGroup {
     	
     	//addSequential(new DriveTimeCommand(.5, 0.0, 0.0, -1.0, -0.5));
     	addParallel(new SuckRaw(0.4, 0.7));
-    	addSequential(new DriveDistanceCommand(27.0, -0.25, 0.0, -1.0, -0.5, 3.0));
+    	addSequential(new DriveDistanceCommand(27.0, -0.3, 0.0, -1.0, -0.5, 3.0));
     	addSequential(new ResetDriveEncoders());
     	addSequential(new DriveTimeCommand(.75, 0.0, 0.0, -1.0, -0.5));
     	addParallel(new ToteLiftCycle());
@@ -38,7 +38,7 @@ public class AutoThreeTote extends CommandGroup {
     	addSequential(new DriveDistanceCommand(36.0, -0.45, 0.0, -1.0, -0.0, 3.0));
     	addSequential(new ResetDriveEncoders());
     	addParallel(new SuckRaw(0.4, 1.0));
-    	addSequential(new DriveDistanceCommand(41.0, -0.26, 0.0, -1.0, -0.5));
+    	addSequential(new DriveDistanceCommand(41.0, -0.3, 0.0, -1.0, -0.5));
     	addSequential(new ResetDriveEncoders());
     	addParallel(new ToteLiftCycle());
     	addSequential(new DriveTimeCommand(1.2, 0.0, 0.0, -1.0, -0.5));
@@ -46,11 +46,11 @@ public class AutoThreeTote extends CommandGroup {
     	addSequential(new DriveDistanceCommand(42.0, -0.45, 0.0, -1.0, -0.0, 3.0));
     	addSequential(new ResetDriveEncoders());
     	addParallel(new SuckRaw(0.4, 0.7));
-    	addSequential(new DriveDistanceCommand(45.0, -0.26, 0.0, -1.0, -0.5, 3.0));
+    	addSequential(new DriveDistanceCommand(45.0, -0.3, 0.0, -1.0, -0.5, 3.0));
     	addSequential(new ResetDriveEncoders());
     	addParallel(new ToteLiftPickupPreset());
     	addSequential(new DriveTimeCommand(1.25, 0.0, 0.0, -1.0, -0.5));
-    	addSequential(new DriveDistanceCommand(90.0, -0.25, 0.5, -1.0, 0.0));
+    	addSequential(new DriveDistanceCommand(90.0, -0.5 , 0.5, -1.0, 0.0));
     	//addSequential(new DriveDistanceCommand(30.0, 0.0, 0.75, 0.0, 0.75));
     	addSequential(new ResetDriveEncoders());
     	addParallel(new Push());

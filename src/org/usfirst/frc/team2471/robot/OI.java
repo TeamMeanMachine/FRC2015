@@ -11,7 +11,9 @@ import org.usfirst.frc.team2471.robot.commands.Suck;
 import org.usfirst.frc.team2471.robot.commands.ToteLiftCycle;
 import org.usfirst.frc.team2471.robot.commands.ToteLiftMiddle;
 import org.usfirst.frc.team2471.robot.commands.ToteLiftPickupPreset;
+import org.usfirst.frc.team2471.robot.commands.ToteLiftSkipOverride;
 import org.usfirst.frc.team2471.robot.commands.ToteLiftTop;
+import org.usfirst.frc.team2471.robot.commands.ToteLiftTopDriver;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -96,7 +98,7 @@ public class OI {
     	push = new JoystickButton(driverStick, 4);
     	grab = new JoystickButton(coStick, 3);
     	//toggleHold = new JoystickButton(coStick, 2);
-    	//liftOverride = new JoystickButton(coStick, 3);
+    	liftOverride = new JoystickButton(coStick, 7);
     	//rotate = new JoystickButton(coStick, 3);
     	//rotate.whenPressed(new Rotate(180));
     	//rotateBackwards = new JoystickButton(coStick, 1);
@@ -114,13 +116,13 @@ public class OI {
     	thiefOfCansAndDignity.whenPressed(new ShoulderShrug(true));
     	thiefOfCansAndDignity.whenReleased(new ShoulderShrug(false));
     	grab.whenPressed(new Grab());
-    	totePresetMiddle.whenPressed(new ToteLiftMiddle());
+    	totePresetMiddle.whenPressed(new ToteLiftTopDriver());
     	totePresetBottom.whenPressed(new ToteLiftPickupPreset());
     	totePresetTop.whenPressed(new ToteLiftTop());
     	toteCycle.whenPressed(new ToteLiftCycle());
     	toteCycle2.whenPressed(new ToteLiftCycle());
     	//toggleHold.whenPressed(new ToteHoldToggle());
-    	//liftOverride.whileHeld(new ToteLiftSkipOverride());
+    	liftOverride.whileHeld(new ToteLiftSkipOverride());
     	
     	
     }

@@ -35,7 +35,7 @@ public class Claw extends Subsystem{
 	}
 	
 	public void rotateUp(double power){
-		if(RobotMap.pdp.getCurrent(15) < 10.0){
+		if(RobotMap.pdp.getCurrent(15) < 12.0){
 			rotate.set(power * 0.425);
 		}
 		else{

@@ -30,7 +30,7 @@ public class  DriveLoop extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         SmartDashboard.putNumber("Tote Speed", 1.0);
-        SmartDashboard.putNumber("RC Speed" , 0.6);
+        SmartDashboard.putNumber("RC Speed" , 0.5);
         SmartDashboard.putNumber("Tote Pivot", 10);
     	SmartDashboard.putNumber("RC Pivot", -22);
     	

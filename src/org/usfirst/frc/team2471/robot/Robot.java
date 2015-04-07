@@ -4,6 +4,7 @@ package org.usfirst.frc.team2471.robot;
 import org.usfirst.frc.team2471.robot.commands.AutoGrabCan;
 import org.usfirst.frc.team2471.robot.commands.AutoStayThere;
 import org.usfirst.frc.team2471.robot.commands.AutoStepCan;
+import org.usfirst.frc.team2471.robot.commands.AutoThreeTote;
 import org.usfirst.frc.team2471.robot.commands.AutoYellowPickUp;
 import org.usfirst.frc.team2471.robot.commands.HomeBin;
 import org.usfirst.frc.team2471.robot.commands.HomeBinRotate;
@@ -73,7 +74,7 @@ public class Robot extends IterativeRobot {
 		
 	//	SmartDashboardInput.GetDash();
 		autoChooser = new SendableChooser();
-        //autoChooser.addDefault("3 Tote Pick Up", new AutoThreeTote());
+        //autoChooser.addDefault("3 Tote Pick Up ", new AutoThreeTote());
         autoChooser.addDefault("Can Step", new AutoStepCan());
         autoChooser.addObject("Stay", new AutoStayThere());
         autoChooser.addObject("Grab Can", new AutoGrabCan());

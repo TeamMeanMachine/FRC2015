@@ -27,7 +27,7 @@ public class BinLifterRotateDown extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return RobotMap.pdp.getCurrent(7) > 10.0;
+        return RobotMap.pdp.getCurrent(15) > 10.0;
     }
 
     // Called once after isFinished returns true

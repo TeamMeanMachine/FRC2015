@@ -36,12 +36,7 @@ public class Lifter extends Subsystem {
 	
 	//DONT USE ONLY FOR DEBUG IF NEED BE (LOL)
 	public void SetRawLift(double power){
-		if(!upperLimit.get() && !lowerLimit.get()){
-			lifter.set(power * 0.5);
-		}
-		else{
-			lifter.set(0);
-		}
+		lifter.set(-power);
 	}
 	
 	public void Liften4days(){

@@ -5,9 +5,9 @@ import org.usfirst.frc.team2471.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ToteLiftSkipOverride extends Command  {
+public class ToteLiftTopDriver extends Command{
 
-	public ToteLiftSkipOverride() {
+	public ToteLiftTopDriver() {
 		// TODO Auto-generated constructor stub
 		requires(Robot.lifter);
 	}
@@ -20,12 +20,15 @@ public class ToteLiftSkipOverride extends Command  {
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		Robot.lifter.SetRawLift(1);
+		Robot.lifter.TopGoto();
 	}
 
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
+		if(RobotMap.bToteMax.getVoltage() >= 2.3 || RobotMap.bUpperlimit.get() || RobotMap.pdp.getCurrent(11) > 70.0 ){
+			return true;
+		}
 		return false;
 	}
 
