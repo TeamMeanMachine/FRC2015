@@ -197,7 +197,6 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("RL Twist Encoder post", RobotMap.leftRearTwistEnc.getDistance());
  //       System.out.println("Encoder Twists: " + RobotMap.leftFrontTwist.get() + " " + RobotMap.leftRearTwist.get() + " " + RobotMap.rightFrontTwist.get() + " " + RobotMap.rightRearTwist.get());
 		//System.out.println("RL: " + RobotMap.leftRearSpeedEnc.getDistance() +  " RR: " + RobotMap.rightRearSpeedEnc.getDistance());
-		
 		//System.out.println("Distance L: " + RobotMap.leftRearSpeedEnc.getDistance() + "\tDistance R: " + RobotMap.rightRearSpeedEnc.getDistance());
 		//System.out.println("ToteMid: " + RobotMap.bToteMid.getVoltage());
 //		System.out.println(RobotMap.leftRearSpeedEnc.getDistance());
