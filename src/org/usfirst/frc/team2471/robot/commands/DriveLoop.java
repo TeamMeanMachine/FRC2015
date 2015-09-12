@@ -47,9 +47,9 @@ public class  DriveLoop extends Command {
         double x =  Robot.oi.driverStick.getAxis(Joystick.AxisType.kX);
         double y = -Robot.oi.driverStick.getAxis(Joystick.AxisType.kY);  // odd, but up is negative
         double r =  Robot.oi.driverStick.getAxis(Joystick.AxisType.kZ);
-        double x2 = 0; //Robot.oi.coStick.getAxis(Joystick.AxisType.kX);
-        double y2 = 0; //-Robot.oi.coStick.getAxis(Joystick.AxisType.kY);  // odd, but up is negative
-        double r2 = 0; // Robot.oi.coStick.getRawAxis(4);
+        double x2 = Robot.oi.coStick.getAxis(Joystick.AxisType.kX);
+        double y2 = -Robot.oi.coStick.getAxis(Joystick.AxisType.kY);  // odd, but up is negative
+        double r2 =  Robot.oi.coStick.getRawAxis(4);
 //        double s = -Robot.oi.driverStick.getAxis(Joystick.AxisType.kThrottle);  // kThrottle is the y of the right stick
 //        double s2 = -Robot.oi.coStick.getAxis(Joystick.AxisType.kThrottle);
         double speedBinMag = Math.sqrt(x2 * x2 + y2 * y2);
